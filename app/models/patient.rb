@@ -1,2 +1,2 @@
-class Patients < ApplicationRecord
+class Patient < ApplicationRecord
 end
