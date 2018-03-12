@@ -37,9 +37,12 @@
          </div>
 
          <script>
-              $("#laptop").hide();
+              // $("#laptop").hide();
              $(".hewothere").click(function () {
-                $("#laptop").show("slide", { direction: "left" }, 1000);
+
+                // $("#laptop").show();
+                $("#laptop").animate({left: '250px'});
+
                 });
 
          </script>
