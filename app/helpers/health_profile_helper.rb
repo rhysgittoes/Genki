@@ -1,0 +1,2 @@
+module HealthProfileHelper
+end

@@ -1,0 +1,11 @@
+<div id="notification">
+  Notification:
+</div>
+
+<div id="search-form">
+    <%= form_tag doctors_search_path do %>
+      <%= label_tag "search" %>
+      <%= text_field_tag "search", nil, list: "list" %>
+      <datalist id="list"></datalist>
+    <%end%>
+</div>
