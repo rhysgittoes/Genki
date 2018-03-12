@@ -3,6 +3,7 @@ Rails.application.routes.draw do
 
   resources :doctors
   resources :patients
+  resources :health_profiles
 
   get "/doctors/search" => "doctors#search"
 end
