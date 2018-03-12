@@ -2,6 +2,8 @@ class DoctorsController < ApplicationController
   
   before_action :set_doctor, only: [:edit, :show, :update]
 
+  before_action :require_login, except: [:new, :create]
+
 def index
 end
 
@@ -13,10 +15,15 @@ def create
   @doctor = Doctor.new(doctor_params)
   if @doctor.save
     redirect_to doctors_path
+    
   else
     flash[:notice] = "Sorry, there was an error creating your account. Please try again."
     redirect_to new_doctor_path
   end
+end
+
+def show
+  @doctor = Doctor.find(params[:id])
 end
 
 def edit
@@ -38,8 +45,13 @@ def set_doctor
   @doctor = Doctor.find(params[:id])
 end
 
+
+private
+  
 def doctor_params
   params.require(:doctor).permit(:first_name, :last_name, :gender, :birthday, :language, :city, :country, :certification, :email, :experience)
+
+
 end
 
 end

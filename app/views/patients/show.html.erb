@@ -1,1 +1,37 @@
-This is the patients show path
+<div>
+  <div>
+    Personal details: 
+    <p>
+      <span>First name: </span>
+      <span><%= @patient.first_name %></span>
+    </p>
+    <p>
+      <span>Last name: </span>
+      <span><%= @patient.last_name %></span>
+    </p>
+    <p>
+      <span>Email: </span>
+      <span><%= @patient.email %></span>
+    </p>
+    <p>
+      <span>Birthday: </span>
+      <span><%= @patient.birthday %></span>
+    </p>
+    <p>
+      <span>Language: </span>
+      <span><%= @patient.language %></span>
+    </p>
+    <p>
+      <span>City: </span>
+      <span><%= @patient.city %></span>
+    </p>
+    <p>
+      <span>Country: </span>
+      <span><%= @patient.country %></span>
+    </p>
+  </div>
+  <div>
+    <!--<span><%#= link_to "View Health Profile", health_profile_path(@patient) %></span> <!--Add link in when health profiles are incorporated-->
+  </div>
+</div>
+

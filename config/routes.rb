@@ -8,5 +8,6 @@ Rails.application.routes.draw do
   resources :patients
   resources :health_profiles
 
+  root to: 'pages#index'
 end
 

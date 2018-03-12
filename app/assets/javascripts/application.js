@@ -13,3 +13,23 @@
 //= require rails-ujs
 //= require turbolinks
 //= require_tree .
+
+
+// document.addEventListener('turbolinks:load', function(){
+//   // $("#laptop").hide();
+//    $(".hewothere").click(function () {
+//       // $("#laptop").hide();
+//       console.log("hello there.")
+//       $("#Awesome").animate({
+//          left: '500px'
+//       }, 1000, function() {
+//        // Animation complete.
+//       });
+//    });
+// });
+
+document.addEventListener('turbolinks:load', function(){
+   AOS.init({
+     duration: 1200,
+   })
+});
