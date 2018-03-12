@@ -10,6 +10,7 @@ def new
 end
 
 def create
+  @doctor = Doctor.new(doctor_params)
   if @doctor.save
     redirect_to doctors_path
   else
@@ -35,6 +36,10 @@ private
 
 def set_doctor
   @doctor = Doctor.find(params[:id])
+end
+
+def doctor_params
+  params.require(:doctor).permit(:first_name, :last_name, :gender, :birthday, :language, :city, :country, :certification, :email, :experience)
 end
 
 end
