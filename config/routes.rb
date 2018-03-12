@@ -6,4 +6,5 @@ Rails.application.routes.draw do
   resources :health_profiles
 
   get "/doctors/search" => "doctors#search"
+  root to: 'pages#index'
 end
