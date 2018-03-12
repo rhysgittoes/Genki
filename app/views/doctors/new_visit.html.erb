@@ -1,0 +1,18 @@
+<%= form_for @patient do |form| %>
+<%= Datetime.today %>
+<%= form.label :first_name %>
+<%= form.first_name%>
+<%= form.label :last_name %>
+<%= form.last_name%>
+<%= form.label :symptoms %>
+<%= form.text_field :symptoms%>
+<%= form.label :diagnosis%>
+<%= form.text_area :diagnosis%>
+<%= form.label :referral_doctor%>
+<%= form.text_field :referral%>
+<%= form.label :doctor %>
+<%= form.doctor %>
+<%= form.label :notes %>
+<%= form.text_area :notes%>
+<%= form.submit "Submit", data:{ confirm: "Procceed to save to Patient's log?"} %>
+<% end %>

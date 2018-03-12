@@ -34,6 +34,8 @@ ActiveRecord::Schema.define(version: 20180312031745) do
     t.string "certification"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.string "email"
+    t.integer "experience"
   end
 
   create_table "health_profiles", force: :cascade do |t|
