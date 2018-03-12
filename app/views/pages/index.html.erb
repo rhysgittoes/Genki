@@ -7,15 +7,15 @@
       <div class="text_over_video">
          <h1 class="display-4" id="title">Welcome to Genki</h1>
          <div style=" margin: 0 auto; width: 30em;">
-            <h5 id="paragraph" class="display-4">You're personal healthcare assistant</h5>
+            <h5 id="paragraph" class="display-4">Your personal healthcare assistant</h5>
          </div>
           <%= link_to image_tag("/assets/genki.jpg", id: "main_image"), root_path%>  
       </div>
    </div>
 </div>
 
-<div class="second_bar">
-<div class="container">
+<div class="second_bar" style="width: 100%;">
+   <div class="container">
       <div class="row" style="margin-top: 2em;">
          <div class="col-12">
             <h4 class="display-4" style="font-size: 4.5em">What is Genki?</h4>
@@ -23,34 +23,21 @@
       </div>
       <br>
       <br>
-      <div class="row">
-         <div class="col-6 hewothere" style="font-size: 1.4em;">
+      <div class="row" >
+         <div class="col-6" style="font-size: 1.4em;" data-aos="fade-right">
             <br>
             <br>
             <br>
             <h3 class="display-1 " style="font-size: 1.5em;">The Healthcare app of the Future</h3>
             Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur.         
          </div>
-
          <div class="col-6">
-            <%=image_tag("/assets/laptop.jpg", id: "laptop")%>
+            <div data-aos="fade-left">
+            <%=image_tag("/assets/laptop.jpg", id: "laptop", )%>
+            </div>
          </div>
 
-         <script>
-              // $("#laptop").hide();
-             $(".hewothere").click(function () {
-
-                // $("#laptop").show();
-                $("#laptop").animate({left: '250px'});
-
-                });
-
-         </script>
-
-
-
-
-      </div>
+       </div>
    </div>
 </div>
 

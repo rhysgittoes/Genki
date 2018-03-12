@@ -51,8 +51,26 @@ color:white;
 }
 .second_bar{
    text-align: center;
+   overflow: hidden;
 }
 
 #laptop{
-   width:160%;
+   width:180%;
+}
+
+
+
+.item {
+  box-sizing: border-box;
+}
+
+.item {
+  width: 200px;
+  height: 200px;
+  margin: 50px auto;
+  padding-top: 75px;
+  background: #ccc;
+  text-align: center;
+  color: #FFF;
+  font-size: 3em;
 }
