@@ -1,0 +1,13 @@
+<table>
+<thead>
+  <th>First Name</th>
+  <th>Last Name</th>
+  <th>Email</th>
+  <th>Admission ID</th>
+</thead>
+<%= @patients.each do |patient| %>
+<%= patient.first_name %>
+<%= patient.last_name %>
+<%= patient.email %>
+<%= patient.admission_id %>
+</table>
