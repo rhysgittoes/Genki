@@ -3,6 +3,11 @@
 
 <%= form_for @doctor do |form|%>
 <%= render partial: "doctors/form", object: form %>
+<%= form.label :certification%><br>
+<%#= form.text_field :certification%><br>
+<%= form.label :year_of_experience%><br>
+<%#= form.select :experience, options_for_select((1..20))%><br>
+
 
 <div class="submit-field">
   <%= form.submit "Submit", data: {confirm: "Edit Profile?"}%>
