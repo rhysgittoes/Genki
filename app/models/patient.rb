@@ -1,2 +1,2 @@
-class Patients < ActiveRecord::Base
+class Patient < ApplicationRecord
 end
