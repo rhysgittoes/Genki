@@ -9,5 +9,7 @@ class AddJobToUsers < ActiveRecord::Migration[5.1]
     add_column :users, :city, :string
     add_column :users, :country, :string
     add_column :users, :admission_id, :string
+    add_column :users, :certification, :string
+    add_column :users, :experience, :integer
   end
 end

@@ -5,9 +5,12 @@
   <th>Email</th>
   <th>Admission ID</th>
 </thead>
-<%= @patients.each do |patient| %>
-<%= patient.first_name %>
-<%= patient.last_name %>
-<%= patient.email %>
-<%= patient.admission_id %>
+<tbody>
+<tr><%= @patients.each do |patient| %></tr>
+<tr><%= patient.first_name %></tr>
+<tr><%= patient.last_name %></tr> 
+<tr><%= patient.email %></tr>  
+<tr><%= patient.admission_id %></tr> 
+</tbody>
 </table>
+<%end%>

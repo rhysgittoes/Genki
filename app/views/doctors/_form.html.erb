@@ -1,3 +1,4 @@
+<div id="form-list">
 <%= form_for @doctor do |f|%>
 <%= f.label :first_name%><br>
 <%= f.text_field :first_name%><br>
@@ -20,7 +21,11 @@
 <%= f.text_field :city%><br>
 <%= f.label :country%><br>
 <%= f.text_field :country%><br>
-<%= f.label :admission_id%><br>
+<%= f.label :admission_ID %><br>
 <%= f.text_field :admission_id%><br>
+<%= form.label :certification%><br>
+<%= form.text_field :certification%><br>
+<%= form.label :year_of_experience%><br>
+<%= form.select :experience, options_for_select((1..20))%><br>
 <% end %>
-
+</div>

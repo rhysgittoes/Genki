@@ -2,7 +2,7 @@ document.addEventListener("DOMContentLoaded", function(event){
 
 // jquery
 $("#search-form").keypress(function(e){
-  // e.preventDefault();
+  e.preventDefault();
   
   $.ajax({
     url: "/search",
