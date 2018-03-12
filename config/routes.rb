@@ -5,4 +5,5 @@ Rails.application.routes.draw do
   resources :patients
 
   get "/doctors/search" => "doctors#search"
+  root to: 'pages#index'
 end
