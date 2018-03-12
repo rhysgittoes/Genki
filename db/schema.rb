@@ -10,6 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
+
 ActiveRecord::Schema.define(version: 20180312032205) do
 
 
@@ -54,6 +55,13 @@ ActiveRecord::Schema.define(version: 20180312032205) do
     t.string "city"
     t.string "country"
     t.string "admission_id"
+  end
+
+  create_table "prescriptions", force: :cascade do |t|
+    t.string "medicine"
+    t.string "dosage"
+    t.string "refills"
+    t.date "expiration_date"
   end
 
 end
