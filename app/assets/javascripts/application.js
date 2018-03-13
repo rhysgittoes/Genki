@@ -32,4 +32,10 @@ document.addEventListener('turbolinks:load', function(){
    AOS.init({
      duration: 1200,
    })
+
+      $("#myBtn").click(function(){
+        $("#myModal").modal();
+    });
 });
+
+
