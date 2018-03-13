@@ -58,7 +58,7 @@ def set_doctor
 end
   
 def doctor_params
-  params.require(:doctor).permit(:first_name, :last_name, :email, :gender, :birthday, :language, :city, :country, :admission_id, :certification, :experience, :password)  
+  params.require(:user).permit(:first_name, :last_name, :email, :gender, :birthday, :language, :city, :country, :admission_id, :certification, :experience, :password)  
 end
 
 # def appointment_params

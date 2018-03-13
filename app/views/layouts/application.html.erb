@@ -70,7 +70,7 @@
               </button>
       </div>
       <div class="modal-body">
-          <%=form_for :users, html: {id:"sign_up_basic"} do |f|%>
+          <%=form_for :user, html: {id:"sign_up_basic"} do |f|%>
          
               <legend>Basic details</legend>
               <p><%= f.text_field :first_name, placeholder: "First name", class: "sign_up_basic_form" %></p>
@@ -78,8 +78,6 @@
               <p><%= f.text_field :email, placeholder: "Email" , class: "sign_up_basic_form" %></p>
               <p><%= f.password_field :password, placeholder: "Password" , class: "sign_up_basic_form",id:"password_field"%> 
               <%= f.password_field :password_confirmation, placeholder: "Confirm Password", class: "sign_up_basic_form",id:"password_field" %></p>
-
-            <!-- <p><%#= button_to "save and continue",{:class=>"savebutton"} %></p> -->
           <%end%>
        
         <div class="buttons_container">
