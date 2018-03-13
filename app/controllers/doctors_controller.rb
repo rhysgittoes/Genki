@@ -37,6 +37,7 @@ def update
   else
   flash[:notice] = "Please input valid information"
   render "edit" 
+  end
 end
 
 def new_visit
