@@ -45,21 +45,19 @@
       <%#= link_to t(".Get Started"), sign_up_path %>
       <button type="button" class="btn btn-outline-success" id="myBtn">Sign Up</button>
     <% end %>
-
-    <div id="flash">
-        <% flash.each do |key, value| -%>
-      <div id="flash_<%= key %>"><%=h value %></div>
-      <% end %>
     
     </div>
   </div>
 </nav>
 
+ <div id="flash">
+        <% flash.each do |key, value| -%>
+      <div id="flash_<%= key %>"><%=h value %></div>
+      <% end %>
 
 
 
 
-<<<<<<< HEAD
 <div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
   <div class="modal-dialog modal-dialog-centered" role="document">
     <div class="modal-content">
@@ -75,11 +73,13 @@
           <%=form_for :users do |f| %>
          
               <legend>Basic details</legend>
-              <%= f.text_field :first_name,:size=>"45",:class=>"round",:id=>"school" %><br/>  
-              <%= f.text_field :last_name,:size=>"45",:class=>"round",:id=>"school" %><br/>    
-              <%= f.text_field :email,:size=>"45",:class=>"round",:id=>"school" %><br/>  
-              <%= f.text_field :password,:size=>"45",:class=>"round",:id=>"school" %><br/>        
-            <p><%= button_to "save and continue",{:class=>"savebutton"} %></p>
+              <p><%= f.text_field :first_name, placeholder: "First name", class: "sign_up_basic_form" %></p>
+              <p><%= f.text_field :last_name, placeholder: "Last name" , class: "sign_up_basic_form"%></p>
+              <p><%= f.text_field :email, placeholder: "Email" , class: "sign_up_basic_form" %></p>
+              <p><%= f.password_field :password, placeholder: "Password" , class: "sign_up_basic_form",id:"password_field"%> 
+              <%= f.password_field :password_confirmation, placeholder: "Confirm Password", class: "sign_up_basic_form",id:"password_field" %></p>
+
+            <!-- <p><%#= button_to "save and continue",{:class=>"savebutton"} %></p> -->
           <%end%>
        
         <div class="buttons_container">
