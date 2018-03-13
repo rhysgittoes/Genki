@@ -1,0 +1,30 @@
+<% @health_profile.each do |x| %>
+Blood Type: <%= x.blood_type %><br />
+Weight(kg): <%= x.weight %><br />
+Height(m): <%= x.height %><br />
+BMI: <%= x.bmi %><br />
+Insurer: <%= x.insurer %><br />
+<% end %><br />
+
+<% @allergies.each do |x| %>
+Allergy Type: <%= x.type %><br />
+Severity: <%= x.severity %><br />
+Last update on: <%= x.status_update %><br />
+<% end %><br />
+
+<% @immunizations.each do |x| %>
+Immunization Type: <%= x.type %><br />
+Last update on: <%= x.date %><br />
+<% end %><br />
+
+<% @prescriptions.each do |X| %>
+Name of Medication: <%= x.medicine %><br />
+Dosage: <%= x.dosage %><br />
+Refills: <%= x.refills %><br />
+Expires: <%= x.expiration_date %><br />
+<% end %><br />
+
+
+
+
+

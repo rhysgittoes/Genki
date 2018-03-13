@@ -1,0 +1,76 @@
+.navbar-image{
+   height: 40px;
+   width: 45px;
+   padding-right: 5px;
+}
+
+#navbar{
+padding-top: 0.5rem;
+  padding-bottom: 0.5rem;
+
+}
+.video{
+   width:100%;
+   margin-top: -3.95rem;
+}
+
+.video_container{
+   width:100%;
+   height:46.05rem;
+   overflow: hidden;
+   position: relative;
+   text-align: center;
+}
+
+.text_over_video_container{
+text-align: center;
+position: absolute;
+top:10rem;
+z-index: 3;
+width: 100%;
+
+}
+.text_over_video{
+z-index: 3;
+color:white;
+   
+}
+
+#title{
+   font-size: 5em;
+}
+#paragraph{
+   font-size: 2em;
+
+}
+#main_image{
+   width: 6em;
+   height: 6em;
+   margin: 0px;
+   padding: 0px;
+}
+.second_bar{
+   text-align: center;
+   overflow: hidden;
+}
+
+#laptop{
+   width:180%;
+}
+
+.third_bar{
+   background-color: #f9f9f9;
+   overflow: hidden;
+
+}
+
+.doctor_patient_image{
+   height: 300px;
+}
+
+.paragraph_doctor_patient{
+
+   width:32em; 
+   margin: 0 auto;
+   margin-top: 3em;
+}
