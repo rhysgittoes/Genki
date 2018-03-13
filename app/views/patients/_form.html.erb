@@ -1,7 +1,13 @@
-<p>First name: <%= f.text_field :first_name %></p>
-<p>Last name: <%= f.text_field :last_name %></p>
-<p>Email: <%= f.text_field :email %></p>
-<p>Birthday: <%=f.date_field :birthday %></p>
-<p>City: <%= f.text_field :city %></p>
-<p>City: <%= f.text_field :country %></p>
-<%= f.submit :Submit %>
+<p>First name: <%= form.text_field :first_name %></p>
+<p>Last name: <%= form.text_field :last_name %></p>
+<p>Email: <%= form.text_field :email %></p>
+<p>Password: <%= form.password_field :password %></p>
+<p>Password Confirmation: <%= form.password_field :password_confirmation %></p>
+<p>Gender:<br>
+<%= form.radio_button :gender, "female"%>Female
+<%= form.radio_button :gender, "male"%>Male</p>
+<p>Language: <%= form.text_field :language%></p>
+<p>Birthday: <%=form.date_field :birthday %></p>
+<p>City: <%= form.text_field :city %></p>
+<p>Country: <%= form.text_field :country %></p>
+<p>Admission ID: <%#= form.text_field :admission_id %></p>
