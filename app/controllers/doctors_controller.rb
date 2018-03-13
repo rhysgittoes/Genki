@@ -32,10 +32,12 @@ end
 
 def update
   @doctor = Doctor.find(params[:id])
-  @doctor.update(doctor_params)
-  redirect_to "doctors/index"
+  if @doctor.update(doctor_params)
+  redirect_to doctor_path
+  else
+  flash[:notice] = "Please input valid information"
+  render "edit" 
 end
-
 
 def new_visit
   @doctor = current_user.patients.find(params[:id])

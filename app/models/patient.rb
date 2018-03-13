@@ -1,5 +1,8 @@
 class Patient < User
-	has_many :health_profiles
+	has_one :health_profiles
+  has_many :illnesses
+  has_many :appointments
+  has_one :prescription
 
 end
 
