@@ -1,5 +1,9 @@
 <div>
   <%= form_for @patient do |f| %>
       <% render "patients/form", f: f %>
+
+<div class="submit-field">
+<%= form.submit "Submit", data: {confirm: "Edit Profile?"} %>
+</div>
   <% end %>
 </div>
