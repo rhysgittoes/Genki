@@ -1,5 +1,11 @@
+<h1>Create Patient Profile</h1>
+
 <div>
-  <%= form_for @patient do |f| %>
-    <% render "patients/form", f: f %>
+<%= form_for @patient do |form| %>
+<%= render partial: "patients/form", object: form %>
+
+<div class="submit-field">
+<%= form.submit "Submit", data: {confirm: "Create Profile?"} %>
+</div>
   <% end %>
 </div>

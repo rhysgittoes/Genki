@@ -39,7 +39,7 @@ end
 
 def new_visit
   @doctor = current_user.patients.find(params[:id])
-
+  @appointment = Appointment.new(appointment_params)
 end
 
 def search
@@ -55,9 +55,11 @@ def set_doctor
 end
   
 def doctor_params
-
   params.require(:doctor).permit(:first_name, :last_name, :email, :gender, :birthday, :language, :city, :country, :admission_id, :certification, :experience)  
+end
 
+def appointment_params
+  params.require(:appointment).permit(:date, :symptoms, :diagnosis, :referrals, :notes, :doctor_id, :patient_id)
 end
 
 
