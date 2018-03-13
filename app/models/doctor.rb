@@ -1,6 +1,8 @@
 class Doctor < User
   has_many :patients
   has_many :prescriptions
+  has_many :appointments
+
 
   # validates :certification, presence: true
   # validates :experience, presence: true

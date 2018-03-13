@@ -1,11 +1,7 @@
 <%= form_for @health_profile do |f|%>
-<%= f.label :blood_type%><br>
-<%= f.text_field :blood_type%><br>
-<%= f.label :weight%><br>
-<%= f.text_field :weight%><br>
-<%= f.label :height%><br>
-<%= f.text_field :height%><br>
-<%= f.label :insurer%><br>
-<%= f.text_field :insurer%><br>
-<%= form.submit "Submit", data: {confirm: "Create Profile?"}%>
+Blood Type: <%= f.text_field :blood_type%><br>
+Weight(kg): <%= f.text_field :weight%><br>
+Height(m): <%= f.text_field :height%><br>
+Insurer: <%= f.text_field :insurer%><br>
+<%= f.submit "Submit", data: {confirm: "Create Profile?"}%>
 <% end %>
