@@ -21,8 +21,8 @@
 
 #doctor_signup{
    margin-right: -2.5px; 
-    padding-left: 3em;
-    padding-right: 3em;
+    padding-left: 2.7em;
+    padding-right: 2.7em;
    border-top-right-radius: 0px;
    border-bottom-right-radius:0px;
    border-top-left-radius: 7px;
@@ -31,8 +31,8 @@
 
 #patient_signup{
    margin-left: -2.5px;
-    padding-left: 3em;
-    padding-right: 3em;
+    padding-left: 2.7em;
+    padding-right: 2.7em;
    border-top-left-radius: 0px;
    border-bottom-left-radius:0px;
    border-top-right-radius: 7px;

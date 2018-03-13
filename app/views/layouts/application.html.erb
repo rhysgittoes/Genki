@@ -70,7 +70,7 @@
               </button>
       </div>
       <div class="modal-body">
-          <%=form_for :users do |f| %>
+          <%=form_for :users, html: {id:"sign_up_basic"} do |f|%>
          
               <legend>Basic details</legend>
               <p><%= f.text_field :first_name, placeholder: "First name", class: "sign_up_basic_form" %></p>
@@ -83,9 +83,9 @@
           <%end%>
        
         <div class="buttons_container">
-          <%=button_to "Sign Up as Doctor",  new_doctor_path, method: :get, class: " btn btn-outline-success", id:"doctor_signup", form: {style: 'display:inline-block;'}%>
+          <%=button_to "Sign up as a Doctor",  new_doctor_path, method: :get, class: " btn btn-outline-success", id:"doctor_signup", form: {style: 'display:inline-block;'}%>
 
-          <%=button_to "Sign Up as Patient",  new_patient_path, method: :get, class: " btn btn-outline-success", id:"patient_signup", form: {style: 'display:inline-block;'} %>      
+          <%=button_to "Sign up as a Patient",  new_patient_path, method: :get, class: " btn btn-outline-success", id:"patient_signup", form: {style: 'display:inline-block;'} %>      
         </div>
       </div>
       <div class="modal-footer">
