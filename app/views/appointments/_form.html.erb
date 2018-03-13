@@ -1,0 +1,9 @@
+<%= form_for @appointment do |f| %>
+  <%= f.label :Symptoms %>
+  <%= f.text_area :symptoms %>
+  
+  <%= f.label :Notes %>
+  <%= f.text_area :notes %>
+  
+  <%= f.submit :Submit %>
+<% end %>
