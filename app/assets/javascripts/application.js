@@ -40,13 +40,13 @@ document.addEventListener('turbolinks:load', function(){
       $("#doctor_signup").click(function(event){
              event.preventDefault();
             $('#sign_up_basic').attr('action', "/doctors");
-            $('#sign_up_basic').attr('namespace', ":doctors");
-
             $("#sign_up_basic").submit();
       });
 
       $("#patient_signup").click(function(event){
              event.preventDefault();
+            $('#sign_up_basic').attr('action', "/patients");
+            $("#sign_up_basic").submit();
       });
 
 
