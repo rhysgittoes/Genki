@@ -15,9 +15,9 @@ def create
   @doctor = Doctor.new(doctor_params)
   @doctor.admission_id = SecureRandom.hex(4).upcase
   if @doctor.save
-    flash[:notice] = "Welcome, #{@doctor.first_name}!"
+    flash[:notice] = "Welcome, DR.#{@doctor.first_name}!"
+    sign_in @doctor
     redirect_to doctors_path
-    
   else
     flash[:notice] = "Sorry, there was an error creating your account. Please try again."
     render :new
@@ -34,7 +34,7 @@ end
 def update
   @doctor = Doctor.find(params[:id])
   if @doctor.update(doctor_params)
-  redirect_to doctor_path
+  redirect_to doctors_path
   else
   flash[:notice] = "Please input valid information"
   render "edit" 
