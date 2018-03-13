@@ -13,13 +13,14 @@ end
 
 def create
   @doctor = Doctor.new(doctor_params)
-  @doctor.admission_id = SecureRandom.hex(8)
+  @doctor.admission_id = SecureRandom.hex(4).upcase
   if @doctor.save
+    flash[:notice] = "Welcome, #{@doctor.first_name}!"
     redirect_to doctors_path
     
   else
     flash[:notice] = "Sorry, there was an error creating your account. Please try again."
-    redirect_to new_doctor_path
+    render :new
   end
 end
 
@@ -40,14 +41,13 @@ def update
   end
 end
 
-def new_visit
-  @doctor = current_user.patients.find(params[:id])
-  @appointment = Appointment.new(appointment_params)
-end
+# def new_visit
+#   @doctor = current_user.patients.find(params[:id])
+#   @appointment = Appointment.new(appointment_params)
+# end
 
 def search
   @patients = Patient.where("first_name ILIKE ? OR last_name ILIKE ?", params[:search], params[:search])
-
 end
 
 
@@ -58,12 +58,12 @@ def set_doctor
 end
   
 def doctor_params
-  params.require(:doctor).permit(:first_name, :last_name, :email, :gender, :birthday, :language, :city, :country, :admission_id, :certification, :experience)  
+  params.require(:doctor).permit(:first_name, :last_name, :email, :gender, :birthday, :language, :city, :country, :admission_id, :certification, :experience, :password)  
 end
 
-def appointment_params
-  params.require(:appointment).permit(:date, :symptoms, :diagnosis, :referrals, :notes, :doctor_id, :patient_id)
-end
+# def appointment_params
+#   params.require(:appointment).permit(:date, :symptoms, :diagnosis, :referrals, :notes, :doctor_id, :patient_id)
+# end
 
 
 end

@@ -11,12 +11,13 @@ class PatientsController < ApplicationController
   
   def create
     @patient = Patient.new(patient_params)
+    @patient.admission_id = SecureRandom.hex(4).upcase
     if @patient.save
       flash[:notice] = "Welcome, #{@patient.first_name}!"
       redirect_to patients_path
     else
       flash[:notice] = "Sorry, there was an error registering you. Try again."
-      redirect_to new_patient_path
+      render :new
     end
   end
   
@@ -47,7 +48,7 @@ class PatientsController < ApplicationController
   private
   
   def patient_params
-    params.require(:patient).permit(:first_name, :last_name, :gender, :birthday, :language, :email, :city, :country)
+    params.require(:patient).permit(:first_name, :last_name, :email, :gender, :birthday, :language, :city, :country, :admission_id, :password)
   end
   
   def set_patient
