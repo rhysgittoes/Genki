@@ -13,3 +13,49 @@
  *= require_tree .
  *= require_self
  */
+
+
+.centered_text{
+   text-align: center;
+}
+
+#doctor_signup{
+   margin-right: -2.5px; 
+    padding-left: 2.7em;
+    padding-right: 2.7em;
+   border-top-right-radius: 0px;
+   border-bottom-right-radius:0px;
+   border-top-left-radius: 7px;
+   border-bottom-left-radius:7px;
+}
+
+#patient_signup{
+   margin-left: -2.5px;
+    padding-left: 2.7em;
+    padding-right: 2.7em;
+   border-top-left-radius: 0px;
+   border-bottom-left-radius:0px;
+   border-top-right-radius: 7px;
+   border-bottom-right-radius:7px;
+}
+.buttons_container{
+   text-align: center;
+}
+
+.sign_up_basic_form{
+   padding-top: 5px;
+   padding-bottom: 5px;
+   border-radius:0px;
+   width: 100%;
+   border-color: #7f8c8d   ;
+   border-width: 1px;
+   border-style: solid;
+   border-top:none;
+   border-right:none;
+   border-left:none;
+}
+#password_field{
+  display: inline-block;
+  width: 49.51716512441%
+}
+
