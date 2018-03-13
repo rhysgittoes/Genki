@@ -10,7 +10,8 @@ get "/doctors/search" => "doctors#search"
   resources :health_profiles
 
 
-  root to: 'pages#index'
+root to: 'pages#index'
+
 
 end
 

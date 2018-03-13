@@ -39,15 +39,14 @@ end
 
 def new_visit
   @doctor = current_user.patients.find(params[:id])
+
 end
 
 def search
   @patients = Patient.where("first_name ILIKE ? OR last_name ILIKE ?", params[:search], params[:search])
-end
-
-def show
 
 end
+
 
 private
 
@@ -58,5 +57,8 @@ end
 def doctor_params
 
   params.require(:doctor).permit(:first_name, :last_name, :email, :gender, :birthday, :language, :city, :country, :admission_id, :certification, :experience)  
+
+end
+
 
 end
