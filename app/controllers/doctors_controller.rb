@@ -47,7 +47,7 @@ end
 # end
 
 def search
-  @patients = Patient.where("first_name ILIKE ? OR last_name ILIKE ?", params[:search], params[:search])
+  @patients = Patient.search(params[:search])
 end
 
 
