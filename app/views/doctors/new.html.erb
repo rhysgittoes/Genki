@@ -1,10 +1,16 @@
 <h1> Create Doctor Profile </h1>
 
+<div id="flash">
+    <% flash.each do |key, value| -%>
+      <div id="flash_<%= key %>"><%= value %></div>
+    <% end %>
+</div>
+
 <div>
 <%= form_for :user, url: doctors_path do |form|%>
 
 <%= render partial: "doctors/form", object: form %>
-<div class="submit-field">
+  <div class="submit-field">
 <%= form.submit "Submit", data: {confirm: "Create Profile?"} %>
 </div>
 <%end%>

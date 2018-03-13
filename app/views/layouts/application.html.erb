@@ -80,15 +80,15 @@
               <%= f.password_field :password_confirmation, placeholder: "Confirm Password", class: "sign_up_basic_form",id:"password_field" %></p>
           <%end%>
        
-        <div class="buttons_container">
-          <%=button_to "Sign up as a Doctor",  new_doctor_path, method: :get, class: " btn btn-outline-success", id:"doctor_signup", form: {style: 'display:inline-block;'}%>
+                <div class="buttons_container">
+                  <%=button_to "Sign up as a Doctor",  new_doctor_path, method: :get, class: " btn btn-outline-success", id:"doctor_signup", form: {style: 'display:inline-block;'}%>
 
-          <%=button_to "Sign up as a Patient",  new_patient_path, method: :get, class: " btn btn-outline-success", id:"patient_signup", form: {style: 'display:inline-block;'} %>      
-        </div>
+                  <%=button_to "Sign up as a Patient",  new_patient_path, method: :get, class: " btn btn-outline-success", id:"patient_signup", form: {style: 'display:inline-block;'} %>      
+                </div>
       </div>
-      <div class="modal-footer">
-        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-   </div>
+            <div class="modal-footer">
+              <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+            </div>
     </div>
   </div>
 </div>
