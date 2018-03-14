@@ -2,15 +2,16 @@
 <thead>
   <th>First Name</th>
   <th>Last Name</th>
-  <th>Email</th>
   <th>Admission ID</th>
+  <th>Email</th>
 </thead>
 <tbody>
-<tr><%= @patients.each do |patient| %></tr>
-<tr><%= patient.first_name %></tr>
-<tr><%= patient.last_name %></tr> 
-<tr><%= patient.email %></tr>  
-<tr><%= patient.admission_id %></tr> 
+Patients result :<%= @patients.size %>
+<% @patients.each do |patient| %>
+<td><%= link_to patient.first_name, patient_path(patient) %></td>
+<td><%= link_to patient.last_name, patient_path(patient) %></td> 
+<td><%= link_to patient.admission_id, patient_path(patient)  %></td> 
+<td><%= patient.email %></td>  
+<%end%>
 </tbody>
 </table>
-<%end%>

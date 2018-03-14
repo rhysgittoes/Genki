@@ -9,7 +9,7 @@ class Doctor < User
 
 
 
-  scope :patient_name, ->(search) { where("first_name ILIKE :patient_name OR last_name ILIKE :patient_name", patient_name: "#{search}")}  
+  # scope :search, ->(search) { where("first_name ILIKE :search OR last_name ILIKE :search OR admission_id ILIKE :search ", search: "#{search}")}  
 
   # def self.age
   #  Time.current.year - self.birthday
