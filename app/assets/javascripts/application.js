@@ -45,14 +45,14 @@ document.addEventListener('turbolinks:load', function(){
 
    $("#doctor_signup").click(function(event){
       event.preventDefault();
-      $('#sign_up_basic').attr('action', "/doctors");
-      $("#sign_up_basic").submit();
+      $("#doctor_hidden_form").toggleClass("hidden");
    });
 
    $("#patient_signup").click(function(event){
           event.preventDefault();
-         $('#sign_up_basic').attr('action', "/patients");
-         $("#sign_up_basic").submit();
+        
+          $("#patient_hidden_form").toggleClass("hidden");
+
    });
 
    $("#sign_in").click(function(event){
@@ -64,6 +64,15 @@ document.addEventListener('turbolinks:load', function(){
 
 
 });
+
+
+
+
+ // $('#sign_up_basic').attr('action', "/patients");
+         // $("#sign_up_basic").submit();
+
+ // $('#sign_up_basic').attr('action', "/doctors");
+      // $("#sign_up_basic").submit();
 
 
 

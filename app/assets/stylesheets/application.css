@@ -15,7 +15,9 @@
  *= require selectize
  *= require selectize.default
  */
-
+.hidden{
+  display:none;
+}
 
 .centered_text{
    text-align: center;

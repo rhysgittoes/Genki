@@ -3,7 +3,7 @@ class PatientsController < ApplicationController
   before_action :set_patient, except: [:new, :create, :index]
   
   def index
-    @patient = current_user.id
+    @patient = current_user
     
   end
   

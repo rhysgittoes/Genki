@@ -62,7 +62,7 @@
 
 
 
-<!-- Modal for Sign up -->
+<!-- Modal for Sign up DOES NOT WORK -->
 <div class="modal fade" id="sign_up_modal" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
   <div class="modal-dialog modal-dialog-centered" role="document">
     <div class="modal-content">
@@ -75,21 +75,47 @@
               </button>
       </div>
       <div class="modal-body">
-          <%=form_for :user, html: {id:"sign_up_basic"} do |f|%>
-         
+
+        <div class="buttons_container">
+                  <%=button_to "Sign up as a Doctor",  new_doctor_path, method: :get, class: " btn btn-outline-success", id:"doctor_signup", form: {style: 'display:inline-block;'}%>
+
+                  <%=button_to "Sign up as a Patient",  new_patient_path, method: :get, class: " btn btn-outline-success", id:"patient_signup", form: {style: 'display:inline-block;'} %>      
+        </div>
+
+        <div class="hidden", id="doctor_hidden_form">
+          <!-- html: {id:"sign_up_basic_doctor"}, -->
+          <%=form_for :doctor, url: "/doctors" do |f|%>
               <legend>Basic details</legend>
               <p><%= f.text_field :first_name, placeholder: "First name", class: "sign_up_basic_form" %></p>
               <p><%= f.text_field :last_name, placeholder: "Last name" , class: "sign_up_basic_form"%></p>
               <p><%= f.text_field :email, placeholder: "Email" , class: "sign_up_basic_form" %></p>
               <p><%= f.password_field :password, placeholder: "Password" , class: "sign_up_basic_form",id:"password_field"%> 
               <%= f.password_field :password_confirmation, placeholder: "Confirm Password", class: "sign_up_basic_form",id:"password_field" %></p>
-          <%end%>
-       
-                <div class="buttons_container">
-                  <%=button_to "Sign up as a Doctor",  new_doctor_path, method: :get, class: " btn btn-outline-success", id:"doctor_signup", form: {style: 'display:inline-block;'}%>
-
-                  <%=button_to "Sign up as a Patient",  new_patient_path, method: :get, class: " btn btn-outline-success", id:"patient_signup", form: {style: 'display:inline-block;'} %>      
+                <div class="submit-field">
+                  <%= f.submit  class: " btn btn-outline-success", id: "sign_in_button"%>
                 </div>
+          <%end%>
+        </div>
+        <!-- html: {id:"sign_up_basic_patient"}, -->
+        <div class="hidden", id="patient_hidden_form">
+          <%=form_for :patient,  url: "/patients" do |f|%>
+              <legend>Basic details</legend>
+              <p><%= f.text_field :first_name, placeholder: "First name", class: "sign_up_basic_form" %></p>
+              <p><%= f.text_field :last_name, placeholder: "Last name" , class: "sign_up_basic_form"%></p>
+              <p><%= f.text_field :email, placeholder: "Email" , class: "sign_up_basic_form" %></p>
+              <p><%= f.password_field :password, placeholder: "Password" , class: "sign_up_basic_form",id:"password_field"%> 
+              <%= f.password_field :password_confirmation, placeholder: "Confirm Password", class: "sign_up_basic_form",id:"password_field" %></p>
+                <div class="centered_text submit-field">
+                  <%= f.submit  class: " btn btn-outline-success", id: "sign_in_button"%>
+                </div>
+          <%end%>
+        </div>
+
+
+
+
+
+               
       </div>
             <div class="modal-footer">
               <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
