@@ -10,13 +10,13 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20180314051412) do
+ActiveRecord::Schema.define(version: 20180314071300) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
   create_table "allergies", force: :cascade do |t|
-    t.string "type"
+    t.string "name"
     t.string "severity"
     t.boolean "status"
     t.date "status_update"
@@ -67,12 +67,11 @@ ActiveRecord::Schema.define(version: 20180314051412) do
     t.string "insurer"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.bigint "patient_id"
-    t.index ["patient_id"], name: "index_health_profiles_on_patient_id"
+    t.integer "patient_id"
   end
 
   create_table "illnesses", force: :cascade do |t|
-    t.string "type"
+    t.string "name"
     t.boolean "status"
     t.bigint "user_id"
     t.bigint "patient_id"
@@ -86,7 +85,7 @@ ActiveRecord::Schema.define(version: 20180314051412) do
 
   create_table "immunizations", force: :cascade do |t|
     t.date "date"
-    t.string "type"
+    t.string "name"
     t.bigint "patient_id"
     t.bigint "appointment_id"
     t.datetime "created_at", null: false
