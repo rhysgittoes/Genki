@@ -27,20 +27,28 @@
 <div class="col-md-8">
       <% @appointments.each do |a|%>
       <div class="row">
-        <div class="appointment">
+        <div class="appointment" data-aos-delay="200" data-aos="fade-up">
+            <div class="appointment_date_month">
+               <%=a.date.strftime("%B")%>
+            </div>
+
             <div class="appointment_date_number">
               <%=a.date.strftime("%d")%>
             </div>
           
             <div class="appointment_details">
-              <p><%=a.patient.first_name%></p>
+              <p>
+                <%=a.patient.first_name + " " +a.patient.last_name%>
+                <br>
+                <%="Symptons: "+ a.symptoms.join(', ')%>           
+              </p>
             </div>
         </div> 
       </div>   
       <%end%>
 </div>
 <!-- %B -->
-
+<!-- map(&:inspect) -->
 
 
 <!-- strftime("%B %d, %Y") -->
