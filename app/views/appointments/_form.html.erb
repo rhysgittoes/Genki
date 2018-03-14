@@ -1,0 +1,30 @@
+
+<div>
+  <%= f.label :Symptoms %>
+  <%= f.text_field :symptoms, id: "symptoms-input"  %>
+</div>
+
+<div>
+  <%= f.label :Notes %>
+  <%= f.text_area :notes %>
+</div>
+
+<div>
+  <%= f.label :Diagnosis %>
+  <%= f.text_field :diagnosis %>
+</div>
+
+<div>
+  <%= f.label :Referrals %>
+  <%= f.text_area :referrals, id: "referrals-input" %>
+</div>
+
+<%= hidden_field_tag(:patient_id, params[:patient_id]) %>
+<%= hidden_field_tag(:id, params[:id]) %>
+
+<div>
+  <%= f.submit :Submit %>
+</div>
+
+
+
