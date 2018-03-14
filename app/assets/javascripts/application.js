@@ -33,21 +33,33 @@ document.addEventListener('turbolinks:load', function(){
      duration: 1200,
    })
 
-      $("#myBtn").click(function(){
-        $("#myModal").modal();
+   $("#sign_up_btn").click(function(){
+      $("#sign_up_modal").modal();
     });
 
-      $("#doctor_signup").click(function(event){
-             event.preventDefault();
-            $('#sign_up_basic').attr('action', "/doctors");
-            $("#sign_up_basic").submit();
-      });
+   $("#sign_in_btn").click(function(){
+      $("#sign_in_modal").modal();
+    });
 
-      $("#patient_signup").click(function(event){
-             event.preventDefault();
-            $('#sign_up_basic').attr('action', "/patients");
-            $("#sign_up_basic").submit();
-      });
+
+   $("#doctor_signup").click(function(event){
+      event.preventDefault();
+      $('#sign_up_basic').attr('action', "/doctors");
+      $("#sign_up_basic").submit();
+   });
+
+   $("#patient_signup").click(function(event){
+          event.preventDefault();
+         $('#sign_up_basic').attr('action', "/patients");
+         $("#sign_up_basic").submit();
+   });
+
+   $("#sign_in").click(function(event){
+         event.preventDefault();
+         $('#sign_in_form').attr('action', "/session");
+         $("#sign_in_form").submit();
+
+   })
 
 
 });

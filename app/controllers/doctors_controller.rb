@@ -35,7 +35,7 @@ def update
   @doctor = Doctor.find(params[:id])
   if @doctor.update(doctor_params)
   redirect_to doctors_path
-  else
+  else 
   flash[:notice] = "Please input valid information"
   render "edit" 
   end
