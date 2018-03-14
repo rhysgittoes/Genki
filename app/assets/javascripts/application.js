@@ -45,15 +45,31 @@ document.addEventListener('turbolinks:load', function(){
 
    $("#doctor_signup").click(function(event){
       event.preventDefault();
-      $("#doctor_hidden_form").toggleClass("hidden");
+      if ($("#patient_hidden_form").hasClass("hidden")) {
+        $("#doctor_hidden_form").toggleClass("hidden");      
+      } 
+      else {
+          $("#patient_hidden_form").addClass("hidden"); 
+          $("#doctor_hidden_form").toggleClass("hidden");
+      }
    });
 
    $("#patient_signup").click(function(event){
           event.preventDefault();
-        
+          // doctors hideen hasn't got lcass hidden then add class hidden, and 
+          if ($("#doctor_hidden_form").hasClass("hidden")) {
+            $("#patient_hidden_form").toggleClass("hidden");
+          } 
+          else {
+            $("#doctor_hidden_form").addClass("hidden"); 
           $("#patient_hidden_form").toggleClass("hidden");
+            }
+
 
    });
+
+
+
 
    $("#sign_in").click(function(event){
          event.preventDefault();

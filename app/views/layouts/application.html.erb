@@ -91,10 +91,10 @@
               <p><%= f.text_field :email, placeholder: "Email" , class: "sign_up_basic_form" %></p>
               <p><%= f.password_field :password, placeholder: "Password" , class: "sign_up_basic_form",id:"password_field"%> 
               <%= f.password_field :password_confirmation, placeholder: "Confirm Password", class: "sign_up_basic_form",id:"password_field" %></p>
-                <div class="submit-field">
+                <div class="centered_text submit-field">
                   <%= f.submit  class: " btn btn-outline-success", id: "sign_in_button"%>
                 </div>
-          <%end%>
+          <%end%> 
         </div>
         <!-- html: {id:"sign_up_basic_patient"}, -->
         <div class="hidden", id="patient_hidden_form">
