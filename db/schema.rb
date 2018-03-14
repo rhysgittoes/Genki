@@ -10,13 +10,17 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
+<<<<<<< HEAD
 ActiveRecord::Schema.define(version: 20180314042426) do
+=======
+ActiveRecord::Schema.define(version: 20180314071300) do
+>>>>>>> master
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
   create_table "allergies", force: :cascade do |t|
-    t.string "type"
+    t.string "name"
     t.string "severity"
     t.boolean "status"
     t.date "status_update"
@@ -67,12 +71,11 @@ ActiveRecord::Schema.define(version: 20180314042426) do
     t.string "insurer"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.bigint "patient_id"
-    t.index ["patient_id"], name: "index_health_profiles_on_patient_id"
+    t.integer "patient_id"
   end
 
   create_table "illnesses", force: :cascade do |t|
-    t.string "type"
+    t.string "name"
     t.boolean "status"
     t.bigint "user_id"
     t.bigint "patient_id"
@@ -86,7 +89,7 @@ ActiveRecord::Schema.define(version: 20180314042426) do
 
   create_table "immunizations", force: :cascade do |t|
     t.date "date"
-    t.string "type"
+    t.string "name"
     t.bigint "patient_id"
     t.bigint "appointment_id"
     t.datetime "created_at", null: false
@@ -134,8 +137,6 @@ ActiveRecord::Schema.define(version: 20180314042426) do
     t.string "city"
     t.string "country"
     t.string "admission_id"
-    t.string "certification"
-    t.integer "experience"
     t.index ["email"], name: "index_users_on_email"
     t.index ["remember_token"], name: "index_users_on_remember_token"
   end
