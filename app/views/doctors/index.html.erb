@@ -5,23 +5,15 @@
 </div>
 
 
-<div style="margin-left: 50px; margin-right: 50px;">
+<div style="margin-left: 50px; margin-right: 50px; margin-top: 2em;">
   <div class="row">
-    <div class="col-md-6">
-
-      <div>
-        <% @appointments.each do |a|%>
-          <p><%=a.date.strftime("%B %d")%></p>
-          <p><%=a.patient.first_name%></p>
-        <%end%>
-      </div>
-     
+    <div class="col-md-8">
+      <h2>Your Past Appointments</h2>
     </div>
-
-    <div class=".col-md-6">
+     <div class=".col-md-4">
       <div id="notification">
         Notification:
-      </div>
+    </div>
     <div id="search-form">
       <%= form_tag doctors_search_path, method: :get do %>
         <%= label_tag "search" %>
@@ -31,7 +23,25 @@
     </div>
     </div>
   </div>
-</div>
+
+
+    <div class="col-md-8">
+        <% @appointments.each do |a|%>
+          <div class="row">
+            <div class="col-md-2 appointment text-right">
+              <%=a.date.strftime("%B %d")%> 
+            </div>
+            <div class="col-md-10 appointment" style="padding-left: 0px;">
+              <%# spaces = 11 - a.date.strftime("%B %d").to_s.length%>
+              <%#= raw("&nbsp;") * 100 %>
+              <%#=a.date.strftime("%B %d")%> 
+              <div class="hl"> </div> 
+              <%=a.patient.first_name%>
+            </div>
+          </div>
+        <%end%>
+      </div> 
+  </div>
 
 
 
