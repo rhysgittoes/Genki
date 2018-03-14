@@ -1,10 +1,16 @@
-Blood Type: <%= @health_profile.blood_type %><br />
+<h4>
+	<%= @patient.first_name %>, here is your health profile:
+</h4>
+
+<h5>
+Blood Type:<%= @health_profile.blood_type %><br />
 Weight(kg): <%= @health_profile.weight %><br />
 Height(m): <%= @health_profile.height %><br />
 BMI: <%= @health_profile.bmi %><br />
 Insurer: <%= @health_profile.insurer %><br />
+<br />
 <%= link_to "Edit Profile", edit_patient_health_profile_path %><br />
-
+</h5>
 
 
 
