@@ -1,4 +1,4 @@
-document.addEventListener("DOMContentLoaded", function(event){
+// document.addEventListener("DOMContentLoaded", function(event){
 
 // jquery
 // $("#search-form").keypress(function(e){

@@ -6,8 +6,10 @@ get "/doctors/search" => "doctors#search"
   resources :doctors
   
   resources :appointments
-  resources :patients
-  resources :health_profiles
+
+  resources :patients do
+  	resources :health_profiles
+  end
 
 
 root to: 'pages#index'
