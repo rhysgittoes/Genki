@@ -38,17 +38,18 @@
     Search thingy<input class="form-control mr-sm-2" type="search" placeholder="Search" aria-label="Search">     
         <button class="btn btn-outline-success my-2 my-sm-0 navbtn" type="submit">Search</button> 
     </form> -->
-    <% if signed_in? -%>
-
-    <%if current_user.type == "Doctor" %>
-    <%= "He's a doctor!" %>
-    <%end %>
-      <%= current_user.first_name + " " +current_user.last_name%>
+    <% if signed_in? %>
+      <button class="nav_bar_name btn btn-outline-success navbtn">
+        <%if current_user.type == "Doctor" %>
+          <%= "Dr." %>
+        <%end %>
+        <%= current_user.first_name + " " +current_user.last_name%>
+      </button>
       <%= button_to t(".sign_out"), sign_out_path, method: :delete, class: "btn btn-outline-success"  %>
     <% else -%>
       <!--Don't need that sign in butotn  <%= link_to t(".sign_in"), sign_in_path, class: " navbtn btn btn-outline-success" %> -->
-        <button type="button" class="btn btn-outline-success navbtn" id="sign_in_btn">Sign in</button>
-        <button type="button" class="btn btn-outline-success navbtn" id="sign_up_btn">Sign Up</button>
+      <button type="button" class="btn btn-outline-success navbtn" id="sign_in_btn">Sign in</button>
+      <button type="button" class="btn btn-outline-success navbtn" id="sign_up_btn">Sign Up</button>
     <% end -%>
 
     <%# if Clearance.configuration.allow_sign_up? %>

@@ -15,6 +15,9 @@
  *= require selectize
  *= require selectize.default
  */
+
+
+
 .hidden{
   display:none;
 
@@ -87,8 +90,14 @@ margin-bottom: 3%;
 
 .navbtn{
   margin-right: 5px;
+  color:white;
+border-color:white;
 }
 #sign_up_btn{
   margin-right: 5px;
 }
 
+
+.nav_bar_name{
+  color:white;
+}
