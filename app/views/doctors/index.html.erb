@@ -24,26 +24,42 @@
     </div>
   </div>
 
+<div class="col-md-8">
+      <% @appointments.each do |a|%>
+      <div class="row">
+        <div class="appointment">
+            <div class="appointment_date_number">
+              <%=a.date.strftime("%d")%>
+            </div>
+          
+            <div class="appointment_details">
+              <p><%=a.patient.first_name%></p>
+            </div>
+        </div> 
+      </div>   
+      <%end%>
+</div>
+<!-- %B -->
 
-    <div class="col-md-8">
-        <% @appointments.each do |a|%>
+
+
+<!-- strftime("%B %d, %Y") -->
+
+
+    <!--  <%#=@appointments.length%>
+        <%# @appointments.each do |a|%>
           <div class="row">
             <div class="col-md-2 appointment text-right">
-              <%=a.date.strftime("%B %d")%> 
+              <%#=a.date.strftime("%B %d")%> 
             </div>
             <div class="col-md-10 appointment" style="padding-left: 0px;">
               <%# spaces = 11 - a.date.strftime("%B %d").to_s.length%>
               <%#= raw("&nbsp;") * 100 %>
               <%#=a.date.strftime("%B %d")%> 
               <div class="hl"> </div> 
-              <%=a.patient.first_name%>
+              <%#=a.patient.first_name%>
             </div>
           </div>
-        <%end%>
+        <%#end%>
       </div> 
-  </div>
-
-
-
-
-<!-- strftime("%B %d, %Y") -->
+ -->
