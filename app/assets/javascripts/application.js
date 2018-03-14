@@ -42,17 +42,26 @@ document.addEventListener('turbolinks:load', function(){
       $("#sign_in_modal").modal();
     });
 
-
    $("#doctor_signup").click(function(event){
       event.preventDefault();
-      $('#sign_up_basic').attr('action', "/doctors");
-      $("#sign_up_basic").submit();
+      if ($("#patient_hidden_form").css("display") == 'none') {
+        $("#doctor_hidden_form").fadeToggle( "slow", "linear" );      
+      } 
+      else {
+          $("#patient_hidden_form").css("display", "none"); 
+          $("#doctor_hidden_form").fadeToggle( "slow", "linear" );
+      }
    });
 
    $("#patient_signup").click(function(event){
           event.preventDefault();
-         $('#sign_up_basic').attr('action', "/patients");
-         $("#sign_up_basic").submit();
+          if ($("#doctor_hidden_form").css("display") == 'none') {
+            $("#patient_hidden_form").fadeToggle( "slow", "linear" );
+          } 
+          else {
+            $("#doctor_hidden_form").css("display", "none");
+          $("#patient_hidden_form").fadeToggle( "slow", "linear" );
+            }
    });
 
    $("#sign_in").click(function(event){
@@ -64,6 +73,15 @@ document.addEventListener('turbolinks:load', function(){
 
 
 });
+
+
+
+
+ // $('#sign_up_basic').attr('action', "/patients");
+         // $("#sign_up_basic").submit();
+
+ // $('#sign_up_basic').attr('action', "/doctors");
+      // $("#sign_up_basic").submit();
 
 
 
