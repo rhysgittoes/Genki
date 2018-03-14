@@ -16,6 +16,7 @@ class PatientsController < ApplicationController
     @patient.admission_id = SecureRandom.hex(4).upcase
     if @patient.save
       flash[:notice] = "Welcome, #{@patient.first_name}!"
+      sign_in @patient
       redirect_to patients_path
     else
       flash[:notice] = "Sorry, there was an error registering you. Try again."

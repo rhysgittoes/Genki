@@ -7,37 +7,8 @@
     <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
    <link href="https://cdn.rawgit.com/michalsnik/aos/2.1.1/dist/aos.css" rel="stylesheet">
-
-
-    <title>Genki</title>
   </head>
 <body>
-   <!--  <nav class="navbar navbar-dark bg-dark" id="navbar" >
-        <%#= link_to image_tag("/assets/genki.jpg", class: "navbar-image") + " Geniki", root_path, class: "navbar-brand"%>  
-     
-            <div class="nav-collapse collapse">
-        
-          <ul class="navbar-nav mr-auto">   
-            <li class="nav-item">
-              <a class="nav-link" href="#">Home <span class="sr-only">(current)</span></a>
-            </li>
-             <li class="nav-item ">
-              <a class="nav-link" href="#">Home <span class="sr-only">(current)</span></a>
-            </li>
-             <li class="nav-item ">
-              <a class="nav-link" href="#">Home <span class="sr-only">(current)</span></a>
-            </li>      
-          </ul> 
-
-  
-
-
-        <form class="form-inline">
-          <input class="form-control mr-sm-2" type="search" placeholder="Search" aria-label="Search">
-          <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Search</button>
-        </form>
-    </nav>
- -->
  
 <nav class="navbar navbar-expand-lg navbar-dark bg-dark" id="navbar">
       <%= link_to image_tag("/assets/genki.jpg", class: "navbar-image") + " Genki", root_path, class: "navbar-brand"%>  
@@ -58,12 +29,72 @@
         <a class="nav-link"  href="#">Link</a>
       </li>
     </ul>
+
     <form class="form-inline my-2 my-lg-0">
-      <input class="form-control mr-sm-2" type="search" placeholder="Search" aria-label="Search">
-      <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Search</button>
+    <!--<input class="form-control mr-sm-2" type="search" placeholder="Search" aria-label="Search">-->     
+        <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Search</button> 
     </form>
+
+    <% if signed_in? -%>
+      <%= button_to t(".sign_out"), sign_out_path, method: :delete  %>
+      <% else -%>
+      <%= link_to t(".sign_in"), sign_in_path, class: "btn btn-outline-success" %>
+    <% end -%>
+
+    <% if Clearance.configuration.allow_sign_up? %>
+      <%#= link_to t(".Get Started"), sign_up_path %>
+      <button type="button" class="btn btn-outline-success" id="myBtn">Sign Up</button>
+    <% end %>
+    
+    </div>
   </div>
 </nav>
+
+ <div id="flash">
+        <% flash.each do |key, value| -%>
+      <div id="flash_<%= key %>"><%=h value %></div>
+      <% end %>
+
+
+
+
+<div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
+  <div class="modal-dialog modal-dialog-centered" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+       
+          <h5 class="modal-title" id="exampleModalLongTitle">Sign Up</h5>
+        
+              <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                <span aria-hidden="true">&times;</span>
+              </button>
+      </div>
+      <div class="modal-body">
+          <%=form_for :user, html: {id:"sign_up_basic"} do |f|%>
+         
+              <legend>Basic details</legend>
+              <p><%= f.text_field :first_name, placeholder: "First name", class: "sign_up_basic_form" %></p>
+              <p><%= f.text_field :last_name, placeholder: "Last name" , class: "sign_up_basic_form"%></p>
+              <p><%= f.text_field :email, placeholder: "Email" , class: "sign_up_basic_form" %></p>
+              <p><%= f.password_field :password, placeholder: "Password" , class: "sign_up_basic_form",id:"password_field"%> 
+              <%= f.password_field :password_confirmation, placeholder: "Confirm Password", class: "sign_up_basic_form",id:"password_field" %></p>
+          <%end%>
+       
+                <div class="buttons_container">
+                  <%=button_to "Sign up as a Doctor",  new_doctor_path, method: :get, class: " btn btn-outline-success", id:"doctor_signup", form: {style: 'display:inline-block;'}%>
+
+                  <%=button_to "Sign up as a Patient",  new_patient_path, method: :get, class: " btn btn-outline-success", id:"patient_signup", form: {style: 'display:inline-block;'} %>      
+                </div>
+      </div>
+            <div class="modal-footer">
+              <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+            </div>
+    </div>
+  </div>
+</div>
+
+  
+
 
 
 
@@ -74,25 +105,5 @@
     <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
     <script src="https://cdn.rawgit.com/michalsnik/aos/2.1.1/dist/aos.js"></script>
-
- <!-- Sign in and sign out  -->
-  <div id="header">
-    <% if signed_in? -%>
-    Dr. <%= current_user.first_name %>
-      <%= button_to t(".sign_out"), sign_out_path, method: :delete %>
-    <% else -%>
-      <%= link_to t(".sign_in"), sign_in_path %>
-    <% end -%>
-  </div>
-
-  <!-- <div id="flash">
-    <%# flash.each do |key, value| -%>
-      <div id="flash_<%#= key %>"><%#= value %></div>
-    <%# end %>
-  </div> -->
-  
   </body>
-
-
-
 </html>

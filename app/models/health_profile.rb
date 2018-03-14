@@ -1,8 +1,8 @@
 class HealthProfile < ApplicationRecord
 	belongs_to :patient
-	has_many :illness
+	has_many :illnesses
 	has_many :allergies
-	has_many :immunization
+	has_many :immunizations
 	has_many :prescriptions
 
 	validates :blood_type, presence: true
@@ -10,8 +10,10 @@ class HealthProfile < ApplicationRecord
 	validates :height, presence: true, numericality: true
 
 	def bmi
+ health_profile
 		self.weight.fdiv(height*2)
 	end
 
 	
+ master
 end
