@@ -1,10 +1,6 @@
 class HealthProfilesController < ApplicationController
 	before_action :require_login
- health_profile
-
 	
- master
-
 	def index
 	end
 
@@ -16,7 +12,6 @@ class HealthProfilesController < ApplicationController
 	end
 
 	def create
-health_profile
 		@patient = Patient.find(params[:patient_id])
 		@health_profile = HealthProfile.new(health_profile_params)
 		@health_profile.patient_id = current_user.id
@@ -30,7 +25,6 @@ health_profile
 	end
 
 	def show
-    health_profile
 		@health_profile = HealthProfile.find(params[:id])
 	end
 		
@@ -55,4 +49,3 @@ health_profile
 
 end
  
- master
