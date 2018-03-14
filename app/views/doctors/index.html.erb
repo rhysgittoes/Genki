@@ -3,24 +3,37 @@
       <div id="flash_<%= key %>"><%= value %></div>
     <% end %>
 </div>
-<div id="notification">
-  Notification:
+
+
+<div style="margin-left: 50px; margin-right: 50px;">
+  <div class="row">
+    <div class="col-md-6">
+
+      <div>
+        <% @appointments.each do |a|%>
+          <p><%=a.date.strftime("%B %d")%></p>
+          <p><%=a.patient.first_name%></p>
+        <%end%>
+      </div>
+     
+    </div>
+
+    <div class=".col-md-6">
+      <div id="notification">
+        Notification:
+      </div>
+    <div id="search-form">
+      <%= form_tag doctors_search_path, method: :get do %>
+        <%= label_tag "search" %>
+        <%= text_field_tag "search", nil, list: "list" %>
+        <datalist id="list"></datalist>
+      <%end%>
+    </div>
+    </div>
+  </div>
 </div>
 
-<div id="search-form">
-    <%= form_tag doctors_search_path, method: :get do %>
-      <%= label_tag "search" %>
-      <%= text_field_tag "search", nil, list: "list" %>
-      <datalist id="list"></datalist>
-    <%end%>
-</div>
 
 
-<div>
-<% @appointments.each do |a|%>
-<p><%=a.date%>
-<%=a.patient.first_name%></p>
 
-
-<%end%>
-</div>
+<!-- strftime("%B %d, %Y") -->
