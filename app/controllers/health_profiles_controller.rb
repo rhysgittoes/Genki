@@ -5,10 +5,16 @@ class HealthProfilesController < ApplicationController
 	end
 
 	def new
- 
 		@patient = Patient.find(params[:patient_id])
-		# @health_profile = current_user.patients.find(params[:id])
 		@health_profile = HealthProfile.new
+			if HealthProfile.where(:patient_id => current_user.id).count == 0
+				render "new"
+			else
+				redirect_to patients_path, notice: "A health profile already exists."
+			end
+
+
+		 
 	end
 
 	def create
@@ -38,7 +44,7 @@ class HealthProfilesController < ApplicationController
 	end
 
 	def update
-		@health_profile = Patient.find(params[:patient_id])
+		@health_profile = HealthProfile.find(params[:id])
 		if @health_profile.update(health_profile_params)
 			redirect_to patient_health_profile_path, notice: "Your profile has been updated."
 		else
