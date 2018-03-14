@@ -17,6 +17,7 @@
  */
 .hidden{
   display:none;
+
 }
 
 .centered_text{
@@ -58,7 +59,7 @@
    border-right:none;
    border-left:none;
 }
-#password_field{
+.password_field{
   display: inline-block;
   width: 49.51716512441%
 }

@@ -69,6 +69,7 @@
       <div class="modal-header">
        
           <h5 class="modal-title" id="exampleModalLongTitle">Sign Up</h5>
+
         
               <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                 <span aria-hidden="true">&times;</span>
@@ -81,32 +82,31 @@
 
                   <%=button_to "Sign up as a Patient",  new_patient_path, method: :get, class: " btn btn-outline-success", id:"patient_signup", form: {style: 'display:inline-block;'} %>      
         </div>
-
-        <div class="hidden", id="doctor_hidden_form">
+        <div class="", id="doctor_hidden_form", style="display:none; margin-top: 1em;">
           <!-- html: {id:"sign_up_basic_doctor"}, -->
           <%=form_for :doctor, url: "/doctors" do |f|%>
               <legend>Basic details</legend>
               <p><%= f.text_field :first_name, placeholder: "First name", class: "sign_up_basic_form" %></p>
               <p><%= f.text_field :last_name, placeholder: "Last name" , class: "sign_up_basic_form"%></p>
               <p><%= f.text_field :email, placeholder: "Email" , class: "sign_up_basic_form" %></p>
-              <p><%= f.password_field :password, placeholder: "Password" , class: "sign_up_basic_form",id:"password_field"%> 
-              <%= f.password_field :password_confirmation, placeholder: "Confirm Password", class: "sign_up_basic_form",id:"password_field" %></p>
+              <p><%= f.password_field :password, placeholder: "Password" , class: "sign_up_basic_form password_field"%> 
+              <%= f.password_field :password_confirmation, placeholder: "Confirm Password", class: "sign_up_basic_form password_field" %></p>
                 <div class="centered_text submit-field">
-                  <%= f.submit  class: " btn btn-outline-success", id: "sign_in_button"%>
+                  <%= f.submit  class: " btn btn-outline-success sign_in_button"%>
                 </div>
           <%end%> 
         </div>
         <!-- html: {id:"sign_up_basic_patient"}, -->
-        <div class="hidden", id="patient_hidden_form">
+        <div class="", id="patient_hidden_form", style="display:none;  margin-top: 1em;">
           <%=form_for :patient,  url: "/patients" do |f|%>
               <legend>Basic details</legend>
               <p><%= f.text_field :first_name, placeholder: "First name", class: "sign_up_basic_form" %></p>
               <p><%= f.text_field :last_name, placeholder: "Last name" , class: "sign_up_basic_form"%></p>
               <p><%= f.text_field :email, placeholder: "Email" , class: "sign_up_basic_form" %></p>
-              <p><%= f.password_field :password, placeholder: "Password" , class: "sign_up_basic_form",id:"password_field"%> 
-              <%= f.password_field :password_confirmation, placeholder: "Confirm Password", class: "sign_up_basic_form",id:"password_field" %></p>
+              <p><%= f.password_field :password, placeholder: "Password" , class: "sign_up_basic_form password_field"%> 
+              <%= f.password_field :password_confirmation, placeholder: "Confirm Password", class: "sign_up_basic_form password_field" %></p>
                 <div class="centered_text submit-field">
-                  <%= f.submit  class: " btn btn-outline-success", id: "sign_in_button"%>
+                  <%= f.submit  class: " btn btn-outline-success sign_in_button"%>
                 </div>
           <%end%>
         </div>
@@ -177,9 +177,13 @@
 
 
     <%= yield %>
+
+
+
+
     <script src="https://code.jquery.com/jquery-3.1.1.min.js"></script>
 
-    <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
+    <!-- <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script> -->
     <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
     <script src="https://cdn.rawgit.com/michalsnik/aos/2.1.1/dist/aos.js"></script>

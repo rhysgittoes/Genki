@@ -42,33 +42,38 @@ document.addEventListener('turbolinks:load', function(){
       $("#sign_in_modal").modal();
     });
 
+if( $('#cadrage').css('display') == 'block' ) {console.log('It equal block');}
+
+// .hasClass("hidden"))
 
    $("#doctor_signup").click(function(event){
       event.preventDefault();
-      if ($("#patient_hidden_form").hasClass("hidden")) {
-        $("#doctor_hidden_form").toggleClass("hidden");      
+      if ($("#patient_hidden_form").css("display") == 'none') {
+        $("#doctor_hidden_form").fadeToggle( "slow", "linear" );      
       } 
       else {
-          $("#patient_hidden_form").addClass("hidden"); 
-          $("#doctor_hidden_form").toggleClass("hidden");
+          $("#patient_hidden_form").css("display", "none"); 
+          $("#doctor_hidden_form").fadeToggle( "slow", "linear" );
       }
    });
 
    $("#patient_signup").click(function(event){
           event.preventDefault();
           // doctors hideen hasn't got lcass hidden then add class hidden, and 
-          if ($("#doctor_hidden_form").hasClass("hidden")) {
-            $("#patient_hidden_form").toggleClass("hidden");
+          if ($("#doctor_hidden_form").css("display") == 'none') {
+            $("#patient_hidden_form").fadeToggle( "slow", "linear" );
           } 
           else {
-            $("#doctor_hidden_form").addClass("hidden"); 
-          $("#patient_hidden_form").toggleClass("hidden");
+            $("#doctor_hidden_form").css("display", "none");
+          $("#patient_hidden_form").fadeToggle( "slow", "linear" );
             }
 
 
    });
 
-
+// Class("hidden")
+// .toggleClass("hidden");
+// .addClass("hidden");
 
 
    $("#sign_in").click(function(event){
