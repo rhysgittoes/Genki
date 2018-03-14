@@ -47,6 +47,10 @@ class PatientsController < ApplicationController
       redirect_to welcome_path # not created yet
     end
   end
+
+  def search
+    @result = Doctor.search(params[:search])
+  end
   
   private
   
@@ -55,7 +59,7 @@ class PatientsController < ApplicationController
   end
   
   def set_patient
-    @patient = Patient.find(params[:id]) # temporary until signed_in verification has been set
+    @patient = Patient.find_by_id(params[:id]) # temporary until signed_in verification has been set
     
     ## Wait until signed_in? method has been set 
     # if signed_in? 
