@@ -26,13 +26,13 @@ class HealthProfilesController < ApplicationController
 
 	def show
 		@patient = Patient.find(params[:patient_id])
-		@health_profile = HealthProfile.find(params[:patient_id])
+		@health_profile = HealthProfile.find(params[:id])
 	end
 		
 
 	def edit
 		@patient = Patient.find(params[:patient_id])
-		@health_profile = HealthProfile.find(params[:patient_id])
+		@health_profile = HealthProfile.find(params[:id])
 		
 	end
 
