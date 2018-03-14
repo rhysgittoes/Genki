@@ -13,6 +13,7 @@
 //= require rails-ujs
 //= require turbolinks
 //= require_tree .
+//= require selectize
 
 
 // document.addEventListener('turbolinks:load', function(){
