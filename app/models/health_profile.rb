@@ -10,7 +10,8 @@ class HealthProfile < ApplicationRecord
 	validates :height, presence: true, numericality: true
 
 	def bmi
-		self.weight.fdiv(:height)
+	 	self.weight.fdiv(height*2)
 	end
 
+	
 end
