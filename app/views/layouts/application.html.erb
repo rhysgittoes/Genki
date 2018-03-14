@@ -42,12 +42,13 @@
     <% if signed_in? -%>
       <%= button_to t(".sign_out"), sign_out_path, method: :delete  %>
       <% else -%>
-      <%= link_to t(".sign_in"), sign_in_path, class: "btn btn-outline-success" %>
+     <!--  <%= link_to t(".sign_in"), sign_in_path, class: "btn btn-outline-success" %> -->
+       <button type="button" class="btn btn-outline-success" id="sign_in_btn">Sign in</button>
     <% end -%>
 
     <% if Clearance.configuration.allow_sign_up? %>
       <%#= link_to t(".Get Started"), sign_up_path %>
-      <button type="button" class="btn btn-outline-success" id="myBtn">Sign Up</button>
+      <button type="button" class="btn btn-outline-success" id="sign_up_btn">Sign Up</button>
     <% end %>
     
     </div>
@@ -61,8 +62,8 @@
 
 
 
-
-<div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
+<!-- Modal for Sign up -->
+<div class="modal fade" id="sign_up_modal" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
   <div class="modal-dialog modal-dialog-centered" role="document">
     <div class="modal-content">
       <div class="modal-header">
@@ -94,10 +95,57 @@
               <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
             </div>
     </div>
+  </div></div>
+
+<!-- Modal for sign in -->
+<div class="modal fade" id="sign_in_modal" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
+  <div class="modal-dialog modal-dialog-centered" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+       
+          <h5 class="modal-title" id="exampleModalLongTitle">Sign in</h5>
+        
+              <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                <span aria-hidden="true">&times;</span>
+              </button>
+      </div>
+      <div class="modal-body">
+          <%#=form_for :user, url: session_path, html: {id:"sign_in_form"} do |f|%>
+              <!-- <legend>Sign in</legend> -->
+              <!-- <p><%#= f.text_field :email, placeholder: "Email" , class: "sign_up_basic_form" %></p> -->
+              <!-- <p><%#= f.password_field :password, placeholder: "Password" , class: "sign_up_basic_form",id:"password_field_large"%>  -->
+           <%#end%>
+           <div class="centered_text">
+             <%= form_for :session, url: session_path do |form| %>
+                <div class="text-field">
+                  <%= form.text_field :email, type: 'email',placeholder: "Email", class: "sign_in_basic_form" %>
+                </div>
+
+                <div class="password-field">
+                  <%= form.password_field :password, placeholder: "Password",class: "sign_in_basic_form"%>
+                </div>
+
+                <div class="submit-field">
+                  <%= form.submit  class: " btn btn-outline-success", id: "sign_in_button"%>
+                </div>
+
+                <div class="other-links">
+                  <%= link_to t(".forgot_password"), new_password_path %>
+                </div>
+              <% end %>
+            </div>
+
+
+            <div class="buttons_container">
+              <%#=button_to "sign in",  new_doctor_path, method: :get, class: " btn btn-outline-success", id:"sign_in", form: {style: 'display:inline-block;'}%>
+            </div>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+      </div>
+    </div>
   </div>
 </div>
-
-  
 
 
 
