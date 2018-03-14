@@ -25,7 +25,7 @@ def create
 end
 
 def show
-  @doctor = Doctor.find(params[:id])
+  @doctor = Doctor.find_by_id(params[:id])
 end
 
 def edit
@@ -54,7 +54,7 @@ end
 private
 
 def set_doctor
-  @doctor = Doctor.find(params[:id])
+  @doctor = Doctor.find_by_id(params[:id])
 end
   
 def doctor_params
