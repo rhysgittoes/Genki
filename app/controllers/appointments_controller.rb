@@ -3,37 +3,34 @@ class AppointmentsController < ApplicationController
   before_action :set_users
     
   def new
-      @appointment = Appointment.new
-      @appointment.key = SecureRandom.hex(4).upcase
   end
   
   def create
-    @appointment.assign_attributes(appointment_params)
+    @patient = Patient.find(params[:patient_id])
+    @health_profile = HealthProfile.find(params[:id])
+    @doctor = current_user
+    
+    @appointment = Appointment.new(appointment_params)
+    @appointment.key = SecureRandom.hex(4).upcase
+    @appointment.patient_id = @patient.id
+    @appointment.doctor_id = @doctor.id
+    @appointment.date = Date.today
+    
     if @appointment.save
-      respond_to do |format|
-          format.html {
-            if current_user.type == "Doctor"
-              redirect_to doctor_path(@user)
-            else
-              redirect_to patient_path(@user)
-            end
-          }
-          # format.json {
-          #   :json => {
-          #     :error_message => "Sorry, there was an error saving your form. Please try again.",
-          #     :success => "Appointment #{@appointment.key} was successfully recorded."              
-          #   }
-          # }
-      end 
+      flash[:notice] = "Your appointment has been saved."
+      redirect_to patient_health_profile_path(@patient.id, @health_profile.id)
     else
-      respond_to do |format|
-        format.html {}
-        format.js {}
-      end
-    end
+      flash[:notice] = "There was a problem saving your appointment, please try again."
+      redirect_to patient_health_profile_path(@patient.id, @health_profile.id)
+    end 
   end
   
   private
+  
+  def appointment_params
+    symptoms = params[:appointment][:symptoms].split(",")
+    params.require(:appointment).permit(:diagnosis, :referrals, :notes).merge(symptoms: symptoms)
+  end
   
   def set_users
     if current_user.type == "Doctor"
