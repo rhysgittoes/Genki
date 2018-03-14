@@ -33,4 +33,33 @@ document.addEventListener('turbolinks:load', function(){
    AOS.init({
      duration: 1200,
    })
+
+      $("#myBtn").click(function(){
+        $("#myModal").modal();
+    });
+
+      $("#doctor_signup").click(function(event){
+             event.preventDefault();
+            $('#sign_up_basic').attr('action', "/doctors");
+            $('#sign_up_basic').attr('namespace', ":doctors");
+
+            $("#sign_up_basic").submit();
+      });
+
+      $("#patient_signup").click(function(event){
+             event.preventDefault();
+      });
+
+
 });
+
+
+
+
+ // $(document).ready(function() {
+ //        $(".move_to").on("click", function () {
+ //            $('#sign_up_basic').attr('action', "/test1");
+ //            $("#sign_up_basic").submit();
+ //            e.preventDefault();
+ //        });
+ //    });
