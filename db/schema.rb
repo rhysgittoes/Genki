@@ -10,17 +10,13 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-<<<<<<< HEAD
-ActiveRecord::Schema.define(version: 20180314042426) do
-=======
 ActiveRecord::Schema.define(version: 20180314071300) do
->>>>>>> master
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
   create_table "allergies", force: :cascade do |t|
-    t.string "name"
+    t.string "type"
     t.string "severity"
     t.boolean "status"
     t.date "status_update"
@@ -75,7 +71,7 @@ ActiveRecord::Schema.define(version: 20180314071300) do
   end
 
   create_table "illnesses", force: :cascade do |t|
-    t.string "name"
+    t.string "type"
     t.boolean "status"
     t.bigint "user_id"
     t.bigint "patient_id"
@@ -89,7 +85,7 @@ ActiveRecord::Schema.define(version: 20180314071300) do
 
   create_table "immunizations", force: :cascade do |t|
     t.date "date"
-    t.string "name"
+    t.string "type"
     t.bigint "patient_id"
     t.bigint "appointment_id"
     t.datetime "created_at", null: false
@@ -137,13 +133,14 @@ ActiveRecord::Schema.define(version: 20180314071300) do
     t.string "city"
     t.string "country"
     t.string "admission_id"
+    t.string "certification"
+    t.integer "experience"
     t.index ["email"], name: "index_users_on_email"
     t.index ["remember_token"], name: "index_users_on_remember_token"
   end
 
   add_foreign_key "allergies", "appointments"
   add_foreign_key "allergies", "patients"
-  add_foreign_key "health_profiles", "patients"
   add_foreign_key "illnesses", "appointments"
   add_foreign_key "illnesses", "patients"
   add_foreign_key "immunizations", "appointments"
