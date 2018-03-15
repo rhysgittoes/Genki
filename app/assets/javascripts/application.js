@@ -14,6 +14,7 @@
 //= require turbolinks
 //= require_tree .
 //= require selectize
+//= require cocoon
 
 
 // document.addEventListener('turbolinks:load', function(){
