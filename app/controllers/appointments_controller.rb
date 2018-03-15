@@ -8,9 +8,7 @@ class AppointmentsController < ApplicationController
   
   def create
     @appointment = current_user.appointments.new(appointment_params)
-    @appointment.key = SecureRandom.hex(4).upcase
-    @appointment.date = Date.today
-    
+
     set_associations(@appointment, @patient)
     
     if @appointment.save
