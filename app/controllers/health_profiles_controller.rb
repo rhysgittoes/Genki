@@ -5,6 +5,7 @@ class HealthProfilesController < ApplicationController
 	end
 
 	def new
+		
 		@patient = Patient.find(params[:patient_id])
 		@health_profile = HealthProfile.new
 			if HealthProfile.where(:patient_id => current_user.id).count == 0
