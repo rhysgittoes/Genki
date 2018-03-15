@@ -1,16 +1,34 @@
 <table>
 <thead>
+  <th>No.</th>
   <th>First Name</th>
   <th>Last Name</th>
-  <th>Email</th>
   <th>Admission ID</th>
+  <th>Email</th>
 </thead>
 <tbody>
-<tr><%= @patients.each do |patient| %></tr>
-<tr><%= patient.first_name %></tr>
-<tr><%= patient.last_name %></tr> 
-<tr><%= patient.email %></tr>  
-<tr><%= patient.admission_id %></tr> 
+User result :<%= @result.size %>
+<% @result.each_with_index do |user, index| %>
+<% if user.type == "Doctor" %>
+<thead>
+<th>Doctor</th>
+</thead>
+<td><%= index + 1%></td>
+<td><%= user.first_name%></td>
+<td><%= user.last_name%></td> 
+<td><%= user.admission_id %></td> 
+<td><%= user.email %></td>
+<%else%>
+<thead>
+<th>Patient</th>
+</thead>
+<td><%= index + 1%></td>
+<td><%= link_to user.first_name, patient_path(user) %></td>
+<td><%= link_to user.last_name, patient_path(user) %></td> 
+<td><%= link_to user.admission_id, patient_path(user) %></td> 
+<td><%= user.email %></td>
+<%end%> 
+ </tbody>
+<%end%>
 </tbody>
 </table>
-<%end%>

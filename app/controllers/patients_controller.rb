@@ -3,6 +3,8 @@ class PatientsController < ApplicationController
   before_action :set_patient, except: [:new, :create, :index]
   
   def index
+    @patient = current_user
+    
   end
   
   def new
@@ -11,12 +13,14 @@ class PatientsController < ApplicationController
   
   def create
     @patient = Patient.new(patient_params)
+    @patient.admission_id = SecureRandom.hex(4).upcase
     if @patient.save
       flash[:notice] = "Welcome, #{@patient.first_name}!"
+      sign_in @patient
       redirect_to patients_path
     else
       flash[:notice] = "Sorry, there was an error registering you. Try again."
-      redirect_to new_patient_path
+      render :new
     end
   end
   
@@ -43,15 +47,19 @@ class PatientsController < ApplicationController
       redirect_to welcome_path # not created yet
     end
   end
+
+  def search
+    @result = Doctor.search(params[:search])
+  end
   
   private
   
   def patient_params
-    params.require(:patient).permit(:first_name, :last_name, :gender, :birthday, :language, :email, :city, :country)
+    params.require(:patient).permit(:first_name, :last_name, :email, :gender, :birthday, :language, :city, :country, :admission_id, :password)
   end
   
   def set_patient
-    @patient = Patient.find(params[:id]) # temporary until signed_in verification has been set
+    @patient = Patient.find_by_id(params[:id]) # temporary until signed_in verification has been set
     
     ## Wait until signed_in? method has been set 
     # if signed_in? 

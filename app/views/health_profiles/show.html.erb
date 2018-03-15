@@ -1,0 +1,11 @@
+<div> 
+  <%= render "appointments/form" %>
+</div>
+
+
+Blood Type: <%= @health_profile.blood_type %><br />
+Weight(kg): <%= @health_profile.weight %><br />
+Height(m): <%= @health_profile.height %><br />
+BMI: <%= @health_profile.bmi %><br />
+Insurer: <%= @health_profile.insurer %><br />
+<%= link_to "Edit Profile", edit_patient_health_profile_path %><br />

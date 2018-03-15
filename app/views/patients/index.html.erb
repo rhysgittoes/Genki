@@ -1,1 +1,15 @@
 This is the patients index path
+
+<div id="search-form">
+    <%= form_tag patients_search_path, method: :get do %>
+      <%= label_tag "search" %>
+      <%= text_field_tag "search", nil, list: "list" %>
+      <datalist id="list"></datalist>
+    <%end%>
+</div>
+
+<br>
+<%= link_to "Create a new health profile", new_patient_health_profile_path(@patient) %> 
+<br>
+
+
