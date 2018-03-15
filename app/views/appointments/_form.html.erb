@@ -1,30 +1,120 @@
+<%#= form_for @appointment do |f| %>
+<%= form_for @appointment do |f| %>
 
-<div>
-  <%= f.label :Symptoms %>
-  <%= f.text_field :symptoms, id: "symptoms-input"  %>
-</div>
+  <h4>Appointment</h4>  
+  
+    <div>
+      <%= f.label :Symptoms %>
+      <%= f.text_field :symptoms, id: "symptoms-input"  %>
+    </div>
+    
+    <div>
+      <%= f.label :Notes %>
+      <%= f.text_area :notes %>
+    </div>
+    
+    <div>
+      <%= f.label :Diagnosis %>
+      <%= f.text_field :diagnosis %>
+    </div>
+    
+    <div>
+      <%= f.label :Referrals %>
+      <%= f.text_area :referrals, id: "referrals-input" %>
+    </div>
+  
 
-<div>
-  <%= f.label :Notes %>
-  <%= f.text_area :notes %>
-</div>
+  <div>
+    
+    <h4>Illnesses</h4>
+    
+    <%= f.fields_for :illnesses do |ff| %>
+      <%= ff.label :Name %>  
+      <%= ff.text_field :name %>
+    <% end %>
+    
+  </div>
+  
+  <div>
+    
+    <h4>Allergies</h4>
+    
+    <%= f.fields_for :allergies do |ff| %>
+      <%= ff.label :Name %>
+      <%= ff.text_field :name %>  
+      
+      <%= ff.label :Severity %>
+      <%= ff.text_field :severity %>
+    <% end %>
+    
+  </div>
+  
+  <div>
+    
+    <h4>Prescriptions</h4>
+    
+    <%= f.fields_for :prescriptions do |ff| %>
+      <%= ff.label "Medicine Name" %>
+      <%= ff.text_field :medicine %>
+      
+      <%= ff.label :Dosage %>
+      <%= ff.text_field :dosage %>
+      
+      <%= ff.label :Refills %>
+      <%= ff.text_field :refills %>
+      
+      <%= ff.label "Valid Until" %>
+      <%= ff.date_field :expiration_date %>
+      
+    <% end %>
+    
+  </div>
+  
+  <%= hidden_field_tag(:patient_id, params[:patient_id]) %>
+  <%= hidden_field_tag(:id, params[:id]) %>
+  
+  <div>
+    <%= f.submit :Submit %>
+  </div>
 
-<div>
-  <%= f.label :Diagnosis %>
-  <%= f.text_field :diagnosis %>
-</div>
+<% end %>
 
-<div>
-  <%= f.label :Referrals %>
-  <%= f.text_area :referrals, id: "referrals-input" %>
-</div>
 
-<%= hidden_field_tag(:patient_id, params[:patient_id]) %>
-<%= hidden_field_tag(:id, params[:id]) %>
 
-<div>
-  <%= f.submit :Submit %>
-</div>
+
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jqueryui/1.12.1/jquery-ui.js"></script>
+<link href="https://cdnjs.cloudflare.com/ajax/libs/selectize.js/0.12.4/css/selectize.bootstrap2.css" type="text/css">
+<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/selectize.js/0.12.4/js/selectize.js"></script>
+
+ <script>
+  $('#symptoms-input').selectize({
+    plugins: ['restore_on_backspace', 'remove_button'],
+    delimiter: ',',
+    persist: false,
+    placeholder: "Add a symptom...",
+    create: function(input) {
+      return {
+        value: input,
+        text: input
+      }
+    }
+  })
+    $('#referrals-input').selectize({
+    plugins: ['restore_on_backspace', 'remove_button'],
+    delimiter: ',',
+    persist: false,
+    placeholder: "Add a referral...",
+    create: function(input) {
+      return {
+        value: input,
+        text: input
+      }
+    }
+  })
+</script>
+
+
 
 
 

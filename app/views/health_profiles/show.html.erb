@@ -1,9 +1,5 @@
 <div> 
-  <%= form_for @appointment do |f| %>
-  
-  <%= render "appointments/form", f: f %>
-  
-  <% end %>
+  <%= render "appointments/form" %>
 </div>
 
 
@@ -13,42 +9,3 @@ Height(m): <%= @health_profile.height %><br />
 BMI: <%= @health_profile.bmi %><br />
 Insurer: <%= @health_profile.insurer %><br />
 <%= link_to "Edit Profile", edit_patient_health_profile_path %><br />
-
-
-
-<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
-<script src="https://cdnjs.cloudflare.com/ajax/libs/jqueryui/1.12.1/jquery-ui.js"></script>
-<link href="https://cdnjs.cloudflare.com/ajax/libs/selectize.js/0.12.4/css/selectize.bootstrap2.css" type="text/css">
-<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/selectize.js/0.12.4/js/selectize.js"></script>
-
- <script>
-  $('#symptoms-input').selectize({
-    plugins: ['restore_on_backspace', 'remove_button'],
-    delimiter: ',',
-    persist: false,
-    placeholder: "Add a symptom...",
-    create: function(input) {
-      return {
-        value: input,
-        text: input
-      }
-    }
-  })
-    $('#referrals-input').selectize({
-    plugins: ['restore_on_backspace', 'remove_button'],
-    delimiter: ',',
-    persist: false,
-    placeholder: "Add a referral...",
-    create: function(input) {
-      return {
-        value: input,
-        text: input
-      }
-    }
-  })
-</script>
-
-
-
-
-

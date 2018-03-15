@@ -32,6 +32,9 @@ class HealthProfilesController < ApplicationController
 
 	def show
 		@appointment = Appointment.new
+		@appointment.allergies.build
+		@appointment.illnesses.build
+		@appointment.prescriptions.build
 		@patient = Patient.find(params[:patient_id])
 		@health_profile = HealthProfile.find(params[:id])
 	end
