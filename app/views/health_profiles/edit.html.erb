@@ -1,10 +1,10 @@
 <h1> Edit Health Profile </h1>
 
-<%= form_for edit_patient_health_profile_path(@patient, @health_profile) do |form|%>
+<%= form_for [@patient, @health_profile] do |form|%>
 <%= render partial: "health_profiles/form", object: form %>
 
 <div class="submit-field">
-  <%= form.submit "Submit", data: {confirm: "Edit Profile?"}%>
+  <%= form.submit "Update profile" %>
   <% end %>
   <br>
   <br>
