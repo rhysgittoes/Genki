@@ -68,61 +68,8 @@ class AppointmentsController < ApplicationController
   def verify_user_type
     if current_user.type != "Doctor"
       flash[:notice] = "Oops, you don't have permission for that. Is this where you meant to go?"
-			redirect_to new_patient_health_profile(current_user, @health_profile)
+			redirect_to new_patient_health_profile_path(current_user, @health_profile)
     end
   end
   
 end
-
-
-
-
-
-    # # Create new Prescription
-    # if !params[:prescription].empty?
-    # @prescription = Prescription.new(prescription_params)
-    # @prescription.patient_id = @patient.id
-    #   # if @prescription.save
-    #   #   flash[:notice] = "Success"
-    #   # else
-    #   #   redirect_to patient_health_profile_path(@patient, @health_profile)
-    #   # end
-    # end
-    
-    # # Create new allergy
-    # if !params[:allergy].empty?
-    #   @allergy = Allergy.new(allergy_params)
-    #   @allergy.patient_id = @patient.id
-    #   # if @prescription.save
-    #   #   flash[:notice] = "Success"
-    #   # else
-    #   #   redirect_to patient_health_profile_path(@patient, @health_profile)
-    #   # end
-    # end
-    
-    # # Create new illness
-    # if !params[:illness].empty?
-    #   @illness = Illness.new(illness_params)
-    #   @illness.patient_id = @patient.id
-    #   # if @prescription.save
-    #   #   flash[:notice] = "Success"
-    #   # else
-    #   #   redirect_to patient_health_profile_path(@patient, @health_profile)
-    #   # end
-    # end
-    
-    
-    
-    
-    
-  #   def prescription_params
-  #   params.require(:prescription).permit(:medicine, :dosage, :refills, :expiration_date)
-  # end
-  
-  # def allergy_params
-  #   params.require(:allergy).permit(:name, :status, :severity)
-  # end
-  
-  # def illness_params
-  #   params.require(:illness).permit(:name, :status)
-  # end

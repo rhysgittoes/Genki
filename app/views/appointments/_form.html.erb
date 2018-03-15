@@ -1,11 +1,12 @@
 <%#= form_for @appointment do |f| %>
 <%= form_for @appointment do |f| %>
+<div>
 
   <h4>Appointment</h4>  
   
     <div>
       <%= f.label :Symptoms %>
-      <%= f.text_field :symptoms, id: "symptoms-input"  %>
+      <%= f.text_field :symptoms, id: "symptoms-input" %>
     </div>
     
     <div>
@@ -22,78 +23,83 @@
       <%= f.label :Referrals %>
       <%= f.text_area :referrals, id: "referrals-input" %>
     </div>
-  
+    
+</div>
 
+<div>
+  
+  <h4>Illnesses</h4>
   <div>
-    
-    <h4>Illnesses</h4>
-    
-    <%= f.fields_for :illnesses do |ff| %>
-      <%= ff.label :Name %>  
-      <%= ff.text_field :name %>
+    <%= f.fields_for :illnesses do |illness| %>
+      <%= render "appointments/illness_fields", f: illness %>
     <% end %>
-    
+  </div>
+  <div>
+    <%= link_to_add_association 'Add illness', f, :illnesses, partial: "appointments/illness_fields" %>
   </div>
   
-  <div>
-    
-    <h4>Allergies</h4>
-    
-    <%= f.fields_for :allergies do |ff| %>
-      <%= ff.label :Name %>
-      <%= ff.text_field :name %>  
-      
-      <%= ff.label :Severity %>
-      <%= ff.text_field :severity %>
-    <% end %>
-    
-  </div>
+</div>
+
+<br>
+
+<div>
+  
+  <h4>Allergies</h4>
   
   <div>
-    
-    <h4>Immunizations</h4>
-    
+  <%= f.fields_for :allergies do |allergy| %>
+    <%= render "appointments/allergy_fields", f: allergy %>
+    <% end %>
+  </div>
+  <div>
+    <%= link_to_add_association 'Add allergy', f, :allergies, partial: "appointments/allergy_fields" %>
+  </div>
+  
+</div>
+
+<br>
+
+<div>
+  
+  <h4>Immunizations</h4>
+  
+  <div>
     <div>
-      
-      <%= f.fields_for :immunizations do |ff| %>
-        <%= ff.label :name %>
-        <%= ff.text_field :name %>
-        
-        <%= ff.label "Next Dose Required" %>
-        <%= ff.date_field :expiration_date %>
+      <%= f.fields_for :immunizations do |immunization| %>
+        <%= render "appointments/immunization_fields", f: immunization %>
       <% end%>
-      
+    </div>
+    <div>
+    <%= link_to_add_association 'Add immunization', f, :immunizations, partial: "appointments/immunization_fields" %>
     </div>
     
   </div>
   
+</div>
+
+<br>
+
+<div>
+  
+  <h4>Prescriptions</h4>
+  
   <div>
-    
-    <h4>Prescriptions</h4>
-    
-    <%= f.fields_for :prescriptions do |ff| %>
-      <%= ff.label "Medicine Name" %>
-      <%= ff.text_field :medicine %>
-      
-      <%= ff.label :Dosage %>
-      <%= ff.text_field :dosage %>
-      
-      <%= ff.label :Refills %>
-      <%= ff.text_field :refills %>
-      
-      <%= ff.label "Valid Until" %>
-      <%= ff.date_field :expiration_date %>
-      
+    <%= f.fields_for :prescriptions do |prescription| %>
+     <%= render "appointments/prescription_fields", f: prescription %>
     <% end %>
-    
+  </div>
+  <div>
+    <%= link_to_add_association 'Add prescription', f, :prescriptions, partial: "appointments/prescription_fields" %>
   </div>
   
+</div>
+
   <%= hidden_field_tag(:patient_id, params[:patient_id]) %>
   <%= hidden_field_tag(:id, params[:id]) %>
-  
-  <div>
-    <%= f.submit :Submit %>
-  </div>
+
+<div>
+  <%= f.submit :Submit %>
+</div>
 
 <% end %>
 
