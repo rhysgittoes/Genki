@@ -10,7 +10,7 @@ class HealthProfilesController < ApplicationController
 			if HealthProfile.where(:patient_id => current_user.id).count == 0
 				render "new"
 			else
-				redirect_to patients_path, notice: "A health profile already exists."
+				redirect_to patient_health_profile_path(@patient, @patient.health_profile.id), notice: "A health profile already exists."
 			end
 
 
