@@ -1,36 +1,34 @@
 <%#= form_for @appointment do |f| %>
-<%= form_with url: appointments_path do |f| %>
+<%= form_for @appointment do |f| %>
 
   <h4>Appointment</h4>  
   
-  <%= fields_for :appointment do |ff| %>
     <div>
-      <%= ff.label :Symptoms %>
-      <%= ff.text_field :symptoms, id: "symptoms-input"  %>
+      <%= f.label :Symptoms %>
+      <%= f.text_field :symptoms, id: "symptoms-input"  %>
     </div>
     
     <div>
-      <%= ff.label :Notes %>
-      <%= ff.text_area :notes %>
+      <%= f.label :Notes %>
+      <%= f.text_area :notes %>
     </div>
     
     <div>
-      <%= ff.label :Diagnosis %>
-      <%= ff.text_field :diagnosis %>
+      <%= f.label :Diagnosis %>
+      <%= f.text_field :diagnosis %>
     </div>
     
     <div>
-      <%= ff.label :Referrals %>
-      <%= ff.text_area :referrals, id: "referrals-input" %>
+      <%= f.label :Referrals %>
+      <%= f.text_area :referrals, id: "referrals-input" %>
     </div>
   
-  <% end %>
 
   <div>
     
     <h4>Illnesses</h4>
     
-    <%= fields_for :illness do |ff| %>
+    <%= f.fields_for :illnesses do |ff| %>
       <%= ff.label :Name %>  
       <%= ff.text_field :name %>
     <% end %>
@@ -41,7 +39,7 @@
     
     <h4>Allergies</h4>
     
-    <%= fields_for :allergy do |ff| %>
+    <%= f.fields_for :allergies do |ff| %>
       <%= ff.label :Name %>
       <%= ff.text_field :name %>  
       
@@ -55,7 +53,7 @@
     
     <h4>Prescriptions</h4>
     
-    <%= fields_for :prescription do |ff| %>
+    <%= f.fields_for :prescriptions do |ff| %>
       <%= ff.label "Medicine Name" %>
       <%= ff.text_field :medicine %>
       
