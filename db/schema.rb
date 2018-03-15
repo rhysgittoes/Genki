@@ -10,13 +10,12 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20180315035515) do
+ActiveRecord::Schema.define(version: 20180315055926) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
   create_table "allergies", force: :cascade do |t|
-    t.string "type"
     t.string "severity"
     t.boolean "status"
     t.date "status_update"
@@ -24,6 +23,7 @@ ActiveRecord::Schema.define(version: 20180315035515) do
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.bigint "patient_id"
+    t.string "name"
     t.index ["appointment_id"], name: "index_allergies_on_appointment_id"
   end
 
@@ -70,22 +70,27 @@ ActiveRecord::Schema.define(version: 20180315035515) do
   end
 
   create_table "illnesses", force: :cascade do |t|
-    t.string "type"
     t.boolean "status"
     t.bigint "appointment_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.bigint "patient_id"
+    t.string "name"
     t.index ["appointment_id"], name: "index_illnesses_on_appointment_id"
   end
 
   create_table "immunizations", force: :cascade do |t|
     t.date "date"
+<<<<<<< HEAD
     t.string "type"
+=======
+>>>>>>> 96fc8ae3a15962f0049055210c44cc5b2551c581
     t.bigint "appointment_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.bigint "patient_id"
+    t.date "expiration_date"
+    t.string "name"
     t.index ["appointment_id"], name: "index_immunizations_on_appointment_id"
   end
 
