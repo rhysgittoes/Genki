@@ -68,7 +68,7 @@ class AppointmentsController < ApplicationController
   def verify_user_type
     if current_user.type != "Doctor"
       flash[:notice] = "Oops, you don't have permission for that. Is this where you meant to go?"
-			redirect_to new_patient_health_profile(current_user, @health_profile)
+			redirect_to new_patient_health_profile_path(current_user, @health_profile)
     end
   end
   
