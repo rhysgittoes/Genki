@@ -51,6 +51,21 @@
   
   <div>
     
+    <h4>Immunizations</h4>
+    
+    <div>
+      
+      <%= f.fields_for :immunizations do |ff| %>
+        <%= ff.label :name %>
+        <%= ff.text_field :name %>
+      <% end%>
+      
+    </div>
+    
+  </div>
+  
+  <div>
+    
     <h4>Prescriptions</h4>
     
     <%= f.fields_for :prescriptions do |ff| %>
