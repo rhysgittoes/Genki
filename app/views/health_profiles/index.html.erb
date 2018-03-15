@@ -1,6 +1,5 @@
-<% if @relation.each do |r|%>
-<% r.doctor_id == current_user.id %>
-<%# else %>
+<% @relation.each do |r|%>
+<% if r.patient_id == @patient.id && r.doctor_id == current_user.id %>
 <% @health_profile.each do |health_profile|%>
 <% if health_profile.patient_id == @patient.id %>
 Blood Type: <%= health_profile.blood_type %><br />
@@ -10,6 +9,7 @@ BMI: <%= health_profile.bmi %><br />
 Insurer: <%= health_profile.insurer %><br />
 <%end%>
 <%end%>
+<% else %>
 <%= "You are not authorized to view this page!" %>
 <%end%>
 <% end %>
