@@ -1,6 +1,7 @@
 class PatientsController < ApplicationController
   
   before_action :set_patient, except: [:new, :create]
+  before_action :verify_user, only: [:show, :edit, :update, :destroy]
   
   def index
     @patient = current_user
@@ -60,12 +61,18 @@ class PatientsController < ApplicationController
   def set_patient
     if signed_in?
       if current_user.type == "Patient"
-        @patient = Patient.find(params[:id])
+        @patient = current_user
       else
        redirect_to doctors_path
       end
     else
       redirect_to welcome_path
+    end
+  end
+  
+  def verify_user
+    if params[:id] != @patient.id
+      redirect_to patients_path
     end
   end
     
