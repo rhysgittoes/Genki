@@ -1,7 +1,5 @@
 This is the patients index path
 
-<%= link_to "New health profile", new_patient_health_profile_path(@patient) %> 
-
 <div id="search-form">
     <%= form_tag patients_search_path, method: :get do %>
       <%= label_tag "search" %>
@@ -9,3 +7,9 @@ This is the patients index path
       <datalist id="list"></datalist>
     <%end%>
 </div>
+
+<br>
+<%= link_to "Create a new health profile", new_patient_health_profile_path(@patient) %> 
+<br>
+<%= link_to "See your health profile",patient_health_profile_path(@patient, @patient.health_profile.id) %>
+
