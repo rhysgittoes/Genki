@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20180314071300) do
+ActiveRecord::Schema.define(version: 20180315035515) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -20,12 +20,11 @@ ActiveRecord::Schema.define(version: 20180314071300) do
     t.string "severity"
     t.boolean "status"
     t.date "status_update"
-    t.bigint "patient_id"
     t.bigint "appointment_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.bigint "patient_id"
     t.index ["appointment_id"], name: "index_allergies_on_appointment_id"
-    t.index ["patient_id"], name: "index_allergies_on_patient_id"
   end
 
   create_table "appointments", force: :cascade do |t|
@@ -73,25 +72,22 @@ ActiveRecord::Schema.define(version: 20180314071300) do
   create_table "illnesses", force: :cascade do |t|
     t.string "type"
     t.boolean "status"
-    t.bigint "user_id"
-    t.bigint "patient_id"
     t.bigint "appointment_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.bigint "patient_id"
     t.index ["appointment_id"], name: "index_illnesses_on_appointment_id"
-    t.index ["patient_id"], name: "index_illnesses_on_patient_id"
-    t.index ["user_id"], name: "index_illnesses_on_user_id"
   end
 
   create_table "immunizations", force: :cascade do |t|
     t.date "date"
+    t.string "name"
     t.string "type"
-    t.bigint "patient_id"
     t.bigint "appointment_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.bigint "patient_id"
     t.index ["appointment_id"], name: "index_immunizations_on_appointment_id"
-    t.index ["patient_id"], name: "index_immunizations_on_patient_id"
   end
 
   create_table "patients", force: :cascade do |t|
@@ -115,6 +111,10 @@ ActiveRecord::Schema.define(version: 20180314071300) do
     t.date "expiration_date"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.bigint "patient_id"
+    t.bigint "appointment_id"
+    t.bigint "doctor_id"
+    t.index ["appointment_id"], name: "index_prescriptions_on_appointment_id"
   end
 
   create_table "users", force: :cascade do |t|
@@ -140,9 +140,7 @@ ActiveRecord::Schema.define(version: 20180314071300) do
   end
 
   add_foreign_key "allergies", "appointments"
-  add_foreign_key "allergies", "patients"
   add_foreign_key "illnesses", "appointments"
-  add_foreign_key "illnesses", "patients"
   add_foreign_key "immunizations", "appointments"
-  add_foreign_key "immunizations", "patients"
+  add_foreign_key "prescriptions", "appointments"
 end
