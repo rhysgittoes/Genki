@@ -81,10 +81,6 @@ ActiveRecord::Schema.define(version: 20180315055926) do
 
   create_table "immunizations", force: :cascade do |t|
     t.date "date"
-<<<<<<< HEAD
-    t.string "type"
-=======
->>>>>>> 96fc8ae3a15962f0049055210c44cc5b2551c581
     t.bigint "appointment_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false

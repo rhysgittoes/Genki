@@ -33,7 +33,11 @@
                 <%=a.symptoms.join(', ')%>
                 <br>
                 
-                Active Prescriptions:  <%=a.prescriptions%>
+                Active Prescriptions:  
+                <% a.prescriptions.each do |b|%>
+                <%= b.medicine%>
+                <%end%>
+                
                 <br>
                 Finished Prescriptions:
               </p>
