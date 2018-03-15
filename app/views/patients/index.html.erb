@@ -12,4 +12,18 @@ This is the patients index path
 <%= link_to "Create a new health profile", new_patient_health_profile_path(@patient) %> 
 <br>
 
+<div>
+  <h4>Your Notifications</h4>
+  <% if !@patient.notifications.empty? %>
+    <div>
+      <% @patient.notifications.each do |notification| %>
+        <p>
+          <%= render "layouts/notification", notification: notification %>
+        </p>
+      <% end %>
+    </div>
+  <% else %>
+    You have no new notifications.
+  <% end %>
+</div>
 
