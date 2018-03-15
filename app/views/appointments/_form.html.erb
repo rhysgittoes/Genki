@@ -58,6 +58,9 @@
       <%= f.fields_for :immunizations do |ff| %>
         <%= ff.label :name %>
         <%= ff.text_field :name %>
+        
+        <%= ff.label "Next Dose Required" %>
+        <%= ff.date_field :expiration_date %>
       <% end%>
       
     </div>
