@@ -12,7 +12,7 @@ class AppointmentsController < ApplicationController
     @appointment.date = Date.today
     
     set_associations(@appointment, @patient)
-
+    
     if @appointment.save
       Notification.create_appointment_notifications(@appointment, @health_profile)
       flash[:notice] = "Your appointment has been saved."
