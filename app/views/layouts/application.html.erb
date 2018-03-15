@@ -34,23 +34,28 @@
       </li>
     </ul>
 
-    <form class="form-inline my-2 my-lg-0">
-    <!--<input class="form-control mr-sm-2" type="search" placeholder="Search" aria-label="Search">-->     
-        <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Search</button> 
-    </form>
-
-    <% if signed_in? -%>
-      <%= button_to t(".sign_out"), sign_out_path, method: :delete  %>
-      <% else -%>
-     <!--  <%= link_to t(".sign_in"), sign_in_path, class: "btn btn-outline-success" %> -->
-       <button type="button" class="btn btn-outline-success" id="sign_in_btn">Sign in</button>
+    <!-- <form class="form-inline my-2 my-lg-0">
+    Search thingy<input class="form-control mr-sm-2" type="search" placeholder="Search" aria-label="Search">     
+        <button class="btn btn-outline-success my-2 my-sm-0 navbtn" type="submit">Search</button> 
+    </form> -->
+    <% if signed_in? %>
+      <button class="nav_bar_name btn btn-outline-success navbtn">
+        <%if current_user.type == "Doctor" %>
+          <%= "Dr." %>
+        <%end %>
+        <%= current_user.first_name + " " +current_user.last_name%>
+      </button>
+      <%= button_to t(".sign_out"), sign_out_path, method: :delete, class: "btn btn-outline-success"  %>
+    <% else -%>
+      <!--Don't need that sign in butotn  <%= link_to t(".sign_in"), sign_in_path, class: " navbtn btn btn-outline-success" %> -->
+      <button type="button" class="btn btn-outline-success navbtn" id="sign_in_btn">Sign in</button>
+      <button type="button" class="btn btn-outline-success navbtn" id="sign_up_btn">Sign Up</button>
     <% end -%>
 
-    <% if Clearance.configuration.allow_sign_up? %>
+    <%# if Clearance.configuration.allow_sign_up? %>
       <%#= link_to t(".Get Started"), sign_up_path %>
-      <button type="button" class="btn btn-outline-success" id="sign_up_btn">Sign Up</button>
-    <% end %>
-    
+      <!-- <button type="button" class="btn btn-outline-success" id="sign_up_btn">Sign Up</button> -->
+    <%# end %>    
     </div>
   </div>
 </nav>
@@ -62,34 +67,60 @@
 
 
 
-<!-- Modal for Sign up -->
+<!-- Modal for Sign up DOES NOT WORK -->
 <div class="modal fade" id="sign_up_modal" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
   <div class="modal-dialog modal-dialog-centered" role="document">
     <div class="modal-content">
       <div class="modal-header">
        
           <h5 class="modal-title" id="exampleModalLongTitle">Sign Up</h5>
+
         
               <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                 <span aria-hidden="true">&times;</span>
               </button>
       </div>
       <div class="modal-body">
-          <%=form_for :user, html: {id:"sign_up_basic"} do |f|%>
-         
+
+        <div class="buttons_container">
+                  <%=button_to "Sign up as a Doctor",  new_doctor_path, method: :get, class: " btn btn-outline-success", id:"doctor_signup", form: {style: 'display:inline-block;'}%>
+
+                  <%=button_to "Sign up as a Patient",  new_patient_path, method: :get, class: " btn btn-outline-success", id:"patient_signup", form: {style: 'display:inline-block;'} %>      
+        </div>
+        <div class="", id="doctor_hidden_form", style="display:none; margin-top: 1em;">
+          <!-- html: {id:"sign_up_basic_doctor"}, -->
+          <%=form_for :doctor, url: "/doctors" do |f|%>
               <legend>Basic details</legend>
               <p><%= f.text_field :first_name, placeholder: "First name", class: "sign_up_basic_form" %></p>
               <p><%= f.text_field :last_name, placeholder: "Last name" , class: "sign_up_basic_form"%></p>
               <p><%= f.text_field :email, placeholder: "Email" , class: "sign_up_basic_form" %></p>
-              <p><%= f.password_field :password, placeholder: "Password" , class: "sign_up_basic_form",id:"password_field"%> 
-              <%= f.password_field :password_confirmation, placeholder: "Confirm Password", class: "sign_up_basic_form",id:"password_field" %></p>
-          <%end%>
-       
-                <div class="buttons_container">
-                  <%=button_to "Sign up as a Doctor",  new_doctor_path, method: :get, class: " btn btn-outline-success", id:"doctor_signup", form: {style: 'display:inline-block;'}%>
-
-                  <%=button_to "Sign up as a Patient",  new_patient_path, method: :get, class: " btn btn-outline-success", id:"patient_signup", form: {style: 'display:inline-block;'} %>      
+              <p><%= f.password_field :password, placeholder: "Password" , class: "sign_up_basic_form password_field"%> 
+              <%= f.password_field :password_confirmation, placeholder: "Confirm Password", class: "sign_up_basic_form password_field" %></p>
+                <div class="centered_text submit-field">
+                  <%= f.submit  class: " btn btn-outline-success sign_in_button"%>
                 </div>
+          <%end%> 
+        </div>
+        <!-- html: {id:"sign_up_basic_patient"}, -->
+        <div class="", id="patient_hidden_form", style="display:none;  margin-top: 1em;">
+          <%=form_for :patient,  url: "/patients" do |f|%>
+              <legend>Basic details</legend>
+              <p><%= f.text_field :first_name, placeholder: "First name", class: "sign_up_basic_form" %></p>
+              <p><%= f.text_field :last_name, placeholder: "Last name" , class: "sign_up_basic_form"%></p>
+              <p><%= f.text_field :email, placeholder: "Email" , class: "sign_up_basic_form" %></p>
+              <p><%= f.password_field :password, placeholder: "Password" , class: "sign_up_basic_form password_field"%> 
+              <%= f.password_field :password_confirmation, placeholder: "Confirm Password", class: "sign_up_basic_form password_field" %></p>
+                <div class="centered_text submit-field">
+                  <%= f.submit  class: " btn btn-outline-success sign_in_button"%>
+                </div>
+          <%end%>
+        </div>
+
+
+
+
+
+               
       </div>
             <div class="modal-footer">
               <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
@@ -151,9 +182,13 @@
 
 
     <%= yield %>
+
+
+
+
     <script src="https://code.jquery.com/jquery-3.1.1.min.js"></script>
 
-    <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
+    <!-- <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script> -->
     <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
     <script src="https://cdn.rawgit.com/michalsnik/aos/2.1.1/dist/aos.js"></script>

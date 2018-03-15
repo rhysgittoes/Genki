@@ -23,5 +23,7 @@ Certification:
 <%= @doctor.certification %><br>
 Years of Experience:
 <%= @doctor.experience %><br>
+<% if @doctor.id == current_user.id %>
 <%= link_to "Edit Profile", edit_doctor_path(@doctor)%>
+<%end%>
 </div>
