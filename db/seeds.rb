@@ -24,21 +24,52 @@
 #   end
 # end 
 
-# Appointment(id: integer, date: date, symptoms: text, diagnosis: text, referrals: string, notes: text, created_at: datetime, updated_at: datetime, doctor_id: integer, patient_id: integer, key: string)
-# Seed Appointments
+
+
 
 require 'faker'
-appointment = {}
-ActiveRecord::Base.transaction do
-  15.times do 
-    appointment['date'] = Faker::Date.between(400.days.ago, Date.today)
-    appointment['symptoms'] = Faker::Lorem.words(5)
-    appointment['diagnosis'] = Faker::Lorem.paragraph(2, true, 8)
-    appointment['referrals'] = Faker::Lorem.sentence(3, true, 4) #=> "Accusantium tantillus dolorem timor.
-    appointment['notes'] = Faker::Lorem.paragraph(3, true, 10)
-    appointment['doctor_id'] = 12
-    appointment['patient_id'] = 13
+# appointment = {}
+# ActiveRecord::Base.transaction do
+#   15.times do 
+#     appointment['date'] = Faker::Date.between(400.days.ago, Date.today)
+#     appointment['symptoms'] = Faker::Lorem.words(5)
+#     appointment['diagnosis'] = Faker::Lorem.paragraph(2, true, 8)
+#     appointment['referrals'] = Faker::Lorem.sentence(3, true, 4) #=> "Accusantium tantillus dolorem timor.
+#     appointment['notes'] = Faker::Lorem.paragraph(3, true, 10)
+#     appointment['doctor_id'] = 12
+#     appointment['patient_id'] = 13
 
-    Appointment.create(appointment)
+#     Appointment.create(appointment)
+#   end
+# end
+
+
+prescriptions = {}
+ActiveRecord::Base.transaction do 
+  15.times do 
+    prescriptions['medicine'] = Faker::Lorem.word #=> "repellendus"
+    prescriptions['dosage'] = Faker::Lorem.sentence(3) #=> "Commodi qui minus deserunt sed vero quia."
+    prescriptions['refills'] = "none"
+    prescriptions['expiration_date'] = Faker::Date.forward(14)
+    prescriptions['patient_id'] = 13
+    prescriptions['appointment_id'] = Faker::Number.between(16, 32) #=> 7
+    prescriptions['doctor_id'] = 12
+
+    Prescription.create(prescriptions)
   end
 end
+
+# create_table "prescriptions", force: :cascade do |t|
+#     t.string "medicine"
+#     t.string "dosage"
+#     t.string "refills"
+#     t.date "expiration_date"
+#     t.datetime "created_at", null: false
+#     t.datetime "updated_at", null: false
+#     t.bigint "patient_id"
+#     t.bigint "appointment_id"
+#     t.bigint "doctor_id"
+#     t.index ["appointment_id"], name: "index_prescriptions_on_appointment_id"
+
+
+

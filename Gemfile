@@ -37,6 +37,7 @@ gem "figaro"
 gem "selectize-rails"
 gem 'pry-rails'
 gem 'faker', :git => 'https://github.com/stympy/faker.git', :branch => 'master'
+gem 'byebug'
 
 group :development, :test do
   # Call 'byebug' anywhere in the code to stop execution and get a debugger console

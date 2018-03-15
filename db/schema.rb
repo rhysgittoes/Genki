@@ -81,7 +81,6 @@ ActiveRecord::Schema.define(version: 20180315035515) do
 
   create_table "immunizations", force: :cascade do |t|
     t.date "date"
-    t.string "name"
     t.string "type"
     t.bigint "appointment_id"
     t.datetime "created_at", null: false
