@@ -14,6 +14,7 @@ class AppointmentsController < ApplicationController
     set_associations(@appointment, @patient)
 
     if @appointment.save
+      Notification.create_appointment_notifications(@appointment, @health_profile)
       flash[:notice] = "Your appointment has been saved."
       redirect_to patient_health_profile_path(@patient, @health_profile)
     else
@@ -32,7 +33,7 @@ class AppointmentsController < ApplicationController
     @patient = Patient.find(params[:patient_id])
     params.require(:appointment).permit(
       :diagnosis, :referrals, :notes, :symptoms,
-      immunizations_attributes: [:name],
+      immunizations_attributes: [:name, :expiration_date],
       illnesses_attributes: [:name, :status],
       allergies_attributes: [:name, :status, :severity],
       prescriptions_attributes: [:medicine, :dosage, :refills, :expiration_date]
