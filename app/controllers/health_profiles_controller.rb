@@ -11,10 +11,7 @@ class HealthProfilesController < ApplicationController
 				render "new"
 			else
 				redirect_to patient_health_profile_path(@patient, @patient.health_profile.id), notice: "A health profile already exists."
-			end
-
-
-		 
+			end 
 	end
 
 	def create
@@ -27,7 +24,7 @@ class HealthProfilesController < ApplicationController
 			redirect_to new_patient_health_profile, notice: "Create profile unsuccessful. Please try again."
 
 		end
-
+		authorize @user
 	end
 
 	def show
