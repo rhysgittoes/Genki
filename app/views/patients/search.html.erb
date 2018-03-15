@@ -7,17 +7,18 @@
   <th>Permission</th>
 </thead>
 <tbody>
-Doctor result :<%= @result.size %>
 <% @result.each do |user| %>
 <%if user.type == "Doctor"%>
+Doctor result :
 <td><%= link_to user.first_name, doctor_path(user) %></td>
 <td><%= link_to user.last_name, doctor_path(user) %></td> 
 <td><%= link_to user.admission_id, doctor_path(user) %></td> 
 <td><%= user.email %></td> 
 <td><%= button_to "Give", relations_path, params: { relation: { doctor_id: user.id, patient_id: current_user.id}}, date:{ confirm: "Add doctor to your list?" } %></td>
-<%byebug%>
-<td><%if @relation ==  @result %>
-<%= button_to "Destroy", relation_path(user), data: { confirm: 'Are you sure?' }, method: :delete %>
+<td><% @relation.each do |r| %>
+<% if r.doctor_id == user %>
+<%end%>
+<%= button_to "Destroy", relation_path(r), data: { confirm: 'Are you sure?' }, method: :delete %>
 <%end%></td>
  </tbody>
 <%end%>

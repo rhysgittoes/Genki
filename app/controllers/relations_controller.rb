@@ -13,7 +13,9 @@ def create
 end
 
 def destroy
+  @relation = Relation.find_by_id(params[:id])
   @relation.destroy
+  redirect_to patients_path
 end
 
 private

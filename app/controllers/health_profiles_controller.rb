@@ -2,6 +2,9 @@ class HealthProfilesController < ApplicationController
 	before_action :require_login
 	
 	def index
+		@patient = Patient.find(params[:patient_id])
+		@relation = Relation.all
+		@health_profile = HealthProfile.all
 	end
 
 	def new
