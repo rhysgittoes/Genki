@@ -1,16 +1,12 @@
 class AppointmentsController < ApplicationController
   
-  before_action :set_users
+  before_action :set_information
+  before_action :verify_user_type, only: [:create]
     
   def new
   end
   
   def create
-    # Set users 
-    @patient = Patient.find(params[:patient_id])
-
-    # Set user health_profile
-    @health_profile = HealthProfile.find(params[:id])
     @appointment = current_user.appointments.new(appointment_params)
     @appointment.key = SecureRandom.hex(4).upcase
     @appointment.date = Date.today
@@ -64,11 +60,15 @@ class AppointmentsController < ApplicationController
     end
   end
   
-  def set_users
-    if current_user.type == "Doctor"
-      @user = Doctor.find(current_user.id)
-    elsif current_user.type == "Patient"
-      @user = Patient.find(current_user.id)
+  def set_information
+    @patient = Patient.find(params[:patient_id])
+    @health_profile = HealthProfile.find(params[:id])
+  end
+  
+  def verify_user_type
+    if current_user.type != "Doctor"
+      flash[:notice] = "Oops, you don't have permission for that. Is this where you meant to go?"
+			redirect_to new_patient_health_profile(current_user, @health_profile)
     end
   end
   
