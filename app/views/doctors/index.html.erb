@@ -27,7 +27,7 @@
 <div class="col-md-8">
       <% @appointments.order(date: :DESC).each do |a|%>
       <div class="row">
-        <div class="appointment" data-aos-offset="100" data-aos-delay="200" data-aos="fade-up">
+        <div class="appointment" data-aos-offset="0" data-aos-delay="200" data-aos="fade-up">
             <div class="appointment_date_month">
                <%=a.date.strftime("%B")%>
             </div>

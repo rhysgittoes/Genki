@@ -13,6 +13,10 @@
   width: 100%;
   height: 8em;
   background:#a3a3a3;
+
+  -webkit-box-shadow: 0 10px 6px -6px #777;
+     -moz-box-shadow: 0 10px 6px -6px #777;
+          box-shadow: 0 10px 6px -6px #777;
   
   // #ccc
   color: #FFF;
@@ -22,11 +26,11 @@
 
 .appointment_date_number{
   display: inline-block;
-  width: 16%;
+  width: 12%;
   height: 100%;
   text-align: center;
   font-size: 5em;
-  padding-top: 9px;
+  padding-top: 12px;
 
 }
 .appointment_details{
@@ -40,5 +44,5 @@
   position: absolute;
   margin-top:1%;
   text-align: center;
-  width: 16%;
+  width: 12%;
 }
