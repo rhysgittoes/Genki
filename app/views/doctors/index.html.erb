@@ -9,25 +9,15 @@
   <div class="row">
     <div class="col-md-8">
       <h2>Your Past Appointments</h2>
-    </div>
-     <div class=".col-md-4">
-      <div id="notification">
-        Notification:
-    </div>
-    <div id="search-form">
-      <%= form_tag doctors_search_path, method: :get do %>
-        <%= label_tag "search" %>
-        <%= text_field_tag "search", nil, list: "list" %>
-        <datalist id="list"></datalist>
-      <%end%>
-    </div>
+      <br>
     </div>
   </div>
-
-<div class="col-md-8">
+  
+  <div class="row">
+    <div class="col-8">
       <% @appointments.order(date: :DESC).each do |a|%>
-      <div class="row">
-        <div class="appointment" data-aos-offset="0" data-aos-delay="200" data-aos="fade-up">
+        <div class="row">
+          <div class="appointment" data-aos-offset="0" data-aos-delay="200" data-aos="fade-up">
             <div class="appointment_date_month">
                <%=a.date.strftime("%B")%>
             </div>
@@ -45,13 +35,29 @@
                 Active Prescriptions: 
                 <br>
                 Finished Prescriptions:
-
               </p>
             </div>
-        </div> 
-      </div>   
+          </div> 
+        </div>   
       <%end%>
+    </div>
+    <div class="col-4">
+      <div id="notification">
+        Notification:
+        </div>
+      <div id="search-form">
+        <%= form_tag doctors_search_path, method: :get do %>
+          <%= label_tag "search" %>
+          <%= text_field_tag "search", nil, list: "list" %>
+          <datalist id="list"></datalist>
+          <%end%>
+      </div>  
+    </div>
+
+  </div>
+
 </div>
+
 <!-- %B -->
 <!-- map(&:inspect) -->
 
