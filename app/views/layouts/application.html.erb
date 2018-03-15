@@ -39,7 +39,14 @@
         <button class="btn btn-outline-success my-2 my-sm-0 navbtn" type="submit">Search</button> 
     </form> -->
     <% if signed_in? %>
-    <form method="get" action="/doctors">
+    <form method="get" action=
+    <% if current_user.type == "Doctor" %>
+    <%= "/doctors"%>
+    <% else %>
+    <%= "/patients"%>
+    <% end %>
+    
+    >
       <button class="nav_bar_name btn btn-outline-success navbtn" type="submit"> 
         <%if current_user.type == "Doctor" %>
           <%= "Dr." %>
