@@ -66,7 +66,7 @@ class PatientsController < ApplicationController
        redirect_to doctors_path
       end
     else
-      redirect_to welcome_path
+      redirect_to root_url
     end
   end
   
