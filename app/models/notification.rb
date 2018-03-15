@@ -6,7 +6,8 @@ class Notification < ApplicationRecord
   
   def self.create_appointment_notifications(appointment, health_profile)
     create_patient_appointment_notification(appointment, health_profile)
-    create_doctor_notification(appointment)
+    
+    # create_doctor_notification(appointment)
   end
   
   def self.create_patient_appointment_notification(appointment, health_profile)
