@@ -16,6 +16,8 @@ Rails.application.routes.draw do
 get "/doctors/search" => "doctors#search"
 get "/patients/search" => "patients#search"
 
+  resources :relations, controller: "relations", only: [:create, :destroy]
+
   resources :doctors
   
   resources :appointments

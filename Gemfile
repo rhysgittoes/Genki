@@ -33,10 +33,13 @@ gem 'jbuilder', '~> 2.5'
 # Use Capistrano for deployment
 # gem 'capistrano-rails', group: :development
 gem "clearance"
-
 gem "figaro"
-
 gem "selectize-rails"
+gem 'pry-rails'
+gem 'faker', :git => 'https://github.com/stympy/faker.git', :branch => 'master'
+gem 'byebug'
+
+gem "pundit"
 
 gem "cocoon"
 

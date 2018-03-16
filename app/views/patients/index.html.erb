@@ -1,16 +1,37 @@
-This is the patients index path
+<div style="margin-left: 50px; margin-right: 50px; margin-top: 2em;">
+   <div class="row">
+      <div class=col-12>
+         <h2><%="Welcome back " + @patient.first_name %></h2>
+      </div>
+   </div>
+   <br>
 
-<div id="search-form">
-    <%= form_tag patients_search_path, method: :get do %>
-      <%= label_tag "search" %>
-      <%= text_field_tag "search", nil, list: "list" %>
-      <datalist id="list"></datalist>
-    <%end%>
-</div>
 
-<br>
-<%= link_to "Create a new health profile", new_patient_health_profile_path(@patient) %> 
-<br>
+
+   
+   <div class=row>
+      <div class=col-8>
+         <div id= search_doctors_container>
+            <%= form_tag patients_search_path, method: :get do %>
+               <%= text_field_tag "search", nil, list: "list", placeholder: "Search Doctors", id: "search_doctors" %>
+               <datalist id="list"></datalist>
+          <%end%>
+         </div>
+
+         <div id= active_prescrip_container style="margin-top:2rem;">
+            <h3 class=display-1 id = active_prescrip_title >Active Prescriptions<h3>
+            <%#=current_user.prescriptions.all[0].expiration_date%>
+            <% current_user.prescriptions.each do |a|%>
+               <%if Date.today < a.expiration_date %>
+                  <%= a.medicine%>            
+               <%end%>      
+            <%end%>
+
+
+         </div>
+      </div>
+   
+
 
 <div>
   <h4>Your Notifications</h4>
@@ -25,5 +46,23 @@ This is the patients index path
   <% else %>
     You have no new notifications.
   <% end %>
+</div>
+
+
+      <div class=col-4>
+         <div id = patient_notification_container>
+            <h3 id = notifications_header class=display-1>Notifications</h3>
+            <div id = notification_list>
+               Notifications here
+            </div>          
+         </div>
+      </div>
+   </div>
+
+
+
+   <br>
+   <%= link_to "Create a new health profile", new_patient_health_profile_path(@patient) %> 
+   <br>
 </div>
 

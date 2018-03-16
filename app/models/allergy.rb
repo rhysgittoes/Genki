@@ -13,5 +13,5 @@ class Allergy < ApplicationRecord
 	def set_default
 		self.status = 1
 	end
-	
+
 end

@@ -2,6 +2,9 @@ class HealthProfilesController < ApplicationController
 	before_action :require_login
 	
 	def index
+		@patient = Patient.find(params[:patient_id])
+		@relation = Relation.all
+		@health_profile = HealthProfile.all
 	end
 
 	def new
@@ -12,10 +15,7 @@ class HealthProfilesController < ApplicationController
 				render "new"
 			else
 				redirect_to patient_health_profile_path(@patient, @patient.health_profile.id), notice: "A health profile already exists."
-			end
-
-
-		 
+			end 
 	end
 
 	def create
@@ -28,7 +28,6 @@ class HealthProfilesController < ApplicationController
 			redirect_to new_patient_health_profile, notice: "Create profile unsuccessful. Please try again."
 
 		end
-
 	end
 
 	def show
@@ -38,7 +37,8 @@ class HealthProfilesController < ApplicationController
 		@appointment.prescriptions.build
 		@appointment.immunizations.build
 		@patient = Patient.find(params[:patient_id])
-		@health_profile = HealthProfile.find(params[:id])
+		@health_profile = HealthProfile.where(patient_id: params[:patient_id])
+		@health_profile = @health_profile.first
 	end
 		
 

@@ -16,7 +16,4 @@ class Appointment < ApplicationRecord
 	def set_key
 		self.key = SecureRandom.hex(4).upcase
 	end
-	
-
-	
 end

@@ -128,6 +128,13 @@ ActiveRecord::Schema.define(version: 20180315153216) do
     t.index ["appointment_id"], name: "index_prescriptions_on_appointment_id"
   end
 
+  create_table "relations", force: :cascade do |t|
+    t.bigint "patient_id"
+    t.bigint "doctor_id"
+    t.index ["doctor_id"], name: "index_relations_on_doctor_id"
+    t.index ["patient_id"], name: "index_relations_on_patient_id"
+  end
+
   create_table "users", force: :cascade do |t|
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
