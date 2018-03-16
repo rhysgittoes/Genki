@@ -1,10 +1,9 @@
 class DoctorsController < ApplicationController
-  
-  before_action :set_doctor, only: [:edit, :show, :update]
-
-  before_action :require_login, except: [:new, :create]
+ 
+   before_action :require_login, except: [:new, :create]
 
 def index
+  @doctor = current_user
 end
 
 def new
@@ -41,29 +40,15 @@ def update
   end
 end
 
-# def new_visit
-#   @doctor = current_user.patients.find(params[:id])
-#   @appointment = Appointment.new(appointment_params)
-# end
-
 def search
   @result = User.search(params[:search])
 end
 
 
 private
-
-def set_doctor
-  @doctor = Doctor.find_by_id(params[:id])
-end
   
 def doctor_params
   params.require(:doctor).permit(:first_name, :last_name, :email, :gender, :birthday, :language, :city, :country, :admission_id, :certification, :experience, :password)  
 end
-
-# def appointment_params
-#   params.require(:appointment).permit(:date, :symptoms, :diagnosis, :referrals, :notes, :doctor_id, :patient_id)
-# end
-
 
 end
