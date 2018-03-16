@@ -32,11 +32,10 @@ class HealthProfilesController < ApplicationController
 		@patient = Patient.find(params[:patient_id])
 		@relation = Relation.all
 		@appointment = Appointment.new
-		@appointment.allergies.build
-		@appointment.illnesses.build
-		@appointment.prescriptions.build
-		@appointment.immunizations.build
-		@health_profile = HealthProfile.find(patient_id: params[:patient_id])
+		
+		build_associations(@appointment)
+
+		@health_profile = @patient.health_profile
 		
 		@immunizations = @patient.immunizations.select(:name, :date, :expiration_date)
 		@allergies = @patient.allergies.select(:name, :severity, :status)
@@ -49,7 +48,6 @@ class HealthProfilesController < ApplicationController
 	def edit
 		@patient = Patient.find(params[:patient_id])
 		@health_profile = HealthProfile.find(params[:id])
-		
 	end
 
 	def update
@@ -62,8 +60,16 @@ class HealthProfilesController < ApplicationController
 	end
 	
 	private
+	
 	def health_profile_params
 		params.require(:health_profile).permit(:weight, :height, :blood_type, :insurer)
+	end
+	
+	def build_associations(appointment)
+		appointment.allergies.build
+		appointment.illnesses.build
+		appointment.prescriptions.build
+		appointment.immunizations.build
 	end
 
 end
