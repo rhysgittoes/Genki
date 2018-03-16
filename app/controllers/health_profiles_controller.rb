@@ -31,15 +31,15 @@ class HealthProfilesController < ApplicationController
 
 	def show
 		@patient = Patient.find(params[:patient_id])
-		@relation = Relation.all
-		@health_profile = HealthProfile.where(patient_id: params[:patient_id])
-		@health_profile = @health_profile.first
+		@relation = Relation.find_by(patient_id: params[:patient_id])
 		# @health_profile = HealthProfile.all
 		@appointment = Appointment.new
 		@appointment.allergies.build
 		@appointment.illnesses.build
 		@appointment.prescriptions.build
 		@appointment.immunizations.build
+		@health_profile = HealthProfile.find_by(patient_id: params[:patient_id])
+		# @health_profile = @health_profile.first
 	end
 		
 

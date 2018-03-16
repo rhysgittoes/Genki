@@ -1,7 +1,12 @@
-<% @relation.each do |r|%>
-<%#byebug%>
-  <% if r.patient_id == @patient.id && r.doctor_id == current_user.id %>
-    <% if @health_profile.patient_id == @patient.id %>
+
+<% if @relation.doctor_id != current_user.id %>
+You are not authorized!
+<%else%>
+<% if current_user.type == "Doctor" %>
+  <% if @relation.patient_id == @patient.id %>
+      <% if @health_profile == nil %>
+        <%= "No health profile is created yet!"%>
+        <%elsif @health_profile != nil && @health_profile.patient_id == @patient.id %>
         <div> 
           <%= render "appointments/form" %>
         </div>
@@ -10,11 +15,20 @@
         Height(m): <%= @health_profile.height %><br />
         BMI: <%= @health_profile.bmi %><br />
         Insurer: <%= @health_profile.insurer %><br />
-          <% if current_user.id == @patient_id %>
-          <%= link_to "Edit Profile", edit_patient_health_profile_path %><br />
-          <% end %>
-        <%end%>
-    <% else %>
-    <%= "You are not authorized to view this page!" %>
+            <% if current_user.id == @patient_id %>
+              <%= link_to "Edit Profile", edit_patient_health_profile_path %><br />
+            <% end %>
+      <%end%>
+  <%else%>
+ <%= "You are not authorized to view this page!"%>
+   <%end%>
   <%end%>
+<%end%>
+
+<%if @health_profile != nil && current_user.id == @health_profile.patient_id && current_user.type == "Patient"%>
+        Blood Type: <%= @health_profile.blood_type %><br />
+        Weight(kg): <%= @health_profile.weight %><br />
+        Height(m): <%= @health_profile.height %><br />
+        BMI: <%= @health_profile.bmi %><br />
+        Insurer: <%= @health_profile.insurer %><br />
 <%end%>
