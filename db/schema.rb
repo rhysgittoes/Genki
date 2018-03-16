@@ -10,12 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-<<<<<<< HEAD
-
-=======
->>>>>>> 64e8fb3698f16f16e6596391ff9a12057748340b
-ActiveRecord::Schema.define(version: 20180315093248) do
-
+ActiveRecord::Schema.define(version: 20180315153216) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -93,6 +88,17 @@ ActiveRecord::Schema.define(version: 20180315093248) do
     t.date "expiration_date"
     t.string "name"
     t.index ["appointment_id"], name: "index_immunizations_on_appointment_id"
+  end
+
+  create_table "notifications", force: :cascade do |t|
+    t.bigint "user_id"
+    t.string "text"
+    t.bigint "category"
+    t.bigint "user_type"
+    t.string "link"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.boolean "received", default: false
   end
 
   create_table "patients", force: :cascade do |t|

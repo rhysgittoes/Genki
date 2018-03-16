@@ -1,0 +1,4 @@
+<span><%= notification.text %></span>
+<span><%= link_to "View more here", url_for(Rails.application.routes.recognize_path(notification.link)) %></span>
+<% notification.delete %>
+<% notification.save %>
