@@ -33,15 +33,17 @@ gem 'jbuilder', '~> 2.5'
 # Use Capistrano for deployment
 # gem 'capistrano-rails', group: :development
 gem "clearance"
-
 gem "figaro"
-
 gem "selectize-rails"
+gem 'pry-rails'
+gem 'faker', :git => 'https://github.com/stympy/faker.git', :branch => 'master'
+gem 'byebug'
 
 gem "pundit"
 
 gem "cocoon"
 
+gem "font-awesome-rails"
 
 group :development, :test do
   # Call 'byebug' anywhere in the code to stop execution and get a debugger console

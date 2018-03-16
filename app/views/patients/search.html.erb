@@ -1,10 +1,17 @@
+<div style="margin-left: 50px; margin-right: 50px; margin-top: 2em;">
+   <div class="row">
+      <div class=col-12>
+         <h2><%="Search results for " + params[:search] %></h2>
+      </div>
+   </div>
+
 <table>
 <thead>
-  <th>First Name</th>
-  <th>Last Name</th>
-  <th>Admission ID</th>
-  <th>Email</th>
-  <th>Permission</th>
+  <th style="width:10rem;">First Name</th>
+  <th style="width:10rem;">Last Name</th>
+  <th style="width:10rem;">Admission ID</th>
+  <th style="width:10rem;">Email</th>
+  <th style="width:15rem;">Permission</th>
 </thead>
 <tbody>
 <% @result.each do |user| %>
@@ -14,15 +21,19 @@ Doctor result :
 <td><%= link_to user.last_name, doctor_path(user) %></td> 
 <td><%= link_to user.admission_id, doctor_path(user) %></td> 
 <td><%= user.email %></td> 
-<td><%= button_to "Give", relations_path, params: { relation: { doctor_id: user.id, patient_id: current_user.id}}, date:{ confirm: "Add doctor to your list?" } %></td>
 <td>
+<%= button_to "Give", relations_path, params: { relation: { doctor_id: user.id, patient_id: current_user.id}}, date:{ confirm: "Add doctor to your list?", disable_with: "Permission has been granted" } %>
 <% @relation.each do |r| %>
 <% if r.doctor_id == user.id %>
 <%= button_to "Destroy", relation_path(r), data: { confirm: 'Are you sure?' }, method: :delete %>
 <%end%>
-<%end%></td>
+<%end%>
+  
+</td>
  </tbody>
 <%end%>
 <%end%>
 </tbody>
 </table>
+
+</div>

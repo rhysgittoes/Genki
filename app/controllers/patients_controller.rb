@@ -1,10 +1,11 @@
 class PatientsController < ApplicationController
   
-  before_action :set_patient, except: [:new, :create, :index]
+  before_action :set_patient, except: [:new, :create]
+  before_action :verify_user, only: [:show, :edit, :update, :destroy]
   
   def index
     @patient = current_user
-    
+    # @health_profile = HealthProfile.find_by(patient_id: @patient.id)
   end
   
   def new
@@ -60,13 +61,21 @@ class PatientsController < ApplicationController
   end
   
   def set_patient
-    @patient = Patient.find_by_id(params[:id]) # temporary until signed_in verification has been set
-    
-    ## Wait until signed_in? method has been set 
-    # if signed_in? 
-    #   @patient= Patient.find(params[:id])
-    #   return @patient
-    # end
+    if signed_in?
+      if current_user.type == "Patient"
+        @patient = current_user
+      else
+       redirect_to doctors_path
+      end
+    else
+      redirect_to root_url
+    end
+  end
+  
+  def verify_user
+    if params[:id] != @patient.id
+      redirect_to patients_path
+    end
   end
     
 end

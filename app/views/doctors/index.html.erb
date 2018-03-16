@@ -1,12 +1,93 @@
-
-<div id="notification">
-  Notification:
+<div id="flash">
+    <% flash.each do |key, value| -%>
+      <div id="flash_<%= key %>"><%= value %></div>
+    <% end %>
 </div>
 
-<div id="search-form">
-    <%= form_tag doctors_search_path, method: :get do %>
-      <%= label_tag "search" %>
-      <%= text_field_tag "search", nil, list: "list" %>
-      <datalist id="list"></datalist>
-    <%end%>
-</div>
+<div style="margin-left: 50px; margin-right: 50px; margin-top: 2em;">
+  <div class="row">
+    <div class="col-md-8">
+      <h2>Your Past Appointments</h2>
+      <br>
+    </div>
+  </div>
+  
+  <div class="row">
+    <div class="col-8">
+
+      <% @appointments.order(date: :DESC).each do |a|%>
+        <div class="row">
+          <div class="appointment" data-aos-offset="0" data-aos-delay="200" data-aos="fade-up">
+            <div class="appointment_date_month">
+               <%=a.date.strftime("%B")%>
+            </div>
+
+            <div class="appointment_date_number">
+              <%=a.date.strftime("%d")%>
+            </div>
+          
+            <div class="appointment_details">
+              <p>
+                <%=a.patient.first_name + " " +a.patient.last_name%>
+                <br>
+                <%=a.symptoms.join(', ')%>
+                <br>
+                
+                Active Prescriptions:  
+                <% a.prescriptions.each do |b|%>
+                <%= b.medicine%>
+                <%end%>
+
+                <br>
+                Finished Prescriptions:
+              </p>
+            </div>
+          </div> 
+        </div>   
+      <%end%>
+    </div>
+
+    <div class="col-4">
+          <div id="notification">
+            Notification:
+            </div>
+          <div id="search-form">
+            <%= form_tag doctors_search_path, method: :get do %>
+              <%= label_tag "search" %>
+              <%= text_field_tag "search", nil, list: "list" %>
+              <datalist id="list"></datalist>
+              <%end%>
+          </div> 
+          <!-- <div>
+          <%= button_to "New Appointment", new_appointment_path, method: :get%>
+          </div>  -->
+    </div>
+
+  </div>
+
+
+<%#=button_to "Sign up as a Doctor",  new_doctor_path, method: :get, class: " btn btn-outline-success", id:"doctor_signup", form: {style: 'display:inline-block;'}%>
+<!-- %B -->
+<!-- map(&:inspect) -->
+
+
+<!-- strftime("%B %d, %Y") -->
+
+
+    <!--  <%#=@appointments.length%>
+        <%# @appointments.each do |a|%>
+          <div class="row">
+            <div class="col-md-2 appointment text-right">
+              <%#=a.date.strftime("%B %d")%> 
+            </div>
+            <div class="col-md-10 appointment" style="padding-left: 0px;">
+              <%# spaces = 11 - a.date.strftime("%B %d").to_s.length%>
+              <%#= raw("&nbsp;") * 100 %>
+              <%#=a.date.strftime("%B %d")%> 
+              <div class="hl"> </div> 
+              <%#=a.patient.first_name%>
+            </div>
+          </div>
+        <%#end%>
+      </div> 
+ -->

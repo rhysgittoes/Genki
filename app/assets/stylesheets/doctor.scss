@@ -1,0 +1,49 @@
+// .hl {
+//   display: inline-block;
+//   width: 5em;
+//   height: 0.3em;
+//   background-color: #2ecc71; 
+//   margin-bottom: 0.2em;
+//   border-radius: 5px;
+
+// }
+
+.appointment{
+  display: inline-block;
+  width: 100%;
+  height: 8em;
+  background:#f39c12;
+  // #a3a3a3
+
+  -webkit-box-shadow: 0 10px 6px -6px #777;
+     -moz-box-shadow: 0 10px 6px -6px #777;
+          box-shadow: 0 10px 6px -6px #777;
+  
+  // #ccc
+  color: #FFF;
+  margin-bottom: 2em;
+  padding: 0px;
+}
+
+.appointment_date_number{
+  display: inline-block;
+  width: 15%;
+  height: 100%;
+  text-align: center;
+  font-size: 5em;
+  padding-top: 12px;
+
+}
+.appointment_details{
+  margin-top: 1%;
+  display: inline-block;
+  height: 100%;
+  width:62.5%;
+  vertical-align: top;
+}
+.appointment_date_month{
+  position: absolute;
+  margin-top:1%;
+  text-align: center;
+  width: 15%;
+}

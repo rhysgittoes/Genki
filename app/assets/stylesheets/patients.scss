@@ -1,3 +1,116 @@
 // Place all the styles related to the patients controller here.
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
+#search_doctors{
+   width:80%;
+   border-radius: 5px;
+   font-size:1.5rem;
+   border-style: solid;
+   background-color: #ecf0f1;
+   padding-left: 1rem;
+   padding-right: 1rem;
+   -webkit-box-shadow: 0 5px 3px -3px #777;
+     -moz-box-shadow: 0 5px 3px -3px #777;
+          box-shadow: 0 5px 3px -3px #777;
+}
+
+
+#search_doctors_container{
+   text-align: center;
+   background-color: #1abc9c;
+   padding-top:2rem;
+   padding-bottom:2rem;
+     -webkit-box-shadow: 0 10px 6px -6px #777;
+     -moz-box-shadow: 0 10px 6px -6px #777;
+          box-shadow: 0 10px 6px -6px #777;
+   margin-right:1rem;
+}
+
+#patient_notification_container{
+   text-align: center;
+   background-color: #8e44ad;
+   -webkit-box-shadow: 0 10px 6px -6px #777;
+   -moz-box-shadow: 0 10px 6px -6px #777;
+          box-shadow: 0 10px 6px -6px #777;
+
+
+}
+
+#notifications_header{
+   padding-top: 5px;
+   padding-bottom: 5px;
+   color: #ecf0f1;
+   font-size: 2rem;
+}
+
+#notification_list{
+   padding-left: 1rem;
+   padding-right: 1rem;
+   text-align: left;
+   padding-bottom: 22rem;
+    color: #ecf0f1;
+}
+
+#active_prescrip_container{
+text-align: center;
+   background-color: #c0392b;
+
+     -webkit-box-shadow: 0 10px 6px -6px #777;
+     -moz-box-shadow: 0 10px 6px -6px #777;
+          box-shadow: 0 10px 6px -6px #777;
+   margin-right:1rem;
+
+}
+
+#active_prescrip_title{
+   padding-top: 5px;
+   padding-bottom: 5px;
+   font-size: 2rem; 
+   color: #ecf0f1;
+   text-align: left;
+   padding-left: 2rem;
+   padding-right: 2rem;
+}
+
+#active_prescription_item_list_container{
+   margin-left: 1rem;
+   margin-right: 1rem;
+}
+.active_prescription{
+   text-align: left;
+   padding-right: 1rem;
+   background-color: #ecf0f1;
+   margin-bottom: 1rem;
+   border-radius: 3px;
+   padding-left: 1rem;
+   padding-top: 0.5rem;
+   padding-bottom: 0.5rem;
+}
+
+#medicine_title{
+   font-size: 1.1rem;
+   margin-bottom: 0.5rem;
+}
+#prescription_exp{
+font-size: 1.1rem;
+}
+
+#dosage{
+   margin-bottom: 0.5rem;
+}
+#dosage_text{
+   height: 5rem;
+   overflow: auto;
+   font-size: 0.95rem;
+}
+
+#medicine_img{
+   height: 1.8rem;
+   width: 1.8rem;
+}
+
+#timer_img{
+
+    height: 1.8rem;
+   width: 1.8rem;
+}
