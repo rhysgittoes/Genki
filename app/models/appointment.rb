@@ -5,7 +5,7 @@ class Appointment < ApplicationRecord
 	has_many :immunizations
 	has_many :prescriptions
 	has_many :allergies
-	accepts_nested_attributes_for :illnesses, :immunizations, :allergies, :prescriptions
+	accepts_nested_attributes_for :illnesses, :immunizations, :allergies, :prescriptions, reject_if: :all_blank, allow_destroy: true
 	
 	before_create :set_date_to_today, :set_key
 	
@@ -16,7 +16,4 @@ class Appointment < ApplicationRecord
 	def set_key
 		self.key = SecureRandom.hex(4).upcase
 	end
-	
-
-	
 end

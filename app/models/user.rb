@@ -8,5 +8,4 @@ class User < ApplicationRecord
     @doctor = Doctor.where("first_name ILIKE :search OR last_name ILIKE :search OR admission_id ILIKE :search ", search: "#{search}") 
     @patient + @doctor
   end
-  
 end

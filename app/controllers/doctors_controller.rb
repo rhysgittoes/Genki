@@ -3,7 +3,9 @@ class DoctorsController < ApplicationController
    before_action :require_login, except: [:new, :create]
 
 def index
-  @doctor = current_user
+  @user = current_user
+  # @appointments = Appointment.where(doctor_id: current_user.id)
+  @appointments = current_user.appointments
 end
 
 def new
@@ -42,6 +44,7 @@ end
 
 def search
   @result = User.search(params[:search])
+  @health_profile = HealthProfile.where(patient_id: params[:patient_id])
 end
 
 

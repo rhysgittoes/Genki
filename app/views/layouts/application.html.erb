@@ -4,11 +4,11 @@
    <title>Genki</title>
     <%= csrf_meta_tags %>
     <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload' %>
-  <script src="https://code.jquery.com/jquery-3.1.1.min.js"></script>
     <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
    <link href="https://cdn.rawgit.com/michalsnik/aos/2.1.1/dist/aos.css" rel="stylesheet">
    <link href="https://cdnjs.cloudflare.com/ajax/libs/selectize.js/0.12.4/css/selectize.bootstrap2.css" type="text/css">
+
     <title>Genki</title>
 
   </head>
@@ -39,12 +39,22 @@
         <button class="btn btn-outline-success my-2 my-sm-0 navbtn" type="submit">Search</button> 
     </form> -->
     <% if signed_in? %>
-      <button class="nav_bar_name btn btn-outline-success navbtn">
+    <form method="get" action=
+    <% if current_user.type == "Doctor" %>
+    <%= "/doctors"%>
+    <% else %>
+    <%= "/patients"%>
+    <% end %>
+    
+    >
+      <button class="nav_bar_name btn btn-outline-success navbtn" type="submit"> 
         <%if current_user.type == "Doctor" %>
           <%= "Dr." %>
         <%end %>
         <%= current_user.first_name + " " +current_user.last_name%>
       </button>
+    </form>
+
       <%= button_to t(".sign_out"), sign_out_path, method: :delete, class: "btn btn-outline-success"  %>
     <% else -%>
       <!--Don't need that sign in butotn  <%= link_to t(".sign_in"), sign_in_path, class: " navbtn btn btn-outline-success" %> -->
@@ -64,6 +74,7 @@
         <% flash.each do |key, value| -%>
       <div id="flash_<%= key %>"><%=h value %></div>
       <% end %>
+    
 
 
 
@@ -186,7 +197,7 @@
 
 
 
-    
+    <script src="https://code.jquery.com/jquery-3.1.1.min.js"></script>
 
     <!-- <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script> -->
     <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
