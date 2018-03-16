@@ -38,7 +38,6 @@ gem "figaro"
 
 gem "selectize-rails"
 
-
 gem "pundit"
 
 gem "cocoon"
