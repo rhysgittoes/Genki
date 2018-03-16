@@ -50,6 +50,7 @@ class PatientsController < ApplicationController
 
   def search
     @result = Doctor.search(params[:search])
+    @relation = Relation.all
   end
   
   private
