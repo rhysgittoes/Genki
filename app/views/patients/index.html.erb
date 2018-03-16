@@ -27,7 +27,7 @@
                   <div id=active_prescription_item_list_container class="row">
                      <% current_user.prescriptions.each do |a|%>
                         <div class=col-6>
-                           <div class="active_prescription"  data-aos-offset="0" data-aos-delay="200" data-aos="fade-up">
+                           <div class="active_prescription"  data-aos-offset="0" data-aos-delay="100" data-aos="fade-up">
                               <%if Date.today < a.expiration_date %>
                                  
                                    
