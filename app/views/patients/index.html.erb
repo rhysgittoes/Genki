@@ -18,28 +18,70 @@
           <%end%>
          </div>
 
-         <div id= active_prescrip_container class= col-12 style="margin-top:2rem">
-            <h3 class=display-1 id = active_prescrip_title >Active Prescriptions</h3>
-            <br>
+         
+            <div id= active_prescrip_container style="margin-top:2rem">
+            <div class=col-12>
+               <br>
+               <h3 class=display-1 id = active_prescrip_title >Active Prescriptions</h3>
+               <br>
+                  <div id=active_prescription_item_list_container class="row">
+                     <% current_user.prescriptions.each do |a|%>
+                        <div class=col-6>
+                           <div class="active_prescription"  data-aos-offset="0" data-aos-delay="200" data-aos="fade-up">
+                              <%if Date.today < a.expiration_date %>
+                                 
+                                   
+                                 <div class = "row">
 
-               <div id=active_prescription_item_list_container class="row">
-                  <% current_user.prescriptions.each do |a|%>
-                     <div class=col-6>
-                        <div class="active_prescription"  data-aos-offset="0" data-aos-delay="200" data-aos="fade-up">
-                           <%if Date.today < a.expiration_date %>
-                           <div class=display-3 id=medicine_title>
-                              <%= a.medicine%>
+                                    <div class= col-6>
+                                       <div class=display-3 id=medicine_title>
+                                          <%=image_tag("/assets/medicine.png", id: "medicine_img")%>  
+                                          <%= a.medicine%>
+                                       </div>
+                                    </div>
+
+                              
+
+                                     <div class= col-6>
+                                       <div class=display-3 id=dosage style="font-size: 1.1rem;">
+                                          <%=image_tag("/assets/dosage.png", id: "medicine_img") + " Dosage"%>  
+                                          <div id=dosage_text style="margin-top: 0.1rem;" >
+                                             <%= a.dosage%>
+                                          </div>
+                                       </div>
+                                    </div>
+
+                                 </div>
+                                 <div class="row" style="margin-top: -5rem; margin-bottom: 0.5rem;">
+                                    <div class=col-6 >
+                                       <div class=display-3 id=prescription_exp>
+                                           <%=image_tag("/assets/doctor.png", id: "timer_img")%> 
+                                          <%= a.doctor.first_name%>
+                                       </div>
+                                    </div>
+                                 </div>
+                                 
+                                 <div class="row" style="margin-top: 0rem; margin-bottom:0rem; ">
+                                    <div class=col-6 >
+                                       <div class=display-3 id=prescription_exp>
+                                           <%=image_tag("/assets/timer.png", id: "timer_img")%> 
+                                          <%= a.expiration_date%>
+                                       </div>
+                                    </div>
+                                 </div>
+
+                                 
+
                            </div>
                         </div>
-                     </div>
 
-                     <%end%>      
-                  <%end%>
-               </div>
-
+                        <%end%>      
+                     <%end%>
+                  </div>
+            </div>
 
          </div>
-      </div>
+         </div>
    
 
 
