@@ -36,8 +36,7 @@ class HealthProfilesController < ApplicationController
 		@appointment.illnesses.build
 		@appointment.prescriptions.build
 		@appointment.immunizations.build
-		@health_profile = HealthProfile.where(patient_id: params[:patient_id])
-		@health_profile = @health_profile.first
+		@health_profile = HealthProfile.find(patient_id: params[:patient_id])
 		
 		@immunizations = @patient.immunizations.select(:name, :date, :expiration_date)
 		@allergies = @patient.allergies.select(:name, :severity, :status)
