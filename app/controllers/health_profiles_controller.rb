@@ -2,9 +2,6 @@ class HealthProfilesController < ApplicationController
 	before_action :require_login
 	
 	def index
-		@patient = Patient.find(params[:patient_id])
-		@relation = Relation.all
-		@health_profile = HealthProfile.all
 	end
 
 	def new
@@ -13,8 +10,9 @@ class HealthProfilesController < ApplicationController
 			if HealthProfile.where(:patient_id => current_user.id).count == 0
 				render "new"
 			else
-				redirect_to patient_health_profile_path(@patient, @patient.health_profile.id), notice: "A health profile already exists."
-			end 
+				flash[:notice] = "A health profile already exists. Click on Edit Health Profile to update your profile."
+				redirect_to patient_health_profile_path(@patient, @patient.health_profile.id)
+			end	
 	end
 
 	def create
@@ -30,14 +28,21 @@ class HealthProfilesController < ApplicationController
 	end
 
 	def show
+		@patient = Patient.find(params[:patient_id])
+		@relation = Relation.all
 		@appointment = Appointment.new
 		@appointment.allergies.build
 		@appointment.illnesses.build
 		@appointment.prescriptions.build
 		@appointment.immunizations.build
-		@patient = Patient.find(params[:patient_id])
 		@health_profile = HealthProfile.where(patient_id: params[:patient_id])
 		@health_profile = @health_profile.first
+		
+		@immunizations = @patient.immunizations.select(:name, :date, :expiration_date)
+		@allergies = @patient.allergies.select(:name, :severity, :status)
+		@prescriptions = @patient.prescriptions.select(:medicine, :dosage, :refills, :expiration_date)
+		@illnesses = @patient.illnesses.select(:name, :status)
+		@appointments = @patient.appointments.select(:date,:diagnosis, :referrals, :notes)
 	end
 		
 
