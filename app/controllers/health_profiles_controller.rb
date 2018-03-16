@@ -27,7 +27,6 @@ class HealthProfilesController < ApplicationController
 			redirect_to new_patient_health_profile, notice: "Create profile unsuccessful. Please try again."
 
 		end
-		authorize @user
 	end
 
 	def show

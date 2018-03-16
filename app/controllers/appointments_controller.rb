@@ -7,7 +7,6 @@ class AppointmentsController < ApplicationController
   end
   
   def create
-    authorize @doctor
     @appointment = current_user.appointments.new(appointment_params)
     @appointment.key = SecureRandom.hex(4).upcase
     @appointment.date = Date.today
