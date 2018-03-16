@@ -61,9 +61,7 @@ class AppointmentsController < ApplicationController
   
   def set_information
     @patient = Patient.find(params[:patient_id])
-    @health_profile = HealthProfile.where(patient_id: params[:patient_id])
-    #@#health_profile = HealthProfile.find(params[:id])
-
+    @health_profile = HealthProfile.find(params[:id])
   end
   
   def verify_user_type
