@@ -20,11 +20,11 @@
 
          <div id= active_prescrip_container style="margin-top:2rem;">
             <h3 class=display-1 id = active_prescrip_title >Active Prescriptions<h3>
-            <%=current_user.prescriptions.all[0].expiration_date%>
+            <%#=current_user.prescriptions.all[0].expiration_date%>
             <% current_user.prescriptions.each do |a|%>
-
-            
-            <%= a.medicine%>
+               <%if Date.today < a.expiration_date %>
+                  <%= a.medicine%>            
+               <%end%>      
             <%end%>
 
 
