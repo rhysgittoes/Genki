@@ -71,3 +71,22 @@ text-align: center;
    padding-left: 2rem;
    padding-right: 2rem;
 }
+
+#active_prescription_item_list_container{
+   margin-left: 1rem;
+   margin-right: 1rem;
+}
+.active_prescription{
+   text-align: left;
+   padding-right: 1rem;
+   background-color: #ecf0f1;
+   margin-bottom: 1rem;
+   border-radius: 3px;
+   padding-left: 1rem;
+   padding-top: 1rem;
+   padding-bottom: 1rem;
+}
+
+#medicine_title{
+   font-size: 1rem;
+}

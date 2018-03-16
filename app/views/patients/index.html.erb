@@ -18,16 +18,24 @@
           <%end%>
          </div>
 
-         <div id= active_prescrip_container style="margin-top:2rem;">
-            <h3 class=display-1 id = active_prescrip_title >Active Prescriptions<h3>
-            <div>
-               <% current_user.prescriptions.each do |a|%>
-                  <%if Date.today < a.expiration_date %>
-                  <%= a.medicine%>
+         <div id= active_prescrip_container class= col-12 style="margin-top:2rem">
+            <h3 class=display-1 id = active_prescrip_title >Active Prescriptions</h3>
+            <br>
 
-                  <%end%>      
-               <%end%>
-            </div>
+               <div id=active_prescription_item_list_container class="row">
+                  <% current_user.prescriptions.each do |a|%>
+                     <div class=col-6>
+                        <div class="active_prescription"  data-aos-offset="0" data-aos-delay="200" data-aos="fade-up">
+                           <%if Date.today < a.expiration_date %>
+                           <div class=display-3 id=medicine_title>
+                              <%= a.medicine%>
+                           </div>
+                        </div>
+                     </div>
+
+                     <%end%>      
+                  <%end%>
+               </div>
 
 
          </div>
