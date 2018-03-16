@@ -48,6 +48,7 @@ end
 
 def search
   @result = User.search(params[:search])
+  @health_profile = HealthProfile.where(patient_id: params[:patient_id])
 end
 
 

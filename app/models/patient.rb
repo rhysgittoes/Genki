@@ -8,6 +8,7 @@ class Patient < User
 	has_many :prescriptions
   
   scope :search, ->(search) { where("first_name ILIKE :search OR last_name ILIKE :search OR admission_id ILIKE :search ", search: "#{search}")}
+
   
 end
 
