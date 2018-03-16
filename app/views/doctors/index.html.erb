@@ -28,7 +28,6 @@
           
             <div class="appointment_details">
               <p>
-                <span class="glyphicon glyphicon-search"></span>
                 <%=a.patient.first_name + " " +a.patient.last_name%>
                 <br>
                 <%=a.symptoms.join(', ')%>
@@ -47,6 +46,7 @@
         </div>   
       <%end%>
     </div>
+
     <div class="col-4">
           <div id="notification">
             Notification:
