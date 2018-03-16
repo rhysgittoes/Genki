@@ -25,35 +25,59 @@
 # end 
 
 
+# create_table "users", force: :cascade do |t|
+#     t.datetime "created_at", null: false
+#     t.datetime "updated_at", null: false
+#     t.string "email", null: false
+#     t.string "encrypted_password", limit: 128, null: false
+#     t.string "confirmation_token", limit: 128
+#     t.string "remember_token", limit: 128, null: false
+#     t.string "type"
+#     t.string "first_name"
+#     t.string "last_name"
+#     t.string "gender"
+#     t.date "birthday"
+#     t.string "language"
+#     t.string "city"
+#     t.string "country"
+#     t.string "admission_id"
+#     t.string "certification"
+#     t.integer "experience"
+#     t.index ["email"], name: "index_users_on_email"
+#     t.index ["remember_token"], name: "index_users_on_remember_token"
+#   end
+
 
 
 require 'faker'
-# appointment = {}
-# ActiveRecord::Base.transaction do
-#   15.times do 
-#     appointment['date'] = Faker::Date.between(400.days.ago, Date.today)
-#     appointment['symptoms'] = Faker::Lorem.words(5)
-#     appointment['diagnosis'] = Faker::Lorem.paragraph(2, true, 8)
-#     appointment['referrals'] = Faker::Lorem.sentence(3, true, 4) #=> "Accusantium tantillus dolorem timor.
-#     appointment['notes'] = Faker::Lorem.paragraph(3, true, 10)
-#     appointment['doctor_id'] = 12
-#     appointment['patient_id'] = 13
 
-#     Appointment.create(appointment)
-#   end
-# end
+
+
+appointment = {}
+ActiveRecord::Base.transaction do
+  15.times do 
+    appointment['date'] = Faker::Date.between(400.days.ago, Date.today)
+    appointment['symptoms'] = Faker::Lorem.words(5)
+    appointment['diagnosis'] = Faker::Lorem.paragraph(2, true, 8)
+    appointment['referrals'] = Faker::Lorem.sentence(3, true, 4) 
+    appointment['notes'] = Faker::Lorem.paragraph(3, true, 10)
+    appointment['doctor_id'] = 1
+    appointment['patient_id'] = 2
+    Appointment.create(appointment)
+  end
+end
 
 
 prescriptions = {}
 ActiveRecord::Base.transaction do 
   15.times do 
     prescriptions['medicine'] = Faker::Lorem.word #=> "repellendus"
-    prescriptions['dosage'] = Faker::Lorem.sentence(3) #=> "Commodi qui minus deserunt sed vero quia."
+    prescriptions['dosage'] = Faker::Lorem.sentence(3) 
     prescriptions['refills'] = "none"
     prescriptions['expiration_date'] = Faker::Date.forward(14)
-    prescriptions['patient_id'] = 13
-    prescriptions['appointment_id'] = Faker::Number.between(16, 32) #=> 7
-    prescriptions['doctor_id'] = 12
+    prescriptions['patient_id'] = 2
+    prescriptions['appointment_id'] = Faker::Number.between(0, 16)
+    prescriptions['doctor_id'] = 1
 
     Prescription.create(prescriptions)
   end
