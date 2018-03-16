@@ -1,10 +1,49 @@
 <div style="margin-left: 50px; margin-right: 50px; margin-top: 2em;">
+   
    <div class="row">
       <div class=col-12>
          <h2><%="Search results for " + params[:search] %></h2>
       </div>
    </div>
+  
+   <div class=col-12>
+       <div class="row">
+         <% @result.each do |user| %>
+            <div class=col-4>
+               <div class=search_result_containter>
+                  <%if user.type == "Doctor"%>
+                    <div class=display-3 style="font-size: 2rem;"> <%= link_to user.first_name, doctor_path(user) %>
+                    <%= link_to user.last_name, doctor_path(user) %> </div> 
+                    <br>22
+                    <div>Admission id: <%= link_to user.admission_id, doctor_path(user) %> </div> 
+                    <div>Email: <%= user.email %> </div> 
+                    <br>
+                    <div><%= button_to "Allow Access", relations_path, params: { relation: { doctor_id: user.id, patient_id: current_user.id}}, date:{ confirm: "Add doctor to your list?" }, class: "btn btn-outline-success"%> </div>
+                        <% @relation.each do |r| %>
+                           <% if r.doctor_id == user %>
+                        <%end%>
+                        <%= button_to "Destroy", relation_path(r), data: { confirm: 'Are you sure?' }, method: :delete %>
+                        <%end%>
+                  <%end%>
+               </div>
+            </div>
+         <%end%>
+      </div>
+   </div>
 
+</div>
+
+
+
+<!-- <br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
 <table>
 <thead>
   <th style="width:10rem;">First Name</th>
@@ -16,7 +55,6 @@
 <tbody>
 <% @result.each do |user| %>
 <%if user.type == "Doctor"%>
-Doctor result :
 <td><%= link_to user.first_name, doctor_path(user) %></td>
 <td><%= link_to user.last_name, doctor_path(user) %></td> 
 <td><%= link_to user.admission_id, doctor_path(user) %></td> 
@@ -34,4 +72,4 @@ Doctor result :
 </tbody>
 </table>
 
-</div>
+ -->
