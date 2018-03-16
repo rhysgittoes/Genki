@@ -36,7 +36,8 @@ class HealthProfilesController < ApplicationController
 		@appointment.prescriptions.build
 		@appointment.immunizations.build
 		@patient = Patient.find(params[:patient_id])
-		@health_profile = HealthProfile.find(params[:id])
+		@health_profile = HealthProfile.where(patient_id: params[:patient_id])
+		@health_profile = @health_profile.first
 	end
 		
 
