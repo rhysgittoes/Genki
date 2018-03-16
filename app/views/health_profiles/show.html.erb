@@ -1,11 +1,20 @@
-<div> 
-  <%= render "appointments/form" %>
-</div>
-
-
-Blood Type: <%= @health_profile.blood_type %><br />
-Weight(kg): <%= @health_profile.weight %><br />
-Height(m): <%= @health_profile.height %><br />
-BMI: <%= @health_profile.bmi %><br />
-Insurer: <%= @health_profile.insurer %><br />
-<%= link_to "Edit Profile", edit_patient_health_profile_path %><br />
+<% @relation.each do |r|%>
+<%#byebug%>
+  <% if r.patient_id == @patient.id && r.doctor_id == current_user.id %>
+    <% if @health_profile.patient_id == @patient.id %>
+        <div> 
+          <%= render "appointments/form" %>
+        </div>
+        Blood Type: <%= @health_profile.blood_type %><br />
+        Weight(kg): <%= @health_profile.weight %><br />
+        Height(m): <%= @health_profile.height %><br />
+        BMI: <%= @health_profile.bmi %><br />
+        Insurer: <%= @health_profile.insurer %><br />
+          <% if current_user.id == @patient_id %>
+          <%= link_to "Edit Profile", edit_patient_health_profile_path %><br />
+          <% end %>
+        <%end%>
+    <% else %>
+    <%= "You are not authorized to view this page!" %>
+  <%end%>
+<%end%>
