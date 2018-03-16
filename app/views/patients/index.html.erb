@@ -85,27 +85,37 @@
    
 
 
-<div>
+<!-- <div>
   <h4>Your Notifications</h4>
-  <% if !@patient.notifications.empty? %>
+  <%# if !@patient.notifications.empty? %>
     <div>
-      <% @patient.notifications.each do |notification| %>
+      <%# @patient.notifications.each do |notification| %>
         <p>
-          <%= render "layouts/notification", notification: notification %>
+          <%#= render "layouts/notification", notification: notification %>
         </p>
-      <% end %>
+      <%# end %>
     </div>
-  <% else %>
+  <%# else %>
     You have no new notifications.
-  <% end %>
-</div>
+  <%# end %>
+</div> -->
 
 
       <div class=col-4>
          <div id = patient_notification_container>
             <h3 id = notifications_header class=display-1>Notifications</h3>
             <div id = notification_list>
-               Notifications here
+              <% if !@patient.notifications.empty? %>
+                <div>
+                  <% @patient.notifications.each do |notification| %>
+                    <p>
+                      <%= render "layouts/notification", notification: notification %>
+                    </p>
+                  <% end %>
+               </div>
+               <% else %>
+                   You have no new notifications.
+               <% end %> 
             </div>          
          </div>
       </div>
