@@ -8,12 +8,11 @@ class AppointmentsController < ApplicationController
   
   def create
     @appointment = current_user.appointments.new(appointment_params)
-    @appointment.key = SecureRandom.hex(4).upcase
-    @appointment.date = Date.today
-    
-    set_associations(@appointment, @patient)
 
+    set_associations(@appointment, @patient)
+    
     if @appointment.save
+      Notification.create_appointment_notifications(@appointment, @health_profile)
       flash[:notice] = "Your appointment has been saved."
       redirect_to patient_health_profile_path(@patient, @health_profile)
     else

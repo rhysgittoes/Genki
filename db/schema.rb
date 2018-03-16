@@ -90,6 +90,17 @@ ActiveRecord::Schema.define(version: 20180315093248) do
     t.index ["appointment_id"], name: "index_immunizations_on_appointment_id"
   end
 
+  create_table "notifications", force: :cascade do |t|
+    t.bigint "user_id"
+    t.string "text"
+    t.bigint "category"
+    t.bigint "user_type"
+    t.string "link"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.boolean "received", default: false
+  end
+
   create_table "patients", force: :cascade do |t|
     t.string "first_name"
     t.string "last_name"
