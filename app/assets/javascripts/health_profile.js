@@ -5,6 +5,33 @@ document.addEventListener('turbolinks:load', function(){
      duration: 1200,
    })
    
+     $('#symptoms-input').selectize({
+    plugins: ['restore_on_backspace', 'remove_button'],
+    delimiter: ',',
+    persist: false,
+    placeholder: "Add a symptom...",
+    create: function(input) {
+      return {
+        value: input,
+        text: input
+      }
+    }
+  })
+    $('#referrals-input').selectize({
+    plugins: ['restore_on_backspace', 'remove_button'],
+    delimiter: ',',
+    persist: false,
+    placeholder: "Add a referral...",
+    create: function(input) {
+      return {
+        value: input,
+        text: input
+      }
+    }
+  })
+  
+  
+   
    $('#appointment-fields-toggle').click(function(){
        $('#appointment-fields-container').toggle()
        $(this).toggleClass("fa-angle-up fa-angle-down ")
