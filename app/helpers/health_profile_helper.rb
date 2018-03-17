@@ -5,7 +5,7 @@ module HealthProfileHelper
   end
 
   def allowed_to_view_profile?(current_user, relation, patient)
-    current_user.type == "Doctor" && relation.patient_id == patient.id && relation.doctor_id == current_user.id
+    current_user.type == "Doctor" && relation.patient_id == patient.id && relation.doctor_id == current_user.id && relation != nil
   end
 
   def has_health_profile?(health_profile)

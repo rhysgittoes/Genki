@@ -29,7 +29,7 @@ class HealthProfilesController < ApplicationController
 
 	def show
 		@patient = Patient.find(params[:patient_id])
-		@relation = Relation.find_by(patient_id: params[:patient_id])
+		@relation = Relation.find_by(patient_id: @patient, doctor_id: current_user)
 		@appointment = Appointment.new
 		build_associations(@appointment)
 		@health_profile = HealthProfile.find_by(patient_id: params[:patient_id])
