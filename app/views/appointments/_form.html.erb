@@ -1,9 +1,13 @@
 <%#= form_for @appointment do |f| %>
 <%= form_for @appointment do |f| %>
+<h2>Patient Appointment Form</h2>
 <div>
+  <h4>
+    General  
+    <i class="fas fa-angle-up" id ="appointment-fields-toggle"></i> 
+  </h4>
 
-  <h4>Appointment</h4>  
-  
+  <div id = "appointment-fields-container">  
     <div>
       <%= f.label :Symptoms %>
       <%= f.text_field :symptoms, id: "symptoms-input" %>
@@ -23,47 +27,55 @@
       <%= f.label :Referrals %>
       <%= f.text_area :referrals, id: "referrals-input" %>
     </div>
-    
+  </div>
 </div>
 
 <div>
-  
-  <h4>Illnesses</h4>
-  <div>
-    <%= f.fields_for :illnesses do |illness| %>
-      <%= render "appointments/illness_fields", f: illness %>
-    <% end %>
+  <h4>
+    Illnesses
+    <i class="fas fa-angle-down" id ="illness-fields-toggle"></i>
+  </h4>
+  <div id ="illness-fields-container">
+    <div>
+      <%= f.fields_for :illnesses do |illness| %>
+        <%= render "appointments/illness_fields", f: illness %>
+      <% end %>
+    </div>
+    <div>
+      <%= link_to_add_association '+ Illness', f, :illnesses, partial: "appointments/illness_fields" %>
+    </div>
   </div>
-  <div>
-    <%= link_to_add_association '+ Illness', f, :illnesses, partial: "appointments/illness_fields" %>
-  </div>
-  
-</div>
-
-<br>
-
-<div>
-  
-  <h4>Allergies</h4>
-  
-  <div>
-  <%= f.fields_for :allergies do |allergy| %>
-    <%= render "appointments/allergy_fields", f: allergy %>
-    <% end %>
-  </div>
-  <div>
-    <%= link_to_add_association '+ Allergy', f, :allergies, partial: "appointments/allergy_fields" %>
-  </div>
-  
 </div>
 
 <br>
 
 <div>
   
-  <h4>Immunizations</h4>
+  <h4>
+    Allergies
+    <i class="fas fa-angle-down" id ="allergy-fields-toggle"></i>
+  </h4>
+  <div id ="allergy-fields-container">
+    <div>
+    <%= f.fields_for :allergies do |allergy| %>
+      <%= render "appointments/allergy_fields", f: allergy %>
+      <% end %>
+    </div>
+    <div>
+      <%= link_to_add_association '+ Allergy', f, :allergies, partial: "appointments/allergy_fields" %>
+    </div>
+  </div>
+</div>
+
+<br>
+
+<div>
   
-  <div>
+  <h4>
+    Immunizations
+    <i class="fas fa-angle-down" id ="immunization-fields-toggle"></i>
+  </h4>
+  <div id ="immunization-fields-container">
     <div>
       <%= f.fields_for :immunizations do |immunization| %>
         <%= render "appointments/immunization_fields", f: immunization %>
@@ -72,7 +84,6 @@
     <div>
     <%= link_to_add_association '+ Immunization', f, :immunizations, partial: "appointments/immunization_fields" %>
     </div>
-    
   </div>
   
 </div>
@@ -80,18 +91,20 @@
 <br>
 
 <div>
-  
-  <h4>Prescriptions</h4>
-  
-  <div>
-    <%= f.fields_for :prescriptions do |prescription| %>
-     <%= render "appointments/prescription_fields", f: prescription %>
-    <% end %>
+  <h4>
+    Prescriptions
+    <i class="fas fa-angle-down" id ="prescription-fields-toggle"></i>
+  </h4>
+  <div id = "prescription-fields-container">
+    <div>
+      <%= f.fields_for :prescriptions do |prescription| %>
+       <%= render "appointments/prescription_fields", f: prescription %>
+      <% end %>
+    </div>
+    <div>
+      <%= link_to_add_association '+ Prescription', f, :prescriptions, partial: "appointments/prescription_fields" %>
+    </div>
   </div>
-  <div>
-    <%= link_to_add_association '+ Prescription', f, :prescriptions, partial: "appointments/prescription_fields" %>
-  </div>
-  
 </div>
 
   <%= hidden_field_tag(:patient_id, params[:patient_id]) %>
