@@ -8,6 +8,8 @@
    <div class=col-12>
       <div class="row">
          User result :<%= @result.size %>
+         <br>
+         <%if @result.present? %>
          <%@result.each_with_index do |user, index| %>
              <% if user.type == "Doctor" %>
              <% end %>
@@ -55,4 +57,7 @@
    <%end%>
    </tbody>
    </table>
+   <%else%>
+   No result found!
+   <%end%>
 </div>

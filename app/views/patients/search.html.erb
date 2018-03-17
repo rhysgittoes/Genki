@@ -5,6 +5,7 @@
       </div>
    </div>
 
+<% if @result.present? %>
 <table>
 <thead>
   <th style="width:10rem;">First Name</th>
@@ -23,17 +24,15 @@ Doctor result :
 <td><%= user.email %></td> 
 <td>
 
-<%# @relation.each do |r|%>
-<%# if r.doctor_id != user.id && r.patient_id != current_user.id %>
-<% if relation_exist_and_equal_to_patient?(@relation, current_user) %>
-<%= button_to "Give", relations_path, params: { relation: { doctor_id: user.id, patient_id: current_user.id}}, date:{ confirm: "Add doctor to your list?", disable_with: "Permission has been granted" } %>
+<% if @relation.empty? %>
+<%= button_to "Give", relations_path, params: { relation: { doctor_id: user.id, patient_id: current_user.id}}, date:{ confirm: "Add doctor to your list?" } %>
+<%end%>
+<% @relation.each do |r| %>
+<% if @relation != nil && r.doctor_id == user.id %>
+<%= button_to "Destroy", relation_path(r), data: { confirm: 'Are you sure?' }, method: :delete %>
+<%end%>
+<%end%>
 
-<%end%>
-<%#end%>
-<% if @relation != nil && @relation.doctor_id == user.id %>
-<%= button_to "Destroy", relation_path(@relation.id), data: { confirm: 'Are you sure?' }, method: :delete %>
-<%end%>
-<%#end%>
   
 </td>
  </tbody>
@@ -41,5 +40,7 @@ Doctor result :
 <%end%>
 </tbody>
 </table>
-
+<%else%>
+No result found!
+<%end%>
 </div>
