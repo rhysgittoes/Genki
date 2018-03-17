@@ -8,3 +8,10 @@
 #prescription-fields-container {
     display: none;
 }
+
+#illness-fields-toggle, 
+#immunization-fields-toggle, 
+#allergy-fields-toggle, 
+#prescription-fields-toggle {
+    cursor: pointer;
+}
