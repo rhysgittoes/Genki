@@ -5,7 +5,6 @@ class HealthProfilesController < ApplicationController
 	end
 
 	def new
-		
 		@patient = Patient.find(params[:patient_id])
 		@health_profile = HealthProfile.new
 			if HealthProfile.where(:patient_id => current_user.id).count == 0
@@ -30,13 +29,11 @@ class HealthProfilesController < ApplicationController
 
 	def show
 		@patient = Patient.find(params[:patient_id])
-		@relation = Relation.all
+		@relation = Relation.find_by(patient_id: @patient, doctor_id: current_user)
 		@appointment = Appointment.new
-		
 		build_associations(@appointment)
-
+		@health_profile = HealthProfile.find_by(patient_id: params[:patient_id])
 		@health_profile = @patient.health_profile
-		
 		@immunizations = @patient.immunizations.select(:name, :date, :expiration_date)
 		@allergies = @patient.allergies.select(:name, :severity, :status)
 		@prescriptions = @patient.prescriptions.select(:medicine, :dosage, :refills, :expiration_date)
