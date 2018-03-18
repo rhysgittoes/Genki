@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20180315153216) do
+ActiveRecord::Schema.define(version: 20180317050852) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -24,6 +24,7 @@ ActiveRecord::Schema.define(version: 20180315153216) do
     t.datetime "updated_at", null: false
     t.bigint "patient_id"
     t.string "name"
+    t.string "notes"
     t.index ["appointment_id"], name: "index_allergies_on_appointment_id"
   end
 
@@ -76,6 +77,7 @@ ActiveRecord::Schema.define(version: 20180315153216) do
     t.datetime "updated_at", null: false
     t.bigint "patient_id"
     t.string "name"
+    t.string "notes"
     t.index ["appointment_id"], name: "index_illnesses_on_appointment_id"
   end
 
@@ -86,6 +88,7 @@ ActiveRecord::Schema.define(version: 20180315153216) do
     t.datetime "updated_at", null: false
     t.bigint "patient_id"
     t.string "name"
+    t.string "notes"
     t.date "expiration_date"
     t.index ["appointment_id"], name: "index_immunizations_on_appointment_id"
   end
@@ -125,6 +128,7 @@ ActiveRecord::Schema.define(version: 20180315153216) do
     t.bigint "patient_id"
     t.bigint "appointment_id"
     t.bigint "doctor_id"
+    t.string "notes"
     t.index ["appointment_id"], name: "index_prescriptions_on_appointment_id"
   end
 
