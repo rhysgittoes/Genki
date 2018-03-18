@@ -41,6 +41,14 @@
                            <%= button_to "Destroy", relation_path(r), data: { confirm: 'Are you sure?' }, method: :delete %>
                            <%end%>
                      <%end%>
+                      <% if user.type == "Patient" %>
+                        <div class=display-3 style="font-size: 2rem;"> 
+                          <%= user.first_name %>  
+                          <%= user.last_name%>
+                        </div>
+                        <div>Admission id: <%= user.admission_id %> </div> 
+                        <div>Email: <%= user.email %> </div> 
+                     <%end%>
                   </div>
                </div>
             <%end%>
