@@ -37,70 +37,6 @@
         <a class="nav-link"  href="#">Link</a>
       </li>
     </ul>
-
-    <!-- <form class="form-inline my-2 my-lg-0">
-    Search thingy<input class="form-control mr-sm-2" type="search" placeholder="Search" aria-label="Search">     
-        <button class="btn btn-outline-success my-2 my-sm-0 navbtn" type="submit">Search</button> 
-    </form> -->
-    <% if signed_in? %>
-    <form method="get" action=
-    <% if current_user.type == "Doctor" %>
-    <%= "/doctors"%>
-    <% else %>
-    <%= "/patients"%>
-    <% end %>
-    
-    >
-      <button class="nav_bar_name btn btn-outline-success navbtn" type="submit"> 
-        <%if current_user.type == "Doctor" %>
-          <%= "Dr." %>
-        <%end %>
-        <%= current_user.first_name + " " +current_user.last_name%>
-      </button>
-    </form>
-      <%= button_to t(".sign_out"), sign_out_path, method: :delete, class: "btn btn-outline-success"  %>
-    <% else -%>
-      <!--Don't need that sign in butotn  <%= link_to t(".sign_in"), sign_in_path, class: " navbtn btn btn-outline-success" %> -->
-      <button type="button" class="btn btn-outline-success navbtn" id="sign_in_btn">Sign in</button>
-      <button type="button" class="btn btn-outline-success navbtn" id="sign_up_btn">Sign Up</button>
-    <% end -%>
-
-    <%# if Clearance.configuration.allow_sign_up? %>
-      <%#= link_to t(".Get Started"), sign_up_path %>
-      <!-- <button type="button" class="btn btn-outline-success" id="sign_up_btn">Sign Up</button> -->
-    <%# end %>    
-    </div>
-  </div>
-</nav>
-
- <div id="flash">
-        <% flash.each do |key, value| -%>
-      <div id="flash_<%= key %>"><%=h value %></div>
-      <% end %>
-    
-
-<!-- Modal for Sign up DOES NOT WORK -->
-<div class="modal fade" id="sign_up_modal" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
-  <div class="modal-dialog modal-dialog-centered" role="document">
-    <div class="modal-content">
-      <div class="modal-header">
-       
-    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
-      <span class="navbar-toggler-icon"></span>
-    </button>
-  
-    <div class="collapse navbar-collapse" id="navbarSupportedContent">
-      <ul class="navbar-nav mr-auto">
-        <li class="nav-item">
-          <a class="nav-link" href="#">Link<span class="sr-only">(current)</span></a>
-        </li>
-        <li class="nav-item">
-          <a class="nav-link" href="#">Link</a>
-        </li>       
-        <li class="nav-item">
-          <a class="nav-link"  href="#">Link</a>
-        </li>
-      </ul>
   
       <!-- <form class="form-inline my-2 my-lg-0">
       Search thingy<input class="form-control mr-sm-2" type="search" placeholder="Search" aria-label="Search">     
@@ -137,13 +73,6 @@
       </div>
     </div>
   </nav>
-  
-   <div id="flash">
-          <% flash.each do |key, value| -%>
-        <div id="flash_<%= key %>"><%=h value %></div>
-        <% end %>
-      
-  
   
   
   <!-- Modal for Sign up DOES NOT WORK -->
