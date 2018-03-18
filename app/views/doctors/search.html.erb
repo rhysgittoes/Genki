@@ -5,6 +5,20 @@
       </div>
    </div>
 
+   <div class=col-12>
+      <div class="row">
+         User result :<%= @result.size %>
+         <br>
+         <%if @result.present? %>
+         <%@result.each_with_index do |user, index| %>
+             <% if user.type == "Doctor" %>
+             <% end %>
+         <%end%>
+      </div>
+   </div>
+
+
+
    <table>
    <thead>
      <th>No.</th>
@@ -14,7 +28,6 @@
      <th>Email</th>
    </thead>
    <tbody>
-   User result :<%= @result.size %>
    <% @result.each_with_index do |user, index| %>
 
    <% if user.type == "Doctor" %>
@@ -44,4 +57,7 @@
    <%end%>
    </tbody>
    </table>
+   <%else%>
+   No result found!
+   <%end%>
 </div>

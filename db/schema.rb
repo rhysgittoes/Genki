@@ -85,8 +85,8 @@ ActiveRecord::Schema.define(version: 20180315153216) do
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.bigint "patient_id"
-    t.date "expiration_date"
     t.string "name"
+    t.date "expiration_date"
     t.index ["appointment_id"], name: "index_immunizations_on_appointment_id"
   end
 

@@ -1,10 +1,77 @@
-<div> 
-  <%= render "appointments/form" %>
-</div>
+<%if is_doctor?(current_user) %>
+  <%if @relation != nil %>
+    <%# if @relation == nil %>
+    <%if @relation.doctor_id == current_user.id%>
+      <% if allowed_to_view_profile?(current_user, @relation, @patient) %>
+        <% if has_health_profile?(@health_profile) %>
+        <div> 
+          <%= render "appointments/form" %>
+        </div>
+        Blood Type: <%= @health_profile.blood_type %><br />
+        Weight(kg): <%= @health_profile.weight %><br />
+        Height(m): <%= @health_profile.height %><br />
+        BMI: <%= @health_profile.bmi %><br />
+        Insurer: <%= @health_profile.insurer %><br />
+        <% else %>
+        <p>No health profile is created yet</p>
+        <% end %>
+      <%end%>
+    <%end%>
+    <%#end%>
+  <%else%>
+    <p>You are not authorized to view this page!</p>
+  <% end %>
+<%end%>
+
+
+
+
+
+
+
+<%if patient_to_view_profile?(current_user, @health_profile) %>
+First Name: <%= @patient.first_name %><br />
+Last Name: <%= @patient.last_name %><br />
+Gender: <%= @patient.gender %><br />
+Birthday: <%= @patient.birthday %><br />
 
 Blood Type: <%= @health_profile.blood_type %><br />
 Weight(kg): <%= @health_profile.weight %><br />
 Height(m): <%= @health_profile.height %><br />
 BMI: <%= @health_profile.bmi %><br />
 Insurer: <%= @health_profile.insurer %><br />
-<%= link_to "Edit Profile", edit_patient_health_profile_path %><br />
+<%= link_to "Edit Health Profile", edit_patient_health_profile_path %><br />
+<br>
+Immunizations:<br />
+<% @immunizations.each do |i| %>
+Type: <%= i.name %><br />
+Expires: <%= i.expiration_date %><br />
+<% end %><br />
+<br>
+Allergies:<br />
+<% @allergies.each do |a| %>
+Type: <%= a.name %><br />
+Severity: <%= a.severity %><br />
+<% end %><br />
+<br>
+Prescriptions:<br />
+<% @prescriptions.each do |p| %>
+Name: <%= p.medicine %><br />
+Dosage: <%= p.dosage %><br />
+Refills: <%= p.refills %><br />
+Expires: <%= p.expiration_date %><br />
+<% end %><br />
+<br>
+Past illnesses:<br />
+<% @illnesses.each do |i| %>
+Name: <%= i.name %><br />
+<% end %><br />
+<br>
+Past appointments:<br />
+<% @appointments.each do |a| %>
+Date: <%= a.date %><br />
+Diagnosis: <%= a.diagnosis %><br />
+Referrals: <%= a.referrals %><br />
+Notes: <%= a.notes %>
+<% end %>
+<%end%>

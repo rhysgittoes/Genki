@@ -8,25 +8,29 @@
   
    <div class=col-12>
        <div class="row">
-         <% @result.each do |user| %>
-            <div class=col-4>
-               <div class=search_result_containter>
-                  <%if user.type == "Doctor"%>
-                    <div class=display-3 style="font-size: 2rem;"> <%= link_to user.first_name, doctor_path(user) %>
-                    <%= link_to user.last_name, doctor_path(user) %> </div> 
-                    <br>22
-                    <div>Admission id: <%= link_to user.admission_id, doctor_path(user) %> </div> 
-                    <div>Email: <%= user.email %> </div> 
-                    <br>
-                    <div><%= button_to "Allow Access", relations_path, params: { relation: { doctor_id: user.id, patient_id: current_user.id}}, date:{ confirm: "Add doctor to your list?" }, class: "btn btn-outline-success"%> </div>
-                        <% @relation.each do |r| %>
-                           <% if r.doctor_id == user %>
-                        <%end%>
-                        <%= button_to "Destroy", relation_path(r), data: { confirm: 'Are you sure?' }, method: :delete %>
-                        <%end%>
-                  <%end%>
+         <%if @result.present?%>
+            <% @result.each do |user| %>
+               <div class=col-4>
+                  <div class=search_result_containter>     
+                     <%if user.type == "Doctor"%>
+                       <div class=display-3 style="font-size: 2rem;"> <%= link_to user.first_name, doctor_path(user) %>
+                       <%= link_to user.last_name, doctor_path(user) %> </div> 
+                       <br>22
+                       <div>Admission id: <%= link_to user.admission_id, doctor_path(user) %> </div> 
+                       <div>Email: <%= user.email %> </div> 
+                       <br>
+                       <div><%= button_to "Allow Access", relations_path, params: { relation: { doctor_id: user.id, patient_id: current_user.id}}, date:{ confirm: "Add doctor to your list?" }, class: "btn btn-outline-success"%> </div>
+                           <% @relation.each do |r| %>
+                              <% if r.doctor_id == user %>
+                           <%end%>
+                           <%= button_to "Destroy", relation_path(r), data: { confirm: 'Are you sure?' }, method: :delete %>
+                           <%end%>
+                     <%end%>
+                  </div>
                </div>
-            </div>
+            <%end%>
+         <%else%>
+            No Results found!
          <%end%>
       </div>
    </div>
@@ -34,42 +38,3 @@
 </div>
 
 
-
-<!-- <br>
-<br>
-<br>
-<br>
-<br>
-<br>
-<br>
-<br>
-<br>
-<table>
-<thead>
-  <th style="width:10rem;">First Name</th>
-  <th style="width:10rem;">Last Name</th>
-  <th style="width:10rem;">Admission ID</th>
-  <th style="width:10rem;">Email</th>
-  <th style="width:15rem;">Permission</th>
-</thead>
-<tbody>
-<% @result.each do |user| %>
-<%if user.type == "Doctor"%>
-<td><%= link_to user.first_name, doctor_path(user) %></td>
-<td><%= link_to user.last_name, doctor_path(user) %></td> 
-<td><%= link_to user.admission_id, doctor_path(user) %></td> 
-<td><%= user.email %></td> 
-<td><%= button_to "Give", relations_path, params: { relation: { doctor_id: user.id, patient_id: current_user.id}}, date:{ confirm: "Add doctor to your list?" } %></td>
-
-<td><% @relation.each do |r| %>
-<% if r.doctor_id == user %>
-<%end%>
-<%= button_to "Destroy", relation_path(r), data: { confirm: 'Are you sure?' }, method: :delete %>
-<%end%></td>
- </tbody>
-<%end%>
-<%end%>
-</tbody>
-</table>
-
- -->

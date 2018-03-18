@@ -10,5 +10,3 @@ class Immunization < ApplicationRecord
 		self.date = Date.today
 	end
 end
-
-end
