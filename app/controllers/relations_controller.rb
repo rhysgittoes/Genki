@@ -9,12 +9,16 @@ def create
   @patient = current_user
   @doctor = Doctor.find_by_id(params[:id])
   @relation.save
+  doctor = Doctor.find(@relation.doctor_id)
+  flash[:notice] = "You has given #{doctor.first_name}" + " " + "#{doctor.last_name} permission to view your profile."
   redirect_to patients_path
 end
 
 def destroy
   @relation = Relation.find_by_id(params[:id])
   @relation.destroy
+  doctor = Doctor.find(@relation.doctor_id)
+  flash[:notice] = "You had removed #{doctor.first_name}" + " " + "#{doctor.last_name}'s permission to view your page."
   redirect_to patients_path
 end
 

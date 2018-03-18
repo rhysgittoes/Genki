@@ -124,6 +124,10 @@
 
 
    <br>
+   <%if @health_profile != nil %>
+   <%= link_to "Health profile", patient_health_profile_path(@patient, @health_profile) %> 
+   <% end %>
+   <br>
    <%= link_to "Create a new health profile", new_patient_health_profile_path(@patient) %> 
    <br>
 </div>
