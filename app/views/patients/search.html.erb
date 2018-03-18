@@ -14,7 +14,7 @@
       <div class=col-12>
          <div id= search_again_container>
             <%= form_tag patients_search_path, method: :get do %>
-               <%= text_field_tag "search", nil, list: "list", placeholder: "Search again?", id: "search_doctors" %>
+               <%= text_field_tag "search", nil, list: "list", placeholder: "Search again?", id: "big_search" %>
                <datalist id="list"></datalist>
           <%end%>
       </div>
