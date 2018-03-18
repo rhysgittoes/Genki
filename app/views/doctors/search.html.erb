@@ -39,8 +39,8 @@
                      <% end %>
                      <% if user.type == "Patient" %>
                         <div class=display-3 style="font-size: 2rem;"> 
-                          <%= link_to user.first_name, patient_health_profile_path(user.id, @health_profile) %>  
-                          <%= link_to user.last_name, patient_health_profile_path(user.id, @health_profile) %>
+                          <%= link_to user.first_name + " " + user.last_name, patient_health_profile_path(user.id, @health_profile) %>  
+                          <%#= link_to user.last_name, patient_health_profile_path(user.id, @health_profile) %>
                         </div>
                          <br>
                         <div>Admission id: <%= link_to user.admission_id,patient_health_profile_path(user.id, @health_profile) %> </div> 
