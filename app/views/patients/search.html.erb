@@ -2,7 +2,11 @@
    
    <div class="row">
       <div class=col-12>
-         <h2><%="Search results for " + params[:search] %></h2>
+          <%if @result.present? %>
+            <h2><%="We found " + @result.size.to_s + " results, for " + params[:search] %></h2>
+         <%else%>
+            <h2><%="We unfortunately found no results for " + params[:search] %></h2>
+         <%end%>
       </div>
    </div>
   
@@ -15,7 +19,7 @@
                      <%if user.type == "Doctor"%>
                        <div class=display-3 style="font-size: 2rem;"> <%= link_to user.first_name, doctor_path(user) %>
                        <%= link_to user.last_name, doctor_path(user) %> </div> 
-                       <br>22
+                       <br>
                        <div>Admission id: <%= link_to user.admission_id, doctor_path(user) %> </div> 
                        <div>Email: <%= user.email %> </div> 
                        <br>
@@ -29,8 +33,6 @@
                   </div>
                </div>
             <%end%>
-         <%else%>
-            No Results found!
          <%end%>
       </div>
    </div>
