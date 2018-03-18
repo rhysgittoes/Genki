@@ -1,11 +1,13 @@
 // Place all the styles related to the patients controller here.
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
-#search_doctors{
+
+#big_search{
    width:80%;
    border-radius: 5px;
    font-size:1.5rem;
    border-style: solid;
+   border-color: #ecf0f1;
    background-color: #ecf0f1;
    padding-left: 1rem;
    padding-right: 1rem;
