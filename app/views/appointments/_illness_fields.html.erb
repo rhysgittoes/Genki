@@ -4,9 +4,8 @@
     <span>Condition</span>
     <span><%= f.text_field :name %></span> 
 
-    <span><%= f.label "Chronic: " %></span>
-    <span>Yes <%= f.radio_button :chronic, true %></span>
-    <span>No <%= f.radio_button :chronic, false %></span>
+    <span><%= f.label :chronic %></span>
+    <span><%= f.check_box :chronic, {}, true, false %></span>
   </p>
   
   <p>
