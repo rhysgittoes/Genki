@@ -108,7 +108,8 @@ class HealthProfilesController < ApplicationController
 	    
 	    health_profile.prescriptions.each do |prescription|
 	      prescription.patient = patient
-	      prescription.doctor = current_user
+	      prescription.doctor = current_user if current_user.type == "Doctor"
+
 	    end
 	end
 
