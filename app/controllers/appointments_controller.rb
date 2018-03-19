@@ -31,10 +31,10 @@ class AppointmentsController < ApplicationController
     @patient = Patient.find(params[:patient_id])
     params.require(:appointment).permit(
       :diagnosis, :referrals, :notes, :symptoms,
-      immunizations_attributes: [:name, :expiration_date, :id, :_destroy],
-      illnesses_attributes: [:name, :status, :id, :_destroy, :chronic],
-      allergies_attributes: [:name, :status, :severity, :id, :_destroy],
-      prescriptions_attributes: [:medicine, :dosage, :refills, :expiration_date, :id, :_destroy]
+      immunizations_attributes: [:name, :expiration_date, :id, :_destroy, :notes],
+      illnesses_attributes: [:name, :status, :id, :_destroy, :chronic, :notes],
+      allergies_attributes: [:name, :status, :severity, :id, :_destroy, :notes],
+      prescriptions_attributes: [:medicine, :dosage, :refills, :expiration_date, :id, :_destroy, :notes]
       ).merge(symptoms: symptoms,
       patient: @patient
       )
