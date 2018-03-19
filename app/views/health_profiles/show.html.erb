@@ -200,15 +200,15 @@
           </div>
           <div class="HL"></div>
         <%@prescriptions.each do |p| %>
-          <div class=prescriptions_item>
+          <div class=prescriptions_item  data-aos-offset="0" data-aos-delay="100" data-aos="fade-up">
             <%=image_tag("/assets/medicine.png", class: "icon_prescrip")%>
             Name:<%= p.medicine %><br />
-            <%=image_tag("/assets/dosage.png", class: "icon_prescrip")%>  
-            Dosage:<%= p.dosage %><br />
             <%=image_tag("/assets/doctor.png", class: "icon_prescrip")%>
             Refills: <%= p.refills %><br />
             <%=image_tag("/assets/timer.png", class: "icon_prescrip")%> 
             Expires: <%= p.expiration_date %><br />
+            <%=image_tag("/assets/dosage.png", class: "icon_prescrip")%>  
+            Dosage: <%= p.dosage %><br />
           </div>
         <%end%><br />
         </div>
@@ -219,7 +219,7 @@
       <div class="col-8">
           <% @appointments.each do |a| %>
             <div class="row">
-              <div class="appointment_full_health_profile" style="width: 100%;">
+              <div class="appointment_full_health_profile" style="width: 100%;" data-aos-offset="0" data-aos-delay="100" data-aos="fade-left">
                 <div class="row">
                   <!-- Date: <%#= a.date %><br /> -->
                   <div class="appointment_healthprof_date_month">
@@ -241,30 +241,10 @@
       </div>
 
              
-
-                      <% @prescriptions.each do |p| %>
-                          <div>
-                            <div >
-                              <div>Name: <%= p.medicine %><br/></div>
-                              <div>Dosage:<%= p.dosage %><br/></div>
-                              <div>Refills: <%= p.refills %><br/></div>
-                              <div>Expires: <%= p.expiration_date %><br /></div>
-                            </div>
-                          </div>
-                        <%end%>
-
-
-       <!--  Prescriptions:<br />
-        <%# @prescriptions.each do |p| %>
-        Name: <%#= p.medicine %><br />
-        Dosage: <%#= p.dosage %><br />
-        Refills: <%#= p.refills %><br />
-        Expires: <%#= p.expiration_date %><br />
-        <%# end %><br />
-        <br> -->
-        
-       
+ 
       </div>
     </div>
   </div>
 <%end%>
+
+
