@@ -28,12 +28,14 @@
   <div class="collapse navbar-collapse" id="navbarSupportedContent">
     <ul class="navbar-nav mr-auto">
       <%if signed_in?%>
-        <%if current_user.type == "Patient" %>
+        <%if current_user.type == "Patient"%>
           <li class="nav-item">
-            <a class="nav-link" href="#">
-              Link
+              <%if @health_profile != nil %>
+              <%= link_to "You're Health Profile", patient_health_profile_path(@patient, @health_profile) %> 
+              <% else %>
+              <%= link_to "Create a health profile", new_patient_health_profile_path(@patient) %> 
+              <%end%>
               <span class="sr-only">(current)</span>
-            </a>
           </li>
         <%end%>
       <%end%>
