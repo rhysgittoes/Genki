@@ -77,6 +77,11 @@
     </div>
   </nav>
   
+
+  <div id="flash">
+        <% flash.each do |key, value| %>
+      <div id="flash_<%= key %>"><%= value %></div>
+<% end %>
   
   <!-- Modal for Sign up DOES NOT WORK -->
   <div class="modal fade" id="sign_up_modal" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
@@ -126,9 +131,6 @@
                   </div>
             <%end%>
           </div>
-  
-  
-  
   
   
                  

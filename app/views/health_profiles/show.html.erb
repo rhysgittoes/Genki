@@ -21,31 +21,43 @@
                 <p>Height(m): <%= @health_profile.height %></p>
                 <p>BMI: <%= @health_profile.bmi %></p>
                 <p>Insurer: <%= @health_profile.insurer %></p>
-                <p><%= link_to "Edit Health Profile", edit_patient_health_profile_path %></p>
+                <p>
+                <%= link_to "Edit Health Profile", edit_patient_health_profile_path %></p>
               </div>
 
               <div>
               <h4>Immunizations:</h4>
+              <%if @immunizations.empty? %>
+                 <p> There is no record found for Immunizations!</p>
+                  <% else %>
                 <% @immunizations.each do |i| %>
                 <div>
                   <p>Type: <%= i.name %></p>
                   <p>Expires: <%= i.expiration_date %></p>
                   <% end %>
+              <%end%>
                 </div>
               </div>
 
               <div>
                 <h4>Allergies:</h4>
+                <% if @allergies.empty? %>
+                <p>There is no record found for Allergies!</p>
+                <%else%>
                 <% @allergies.each do |a| %>
                 <div>
                   <p>Type: <%= a.name %></p>
                   <p>Severity: <%= a.severity %></p>
                 </div>
+                <%end%>
                 <% end %>
               </div>
 
               <div>
                 <h4>Prescriptions:</h4>
+                 <% if @prescriptions.empty? %>
+                <p>There is no record found for Prescriptions!</p>
+                <%else%>
                 <% @prescriptions.each do |p| %>
                   <div>
                     <p>Name: <%= p.medicine %></p>
@@ -53,23 +65,33 @@
                     <p>Refills: <%= p.refills %></p>
                     <p>Expires: <%= p.expiration_date %></p>
                   </div>
+                <%end %>
                 <% end %>
               </div>
 
               <div>
                 <h4>Past illnesses:</h4>
+                <%if @illnesses.empty? %>
+                <p>There is no record found for Illnesses!</p>
+                <%else%>
                 <% @illnesses.each do |i| %>
                   <p>Name: <%= i.name %></p>
+                <%end%>
                 <% end %>
               </div>
 
               <div>
                 <h4>Past appointments:</h4>
-                <% @appointments.each do |a| %>
+                <% if @appointments.empty? %>
+                <p>There is no record found for Appointments.</p>
+                <%else%>
+                <% @appointments.each_with_index do |a, index| %>
+                  <p>No.<%= index+ 1%></p>
                   <p>Date: <%= a.date %></p>
                   <p>Diagnosis: <%= a.diagnosis %></p>
                   <p>Referrals: <%= a.referrals %></p>
                   <p>Notes: <%= a.notes %></p>
+                  <%end%>
                 <% end %>
               </div>
             </div>
@@ -81,6 +103,7 @@
     <%end%>
   <%else%>
     <p>You are not authorized to view this page!</p>
+    <%= link_to "Homepage", root_path %>
   <% end %>
 <%end%>
 
@@ -125,11 +148,11 @@ Past illnesses:<br />
 Name: <%= i.name %><br />
 <% end %><br />
 <br>
-Past appointments:<br />
+Past appointments:<br />    
 <% @appointments.each do |a| %>
 Date: <%= a.date %><br />
 Diagnosis: <%= a.diagnosis %><br />
 Referrals: <%= a.referrals %><br />
-Notes: <%= a.notes %>
+Notes: <%= a.notes %><br>
 <% end %>
 <%end%>
