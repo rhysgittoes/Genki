@@ -36,7 +36,7 @@
           <li class="nav-item">
             <div id="patient_health_profile_link_container">
               <%if @health_profile != nil %>
-                <%= link_to "Health Profile", patient_health_profile_path(current_user, @health_profile), id:"patient_health_profile_link" %> 
+                <%= link_to "Health Profile", patient_health_profile_path(current_user, HealthProfile.find_by(patient_id: current_user.id)), id:"patient_health_profile_link" %> 
               <% else %>
                 <%= link_to "Health profile", new_patient_health_profile_path(current_user) %> 
               <%end%>
@@ -63,7 +63,8 @@
       <% if current_user.type == "Doctor" %>
         <%= "/doctors"%>
       <% else %>
-        <%= patient_health_profiles_path(current_user, @health_profile)%>
+        <%= "/patients/#{current_user.id}/health_profiles/#{HealthProfile.find_by(patient_id: current_user.id)}" %>
+        <%#= patient_health_profiles_path(current_user, HealthProfile.find_by(patient_id: current_user.id))%>
       <% end %>
       >
 
