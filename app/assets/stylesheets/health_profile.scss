@@ -17,5 +17,27 @@
 }
 
 .basic_health_prof_container{
-   background-color: red;
+   background-color:#f9f9f9;
+   -webkit-box-shadow: 0 10px 6px -6px #777;
+   -moz-box-shadow: 0 10px 6px -6px #777;
+          box-shadow: 0 10px 6px -6px #777;
+   padding-left: 1rem;
+   padding-right: 1rem;
+   padding-top:1rem;
+}
+
+#health_prof_name{
+   font-size: 3rem;
+   text-align: center;
+}
+
+#profile_img_container{
+   text-align: center;
+
+}
+#profile_img{
+   height: 200px;
+   width: 200px;
+   border-radius: 100px;
+
 }

@@ -114,9 +114,16 @@
   <div style="margin-left: 50px; margin-right: 50px; margin-top: 2em;">
     <div class="row">
       <div class="col-5">
-        <div class="basic_health_prof_container"
-          First Name: <%= @patient.first_name %><br/>
-          Last Name: <%= @patient.last_name %><br/>
+        <div class="basic_health_prof_container">
+
+          <div id="profile_img_container">
+            <%=image_tag("/assets/profile.jpg", id: "profile_img")%>
+          </div>
+
+          <div class=" display-3" id="health_prof_name">
+            <%= @patient.first_name %>
+            <%= @patient.last_name %>
+          </div>
           Gender: <%= @patient.gender %><br/>
           Birthday: <%= @patient.birthday %><br/>
 
