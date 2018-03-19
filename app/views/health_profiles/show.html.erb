@@ -113,7 +113,7 @@
 <%if patient_to_view_profile?(current_user, @health_profile) %>
   <div style="margin-left: 50px; margin-right: 50px; margin-top: 2em;">
     <div class="row">
-      <div class="col-5">
+      <div class="col-4">
         <div class="basic_health_prof_container">
 
           <div id="profile_img_container">
@@ -124,15 +124,40 @@
             <%= @patient.first_name %>
             <%= @patient.last_name %>
           </div>
-          Gender: <%= @patient.gender %><br/>
-          Birthday: <%= @patient.birthday %><br/>
 
-          Blood Type: <%= @health_profile.blood_type %><br/>
-          Weight(kg): <%= @health_profile.weight %><br />
-          Height(m): <%= @health_profile.height %><br />
-          BMI: <%= @health_profile.bmi %><br />
-          Insurer: <%= @health_profile.insurer %><br />
-          <%= link_to "Edit Health Profile", edit_patient_health_profile_path %><br>
+          <div>
+            <%=image_tag("/assets/gender.png", class: "icon")%>
+            <%= @patient.gender %>
+          </div>
+
+          <div>
+            <%=image_tag("/assets/birthday.png", class: "icon")%>
+            <%= @patient.birthday %><br/>
+          </div>
+
+          <div>
+            <%=image_tag("/assets/blood.png", class: "icon")%>
+            Blood Type: <%= @health_profile.blood_type %><br/>
+          </div>
+          <div>
+            <%=image_tag("/assets/weight.png", class: "icon")%>
+            Weight(kg): <%= @health_profile.weight %><br />
+          </div>
+          <div>
+            <%=image_tag("/assets/height.png", class: "icon")%>
+            Height(m): <%= @health_profile.height %><br />
+          </div>
+          <div>
+            <%=image_tag("/assets/bmi.png", class: "icon")%>
+            BMI: <%= @health_profile.bmi %><br />
+          </div>
+          <div>
+            <%=image_tag("/assets/insurance.png", class: "icon")%>
+            Insurer: <%= @health_profile.insurer %><br />
+          </div>
+          <div>
+            <%= link_to "Edit Health Profile", edit_patient_health_profile_path %><br>
+          </div>
         </div>
         
 
@@ -155,7 +180,7 @@
         <br>
       </div>
 
-      <div class="col-7">
+      <div class="col-8">
         Prescriptions:<br />
         <% @prescriptions.each do |p| %>
         Name: <%= p.medicine %><br />
