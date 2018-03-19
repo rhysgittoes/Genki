@@ -92,7 +92,7 @@
    // padding-top: 1.5rem;
    // padding-left: 1.5rem;
    // padding-right: 1.5rem;
-   padding-bottom: 1.5rem;
+   // padding-bottom: 1rem;
    -webkit-box-shadow: 0 10px 6px -6px #777;
    -moz-box-shadow: 0 10px 6px -6px #777;
           box-shadow: 0 10px 6px -6px #777;
@@ -105,7 +105,7 @@
 }
 
 .appointment_details_patients{
-   margin-top: 1%;
+   margin-top: 0%;
   display: inline-block;
   // height
   width:82%;
@@ -163,4 +163,10 @@
    width: 25px;
    filter: invert(100%);
    margin-bottom: 0.3rem;
+}
+
+#appointment_small_title{
+   font-size: 1.5rem;
+   margin-bottom: 0.5rem;
+   margin-top: 0.5rem;
 }
