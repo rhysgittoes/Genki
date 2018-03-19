@@ -35,7 +35,7 @@
 
                                     <div class= col-6>
                                        <div class=display-3 id=medicine_title>
-                                          <%=image_tag("/assets/medicine.png", id: "medicine_img")%>  
+                                          <%=image_tag("https://s3-ap-southeast-1.amazonaws.com/genkigroup/uploads/images/medicine.png", id: "medicine_img")%>  
                                           <%= a.medicine%>
                                        </div>
                                     </div>
@@ -44,7 +44,7 @@
 
                                      <div class= col-6>
                                        <div class=display-3 id=dosage style="font-size: 1.1rem;">
-                                          <%=image_tag("/assets/dosage.png", id: "medicine_img") + " Dosage"%>  
+                                          <%=image_tag("https://s3-ap-southeast-1.amazonaws.com/genkigroup/uploads/images/dosage.png", id: "medicine_img") + " Dosage"%>  
                                           <div id=dosage_text style="margin-top: 0.1rem;" >
                                              <%= a.dosage%>
                                           </div>
@@ -55,7 +55,7 @@
                                  <div class="row" style="margin-top: -5rem; margin-bottom: 0.5rem;">
                                     <div class=col-6 >
                                        <div class=display-3 id=prescription_exp>
-                                           <%=image_tag("/assets/doctor.png", id: "timer_img")%> 
+                                           <%=image_tag("https://s3-ap-southeast-1.amazonaws.com/genkigroup/uploads/images/doctor.png", id: "timer_img")%> 
                                           <%= a.doctor.first_name%>
                                        </div>
                                     </div>
@@ -64,7 +64,7 @@
                                  <div class="row" style="margin-top: 0rem; margin-bottom:0rem; ">
                                     <div class=col-6 >
                                        <div class=display-3 id=prescription_exp>
-                                           <%=image_tag("/assets/timer.png", id: "timer_img")%> 
+                                           <%=image_tag("https://s3-ap-southeast-1.amazonaws.com/genkigroup/uploads/images/timer.png", id: "timer_img")%> 
                                           <%= a.expiration_date%>
                                        </div>
                                     </div>
