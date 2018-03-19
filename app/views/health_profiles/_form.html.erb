@@ -12,12 +12,10 @@
     <%= f.text_field :insurer%><br>
     </div>
     
-    <% if url_for(:only_path => true) == "patients/#{@patient.id}/health_profiles/new" %>
-        <%= render "health_profile/associationsform" %>
+    <% if url_for(:only_path => true) == "/patients/#{@patient.id}/health_profiles/new" %>
+        <%= render "health_profiles/associationsform", f: f %>
     <% end %>
     
-  <%= hidden_field_tag(:patient_id, params[:patient_id]) %>
-
     <div class="submit-field">
       <%= f.submit "Update profile" %>
      <% end %>
