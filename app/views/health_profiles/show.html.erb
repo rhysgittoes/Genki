@@ -125,38 +125,38 @@
             <%= @patient.last_name %>
           </div>
 
-          <div>
+          <div class="display-3" id="basic_info_item" class="display-3 basic_info_item">
             <%=image_tag("/assets/gender.png", class: "icon")%>
             <%= @patient.gender %>
           </div>
 
-          <div>
+          <div class="display-3" id="basic_info_item">
             <%=image_tag("/assets/birthday.png", class: "icon")%>
             <%= @patient.birthday %><br/>
           </div>
 
-          <div>
+          <div class="display-3" id="basic_info_item">
             <%=image_tag("/assets/blood.png", class: "icon")%>
             Blood Type: <%= @health_profile.blood_type %><br/>
           </div>
-          <div>
+          <div class="display-3" id="basic_info_item">
             <%=image_tag("/assets/weight.png", class: "icon")%>
             Weight(kg): <%= @health_profile.weight %><br />
           </div>
-          <div>
+          <div class="display-3" id="basic_info_item">
             <%=image_tag("/assets/height.png", class: "icon")%>
             Height(m): <%= @health_profile.height %><br />
           </div>
-          <div>
+          <div class="display-3" id="basic_info_item">
             <%=image_tag("/assets/bmi.png", class: "icon")%>
             BMI: <%= @health_profile.bmi %><br />
           </div>
-          <div>
+          <div class="display-3" id="basic_info_item">
             <%=image_tag("/assets/insurance.png", class: "icon")%>
             Insurer: <%= @health_profile.insurer %><br />
           </div>
-          <div>
-            <%= link_to "Edit Health Profile", edit_patient_health_profile_path %><br>
+           <div class="display-3" id="edit_profile_button_container">
+            <%= link_to "Edit Health Profile", edit_patient_health_profile_path, id:"edit_profile_button" %><br>
           </div>
         </div>
         
