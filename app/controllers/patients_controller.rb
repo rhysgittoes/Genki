@@ -5,6 +5,7 @@ class PatientsController < ApplicationController
   
   def index
     @patient = current_user
+    @health_profile = HealthProfile.find_by(patient_id: @patient.id)
   end
   
   def new
@@ -50,7 +51,7 @@ class PatientsController < ApplicationController
 
   def search
     @result = Doctor.search(params[:search])
-    @relation = Relation.all
+    @relation = Relation.where(patient_id: current_user.id)
   end
   
   private

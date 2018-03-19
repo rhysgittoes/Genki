@@ -13,7 +13,7 @@
       <div class=col-8>
          <div id= search_doctors_container>
             <%= form_tag patients_search_path, method: :get do %>
-               <%= text_field_tag "search", nil, list: "list", placeholder: "Search Doctors", id: "search_doctors" %>
+               <%= text_field_tag "search", nil, list: "list", placeholder: "Search Doctors", id: "big_search" %>
                <datalist id="list"></datalist>
           <%end%>
          </div>
@@ -123,6 +123,10 @@
 
 
 
+   <br>
+   <%if @health_profile != nil %>
+   <%= link_to "Health profile", patient_health_profile_path(@patient, @health_profile) %> 
+   <% end %>
    <br>
    <%= link_to "Create a new health profile", new_patient_health_profile_path(@patient) %> 
    <br>
