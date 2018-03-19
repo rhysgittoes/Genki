@@ -193,6 +193,24 @@
           <% end %><br />
           <br>
         </div>
+
+        <div class="basic_health_prof_container">
+          <div class=" display-3" id="immun_title">
+            Prescriptions
+          </div>
+          <div class="HL"></div>
+        <%@prescriptions.each do |p| %>
+          <div class=prescriptions_item>
+            <%=image_tag("/assets/medicine.png", class: "icon_prescrip")%>
+            <%= p.medicine %><br />
+            Dosage: <%= p.dosage %><br />
+            Refills: <%= p.refills %><br />
+            Expires: <%= p.expiration_date %><br />
+          </div>
+        <%end%><br />
+        </div>
+
+
       </div>
 
       <div class="col-8">
@@ -212,12 +230,18 @@
                     Referrals: <%= a.referrals %><br />
                     Notes: <%#= a.notes %><br>
                   <!-- </div> -->
-                  <br>
-                    <div class="col-12 prescription_row" style="display: inline-block;">
-                      <div class="row" style="width:<%=a.prescriptions.length.to_i * 37%>rem; padding-left: 0rem;">                    
-                        <% a.prescriptions.each do |p| %>
-                          <div class="col-6" id="@prescirption_item">
-                            <div class="active_prescription">
+                  </div>
+                </div>
+              </div>
+            </div>
+          <% end %>
+      </div>
+
+             
+
+                      <% @prescriptions.each do |p| %>
+                          <div>
+                            <div >
                               <div>Name: <%= p.medicine %><br/></div>
                               <div>Dosage:<%= p.dosage %><br/></div>
                               <div>Refills: <%= p.refills %><br/></div>
@@ -225,15 +249,6 @@
                             </div>
                           </div>
                         <%end%>
-                      </div>
-                    </div>
-                   </div>
-                </div>
-
-              </div>
-            </div>
-          <% end %>
-
 
 
        <!--  Prescriptions:<br />
