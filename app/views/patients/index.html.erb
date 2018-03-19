@@ -8,7 +8,7 @@
 
 
 
-   
+   <%= link_to "Edit", edit_patient_path(@patient)%>
    <div class=row>
       <div class=col-8>
          <div id= search_doctors_container>
@@ -35,7 +35,7 @@
 
                                     <div class= col-6>
                                        <div class=display-3 id=medicine_title>
-                                          <%=image_tag("/assets/medicine.png", id: "medicine_img")%>  
+                                          <%=image_tag("https://s3-ap-southeast-1.amazonaws.com/genkigroup/uploads/images/medicine.png", id: "medicine_img")%>  
                                           <%= a.medicine%>
                                        </div>
                                     </div>
@@ -44,7 +44,7 @@
 
                                      <div class= col-6>
                                        <div class=display-3 id=dosage style="font-size: 1.1rem;">
-                                          <%=image_tag("/assets/dosage.png", id: "medicine_img") + " Dosage"%>  
+                                          <%=image_tag("https://s3-ap-southeast-1.amazonaws.com/genkigroup/uploads/images/dosage.png", id: "medicine_img") + " Dosage"%>  
                                           <div id=dosage_text style="margin-top: 0.1rem;" >
                                              <%= a.dosage%>
                                           </div>
@@ -55,7 +55,7 @@
                                  <div class="row" style="margin-top: -5rem; margin-bottom: 0.5rem;">
                                     <div class=col-6 >
                                        <div class=display-3 id=prescription_exp>
-                                           <%=image_tag("/assets/doctor.png", id: "timer_img")%> 
+                                           <%=image_tag("https://s3-ap-southeast-1.amazonaws.com/genkigroup/uploads/images/doctor.png", id: "timer_img")%> 
                                           <%= a.doctor.first_name%>
                                        </div>
                                     </div>
@@ -64,7 +64,7 @@
                                  <div class="row" style="margin-top: 0rem; margin-bottom:0rem; ">
                                     <div class=col-6 >
                                        <div class=display-3 id=prescription_exp>
-                                           <%=image_tag("/assets/timer.png", id: "timer_img")%> 
+                                           <%=image_tag("https://s3-ap-southeast-1.amazonaws.com/genkigroup/uploads/images/timer.png", id: "timer_img")%> 
                                           <%= a.expiration_date%>
                                        </div>
                                     </div>
@@ -101,26 +101,58 @@
 </div> -->
 
 
-      <div class=col-4>
-         <div id = patient_notification_container>
+        <div class=col-4>
+          <div id = patient_notification_container>
             <h3 id = notifications_header class=display-1>Notifications</h3>
             <div id = notification_list>
                <% patient_notifications = @patient.notifications.where(received: false) %>
                <% if !patient_notifications.empty? %>
                 <div>
                   <% patient_notifications.each do |notification| %>
+                    <div id=notification_list_container>
                        <p>
                          <%= render "layouts/notification", notification: notification %>
                          <% notification.received = true %>
                          <% notification.save %>
                        </p>
+                    </div>
                   <% end %>
                </div>
                <% else %>
                    You have no new notifications.
                <% end %> 
             </div>          
-         </div>
+        </div>
+
+        <div id=active_permissions_container>
+        <h3 id = active_permissions_header class=display-1>Health Profile Access</h3>
+          <%if @relation.present?%>
+            <div id=active_perm_descrip class="display-3">You've given these doctors editing access to your profile</div>
+                <% @relation.each do |r| %>
+                   <div class=row>
+                      <div class=col-12>
+                        <div class="display-3" id=active_permissions data-aos-offset="0" data-aos-delay="100" data-aos="fade">
+                          <div class="row">
+                            <div class="col-9" style="font-size: 1.4rem;" class="display-3">
+                              <%= Doctor.find(r.doctor_id).first_name %>
+                              <%= Doctor.find(r.doctor_id).last_name %>
+                            </div>
+                            <div class="col-9" style="font-size: 0.9rem; margin-top: 0.5rem;">
+                               <%= Doctor.find(r.doctor_id).email %>
+                            </div>
+
+                            <div class="col-3" style="margin-top: -1.25rem; text-align: right;">
+                              <%= button_to "Revoke", relation_path(r), data: { confirm: 'Are you sure?' }, method: :delete, class: "btn btn-outline-success" %>
+                            </div>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                <%end%>
+            </div>
+          <%else%>
+          <div id=active_perm_descrip class="display-3">You've given no doctors editing access to your profile</div>
+          <%end%>
       </div>
    </div>
 

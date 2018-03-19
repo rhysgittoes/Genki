@@ -11,10 +11,11 @@
 // about supported directives.
 //
 //= require rails-ujs
-//= require cocoon
 //= require selectize
 //= require turbolinks
 //= require_tree .
+//= require cocoon
+
 
 
 
@@ -72,7 +73,6 @@ document.addEventListener('turbolinks:load', function(){
          $("#sign_in_form").submit();
 
    })
-
 
 });
 

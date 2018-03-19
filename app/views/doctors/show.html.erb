@@ -1,6 +1,7 @@
 
 
 <div>
+<%= image_tag(current_user.avatar_url.to_s) %><br>
   <div>
     <h4>Personal Details</h4>
     <p><strong>Name:</strong> <%= @doctor.first_name + " " + @doctor.last_name%></p>

@@ -1,5 +1,5 @@
+<div class="doctor-form">
 <h1> Edit Doctor Profile </h1>
-
 <div id="flash">
     <% flash.each do |key, value| -%>
       <div id="flash_<%= key %>"><%= value %></div>
@@ -14,3 +14,4 @@
   <%= form.submit "Submit", data: {confirm: "Edit Profile?"}%>
 </div>
 <%end%>
+</div>
