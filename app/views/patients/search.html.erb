@@ -30,7 +30,7 @@
                      <%if user.type == "Doctor"%>
                        <div class=display-3 style="font-size: 2rem;"> 
                        <%= link_to user.first_name + " " + user.last_name , doctor_path(user) %>
-                       <%#= link_to user.last_name, doctor_path(user) %> </div> 
+                      </div> 
                        <br>
                        <div>Admission id: <%= link_to user.admission_id, doctor_path(user) %> </div> 
                        <div>Email: <%= user.email %> </div> 
