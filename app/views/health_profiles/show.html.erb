@@ -196,26 +196,40 @@
       </div>
 
       <div class="col-8">
-          Past appointments:<br />    
           <% @appointments.each do |a| %>
             <div class="row">
-              <div class="appointment_full_health_profile">
-                <!-- Date: <%#= a.date %><br /> -->
-                <div class="appointment_date_month">
-                  <%=a.date.strftime("%B")%>
+              <div class="appointment_full_health_profile" style="width: 100%;">
+                <div class="row">
+                  <!-- Date: <%#= a.date %><br /> -->
+                  <div class="appointment_healthprof_date_month">
+                    <%=a.date.strftime("%B")%>
+                  </div>
+                  <div class="appointment_healthprof_date_number">
+                    <%=a.date.strftime("%d")%>
+                  </div>
+                  <div class="appointment_details_patients">
+                    Diagnosis: <%= a.diagnosis %><br />
+                    Referrals: <%= a.referrals %><br />
+                    Notes: <%#= a.notes %><br>
+                  <!-- </div> -->
+                  <br>
+                    <div class="col-12 prescription_row" style="display: inline-block;">
+                      <div class="row" style="width:<%=a.prescriptions.length.to_i * 37%>rem; padding-left: 0rem;">                    
+                        <% a.prescriptions.each do |p| %>
+                          <div class="col-6" id="@prescirption_item">
+                            <div class="active_prescription">
+                              <div>Name: <%= p.medicine %><br/></div>
+                              <div>Dosage:<%= p.dosage %><br/></div>
+                              <div>Refills: <%= p.refills %><br/></div>
+                              <div>Expires: <%= p.expiration_date %><br /></div>
+                            </div>
+                          </div>
+                        <%end%>
+                      </div>
+                    </div>
+                   </div>
                 </div>
-                <div class="appointment_date_number">
-                  <%=a.date.strftime("%d")%>
-                </div>
-                Diagnosis: <%= a.diagnosis %><br />
-                Referrals: <%= a.referrals %><br />
-                Notes: <%= a.notes %><br>
-                  <% a.prescriptions.each do |p| %>
-                    Name: <%= p.medicine %><br />
-                    Dosage: <%= p.dosage %><br />
-                    Refills: <%= p.refills %><br />
-                    Expires: <%= p.expiration_date %><br />
-                  <%end%>
+
               </div>
             </div>
           <% end %>

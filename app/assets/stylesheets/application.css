@@ -116,3 +116,12 @@ border-color:white;
   text-align: center;
   width: 15%;
 }
+.appointment_date_number{
+  display: inline-block;
+  width: 15%;
+  height: 100%;
+  text-align: center;
+  font-size: 5em;
+  padding-top: 12px;
+
+}
