@@ -1,6 +1,6 @@
 <div>
-  <%= form_for @patient do |f| %>
-      <% render "patients/form", f: f %>
+  <%= form_for @patient do |form| %>
+      <%= render "patients/form", form: form %>
 
 <div class="submit-field">
 <%= form.submit "Submit", data: {confirm: "Edit Profile?"} %>
