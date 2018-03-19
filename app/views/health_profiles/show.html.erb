@@ -4,101 +4,102 @@
     <%if @relation.doctor_id == current_user.id%>
       <% if allowed_to_view_profile?(current_user, @relation, @patient) %>
         <% if has_health_profile?(@health_profile) %>
-        <div> 
+          <div> 
           <%= render "appointments/form" %>
-        </div>
+          </div>
+        <!-- Old double code. -->
         <!--  Replaced previous block of code with full health profile information.  -->
-           <div>
-              <div>
-                <p>First Name: <%= @patient.first_name %></p>
-                <p>Last Name: <%= @patient.last_name %></p>
-                <p>Gender: <%= @patient.gender %></p>
-                <p>Birthday: <%= @patient.birthday %></p>
-              </div>
+        <!-- <div> -->
+            <!--   <div>
+                <p>First Name: <%#= @patient.first_name %></p>
+                <p>Last Name: <%#= @patient.last_name %></p>
+                <p>Gender: <%#= @patient.gender %></p>
+                <p>Birthday: <%#= @patient.birthday %></p>
+              </div> -->
 
-              <div>
-                <p>Blood Type: <%= @health_profile.blood_type %></p>
-                <p>Weight(kg): <%= @health_profile.weight %></p>
-                <p>Height(m): <%= @health_profile.height %></p>
-                <p>BMI: <%= @health_profile.bmi %></p>
-                <p>Insurer: <%= @health_profile.insurer %></p>
+              <!-- <div>
+                <p>Blood Type: <%#= @health_profile.blood_type %></p>
+                <p>Weight(kg): <%#= @health_profile.weight %></p>
+                <p>Height(m): <%#= @health_profile.height %></p>
+                <p>BMI: <%#= @health_profile.bmi %></p>
+                <p>Insurer: <%#= @health_profile.insurer %></p>
                 <p>
-                <%= link_to "Edit Health Profile", edit_patient_health_profile_path %></p>
-              </div>
+                <%#= link_to "Edit Health Profile", edit_patient_health_profile_path %></p>
+              </div> -->
 
-              <div>
+              <!-- <div>
               <h4>Immunizations:</h4>
-              <%if @immunizations.empty? %>
+              <%#if @immunizations.empty? %>
                  <p> There is no record found for Immunizations!</p>
-                  <% else %>
-                <% @immunizations.each do |i| %>
+                  <%# else %>
+                <% #@immunizations.each do |i| %>
                 <div>
-                  <p>Type: <%= i.name %></p>
-                  <p>Expires: <%= i.expiration_date %></p>
-                  <% end %>
-              <%end%>
+                  <p>Type: <%#= i.name %></p>
+                  <p>Expires: <%#= i.expiration_date %></p>
+                  <%# end %>
+              <%#end%>
                 </div>
-              </div>
+              </div> -->
 
-              <div>
+             <!--  <div>
                 <h4>Allergies:</h4>
-                <% if @allergies.empty? %>
+                <%# if @allergies.empty? %>
                 <p>There is no record found for Allergies!</p>
-                <%else%>
-                <% @allergies.each do |a| %>
+                <%#else%>
+                <%# @allergies.each do |a| %>
                 <div>
-                  <p>Type: <%= a.name %></p>
-                  <p>Severity: <%= a.severity %></p>
+                  <p>Type: <%#= a.name %></p>
+                  <p>Severity: <%#= a.severity %></p>
                 </div>
-                <%end%>
-                <% end %>
-              </div>
+                <%#end%>
+                <% #end %>
+              </div> -->
 
-              <div>
+              <!-- <div>
                 <h4>Prescriptions:</h4>
-                 <% if @prescriptions.empty? %>
+                 <% #if @prescriptions.empty? %>
                 <p>There is no record found for Prescriptions!</p>
-                <%else%>
-                <% @prescriptions.each do |p| %>
+                <%#else%>
+                <%# @prescriptions.each do |p| %>
                   <div>
-                    <p>Name: <%= p.medicine %></p>
-                    <p>Dosage: <%= p.dosage %></p>
-                    <p>Refills: <%= p.refills %></p>
-                    <p>Expires: <%= p.expiration_date %></p>
+                    <p>Name: <%#= p.medicine %></p>
+                    <p>Dosage: <%#= p.dosage %></p>
+                    <p>Refills: <%#= p.refills %></p>
+                    <p>Expires: <%#= p.expiration_date %></p>
                   </div>
-                <%end %>
-                <% end %>
-              </div>
+                <%#end %>
+                <%# end %>
+              </div> -->
 
-              <div>
+             <!--  <div>
                 <h4>Past illnesses:</h4>
-                <%if @illnesses.empty? %>
+                <%#if @illnesses.empty? %>
                 <p>There is no record found for Illnesses!</p>
-                <%else%>
-                <% @illnesses.each do |i| %>
-                  <p>Name: <%= i.name %></p>
-                <%end%>
-                <% end %>
-              </div>
+                <%#else%>
+                <%# @illnesses.each do |i| %>
+                  <p>Name: <%#= i.name %></p>
+                <%#end%>
+                <%# end %>
+              </div> -->
 
-              <div>
+              <!-- <div>
                 <h4>Past appointments:</h4>
-                <% if @appointments.empty? %>
+                <%# if @appointments.empty? %>
                 <p>There is no record found for Appointments.</p>
-                <%else%>
-                <% @appointments.each_with_index do |a, index| %>
-                  <p>No.<%= index+ 1%></p>
+                <% #else%>
+                <%# @appointments.each_with_index do |a, index| %>
+                  <p>No.<%#= index+ 1%></p>
                   <p>Date: <%= a.date %></p>
-                  <p>Diagnosis: <%= a.diagnosis %></p>
-                  <p>Referrals: <%= a.referrals %></p>
-                  <p>Notes: <%= a.notes %></p>
-                  <%end%>
-                <% end %>
-              </div>
-            </div>
+                  <p>Diagnosis: <%#= a.diagnosis %></p>
+                  <p>Referrals: <%#= a.referrals %></p>
+                  <p>Notes: <%#= a.notes %></p>
+                  <%#end%>
+                <% #end %>
+              </div> -->
+            <!-- </div> -->
         <!--  Replaced previous block of code with full health profile information.  -->
         <% else %>
-        <p>No health profile is created yet</p>
+          <p>No health profile is created yet</p>
         <% end %>
       <%end%>
     <%end%>
@@ -115,27 +116,22 @@
     <div class="row">
       <div class="col-4">
         <div class="basic_health_prof_container">
-
           <div id="profile_img_container">
             <%=image_tag("/assets/profile.jpg", id: "profile_img")%>
           </div>
-
           <div class=" display-3" id="health_prof_name">
             <%= @patient.first_name %>
             <%= @patient.last_name %>
           </div>
-
          <div class="HL"></div>
           <div class="display-3" id="basic_info_item" class="display-3 basic_info_item">
             <%=image_tag("/assets/gender.png", class: "icon")%>
             <%= @patient.gender %>
           </div>
-
           <div class="display-3" id="basic_info_item">
             <%=image_tag("/assets/birthday.png", class: "icon")%>
             <%= @patient.birthday %><br/>
           </div>
-
           <div class="display-3" id="basic_info_item">
             <%=image_tag("/assets/blood.png", class: "icon")%>
             Blood Type: <%= @health_profile.blood_type %><br/>
@@ -160,7 +156,6 @@
             <%= link_to "Edit Health Profile", edit_patient_health_profile_path, id:"edit_profile_button" %><br>
           </div>
         </div>
-        
         <div class="basic_health_prof_container">
           <div class=" display-3" id="immun_title">
             Immunizations
@@ -171,7 +166,6 @@
           Expires: <%= i.expiration_date %><br />
           <% end %><br />
         </div>
-
         <div class="basic_health_prof_container">
           <div class=" display-3" id="immun_title">
             Allergies
@@ -182,7 +176,6 @@
           Severity: <%= a.severity %><br />
           <% end %><br />
         </div>
-        
         <div class="basic_health_prof_container">
           <div class=" display-3" id="immun_title">
             Past illnesses
@@ -193,7 +186,6 @@
           <% end %><br />
           <br>
         </div>
-
         <div class="basic_health_prof_container">
           <div class=" display-3" id="immun_title">
             Prescriptions
@@ -213,31 +205,30 @@
         <%end%><br />
         </div>
 
-
       </div>
 
       <div class="col-8">
-          <% @appointments.each do |a| %>
-            <div class="row">
-              <div class="appointment_full_health_profile" style="width: 100%;" data-aos-offset="0" data-aos-delay="100" data-aos="fade-left">
-                <div class="row">
-                  <!-- Date: <%#= a.date %><br /> -->
-                  <div class="appointment_healthprof_date_month">
-                    <%=a.date.strftime("%B")%>
-                  </div>
-                  <div class="appointment_healthprof_date_number">
-                    <%=a.date.strftime("%d")%>
-                  </div>
-                  <div class="appointment_details_patients">
-                    <div class="display-3" id="appointment_small_title">Diagnosis:</div> <%= a.diagnosis %><br />
-                    <div class="display-3" id="appointment_small_title">Referrals:</div> <%= a.referrals %><br />
-                    <div class="display-3" id="appointment_small_title">Notes:</div> <%#= a.notes %><br>
-                  <!-- </div> -->
-                  </div>
+        <% @appointments.each do |a| %>
+          <div class="row">
+            <div class="appointment_full_health_profile" style="width: 100%;" data-aos-offset="0" data-aos-delay="100" data-aos="fade-left">
+              <div class="row">
+                <!-- Date: <%#= a.date %><br /> -->
+                <div class="appointment_healthprof_date_month">
+                  <%=a.date.strftime("%B")%>
+                </div>
+                <div class="appointment_healthprof_date_number">
+                  <%=a.date.strftime("%d")%>
+                </div>
+                <div class="appointment_details_patients">
+                  <div class="display-3" id="appointment_small_title">Diagnosis:</div> <%= a.diagnosis %><br />
+                  <div class="display-3" id="appointment_small_title">Referrals:</div> <%= a.referrals %><br />
+                  <div class="display-3" id="appointment_small_title">Notes:</div> <%#= a.notes %><br>
+                <!-- </div> -->
                 </div>
               </div>
             </div>
-          <% end %>
+          </div>
+        <% end %>
       </div>
 
              
