@@ -34,7 +34,7 @@ class HealthProfilesController < ApplicationController
 		build_associations(@appointment)
 		@health_profile = HealthProfile.find_by(patient_id: @patient.id)
 		# @health_profile = @patient.health_profile
-		@immunizations = @patient.immunizations.select(:name, :date, :expiration_date)
+		@immunizations = @patient.immunizations.where(chronic: true).select(:name, :date, :expiration_date)
 		@allergies = @patient.allergies.select(:name, :severity, :status)
 		@prescriptions = @patient.prescriptions.select(:medicine, :dosage, :refills, :expiration_date)
 		@illnesses = @patient.illnesses.select(:name, :status)
