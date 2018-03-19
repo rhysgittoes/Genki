@@ -20,6 +20,7 @@ class Notification < ApplicationRecord
     self.link = "patients/#{appointment.patient.id}/health_profiles/#{health_profile.id}"
     self.category = 0
     self.user = appointment.patient
+    self.received = false
     self.user_type = 0
     self.save
   end
@@ -29,6 +30,7 @@ class Notification < ApplicationRecord
     self.link = "patients/#{appointment.patient.id}/health_profiles/#{health_profile.id}"
     self.category = 0
     self.user = appointment.doctor
+    self.received = false
     self.user_type = 1
     self.save
   end
