@@ -32,7 +32,7 @@ class AppointmentsController < ApplicationController
     params.require(:appointment).permit(
       :diagnosis, :referrals, :notes, :symptoms,
       immunizations_attributes: [:name, :expiration_date, :id, :_destroy],
-      illnesses_attributes: [:name, :status, :id, :_destroy],
+      illnesses_attributes: [:name, :status, :id, :_destroy, :chronic],
       allergies_attributes: [:name, :status, :severity, :id, :_destroy],
       prescriptions_attributes: [:medicine, :dosage, :refills, :expiration_date, :id, :_destroy]
       ).merge(symptoms: symptoms,
