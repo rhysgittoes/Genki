@@ -121,6 +121,26 @@
                <% end %> 
             </div>          
          </div>
+
+          <div id=active_permissions_container>
+          <h3 id = active_permissions_header class=display-1>Active Permissions</h3>
+            <% @relation.each do |r| %>
+               <div class=row>
+                  <div class=col-12>
+                    <div id=active_permissions data-aos-offset="0" data-aos-delay="100" data-aos="fade">
+                      <%= Doctor.find(r.doctor_id).first_name %>
+                    </div>
+                  </div>
+                </div>
+            <%end%>
+        </div>
+
+
+
+
+
+
+
       </div>
    </div>
 
