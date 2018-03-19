@@ -27,9 +27,17 @@
 
   <div class="collapse navbar-collapse" id="navbarSupportedContent">
     <ul class="navbar-nav mr-auto">
-      <li class="nav-item">
-        <a class="nav-link" href="#">Link<span class="sr-only">(current)</span></a>
-      </li>
+      <%if signed_in?%>
+        <%if current_user.type == "Patient" %>
+          <li class="nav-item">
+            <a class="nav-link" href="#">
+              Link
+              <span class="sr-only">(current)</span>
+            </a>
+          </li>
+        <%end%>
+      <%end%>
+
       <li class="nav-item">
         <a class="nav-link" href="#">Link</a>
       </li>       
