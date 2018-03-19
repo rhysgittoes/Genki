@@ -41,6 +41,7 @@ class AppointmentsController < ApplicationController
   end
   
   def set_associations(appointment, patient)
+    
     appointment.illnesses.each do |illness|
       illness.patient = patient
     end
