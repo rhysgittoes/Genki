@@ -45,9 +45,9 @@
       <% if signed_in? %>
       <form method="get" action=
       <% if current_user.type == "Doctor" %>
-      <%= "/doctors"%>
+        <%= "/doctors"%>
       <% else %>
-      <%= "/patients"%>
+        <%= patient_health_profiles_path(@patient, @health_profile)%>
       <% end %>
       
       >
