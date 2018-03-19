@@ -1,6 +1,6 @@
 class User < ApplicationRecord
   include Clearance::User
-
+  mount_uploader :avatar, AvatarUploader
   has_many :notifications
   
   def self.search(search)

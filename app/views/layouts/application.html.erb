@@ -49,8 +49,9 @@
       <% else %>
       <%= "/patients"%>
       <% end %>
-      
       >
+
+      <%= image_tag(current_user.avatar_url(:thumb).to_s, class: "profile-picture") %>
         <button class="nav_bar_name btn btn-outline-success navbtn" type="submit"> 
           <%if current_user.type == "Doctor" %>
             <%= "Dr." %>
