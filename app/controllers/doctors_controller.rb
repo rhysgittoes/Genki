@@ -30,6 +30,7 @@ def show
 end
 
 def edit
+  @doctor = Doctor.find_by_id(params[:id])
 end
 
 def update
