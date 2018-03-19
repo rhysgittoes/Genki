@@ -130,8 +130,15 @@
                    <div class=row>
                       <div class=col-12>
                         <div class="display-3" id=active_permissions data-aos-offset="0" data-aos-delay="100" data-aos="fade">
-                          <%= Doctor.find(r.doctor_id).first_name %>
-                          <%= button_to "Destroy", relation_path(r), data: { confirm: 'Are you sure?' }, method: :delete, class: "btn btn-outline-success" %>
+                          <div class="row">
+                            <div class="col-9" style="padding-top: 0.5rem">
+                              <%= Doctor.find(r.doctor_id).first_name %>
+                              <%= Doctor.find(r.doctor_id).last_name %>
+                            </div>
+                            <div class="col-3">
+                              <%= button_to "Revoke", relation_path(r), data: { confirm: 'Are you sure?' }, method: :delete, class: "btn btn-outline-success" %>
+                            </div>
+                          </div>
                         </div>
                       </div>
                     </div>
