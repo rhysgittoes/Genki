@@ -1,6 +1,21 @@
-<p class="nested-fields">
-  <span><%= f.label :name %></span>
-  <span><%= f.text_field :name %></span>
-  <span><%= link_to_remove_association "remove", f %></span>
-</p>
+<div class="nested-fields">
+  
+  <p>
+    <span>Condition</span>
+    <span><%= f.text_field :name %></span> 
+
+    <span><%= f.label "Chronic: " %></span>
+    <span>Yes <%= f.radio_button :chronic, true %></span>
+    <span>No <%= f.radio_button :chronic, false %></span>
+  </p>
+  
+  <p>
+    <span><%= f.label :notes %></span>
+    <span><%= f.text_field :notes %></span>
+  </p>
+  
+  <p>
+    <span><%= link_to_remove_association "remove", f %></span>
+  </p>
+</div>
 
