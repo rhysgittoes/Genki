@@ -202,9 +202,12 @@
         <%@prescriptions.each do |p| %>
           <div class=prescriptions_item>
             <%=image_tag("/assets/medicine.png", class: "icon_prescrip")%>
-            <%= p.medicine %><br />
-            Dosage: <%= p.dosage %><br />
+            Name:<%= p.medicine %><br />
+            <%=image_tag("/assets/dosage.png", class: "icon_prescrip")%>  
+            Dosage:<%= p.dosage %><br />
+            <%=image_tag("/assets/doctor.png", class: "icon_prescrip")%>
             Refills: <%= p.refills %><br />
+            <%=image_tag("/assets/timer.png", class: "icon_prescrip")%> 
             Expires: <%= p.expiration_date %><br />
           </div>
         <%end%><br />
