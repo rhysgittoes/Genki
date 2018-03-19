@@ -1,0 +1,61 @@
+<div>
+        <h5>
+            Known Allergies 
+            <i class="fas fa-angle-down" id ="illness-fields-toggle"></i>
+        </h5>
+        <div>
+            <div>
+                <%= f.fields_for :allergies do |allergy| %>
+                  <%= render "appointments/allergy_fields", f: allergy %>
+                <% end %>
+            </div>
+            <div>
+              <%= link_to_add_association '+ Allergy', f, :allergies, partial: "appointments/allergy_fields" %>
+            </div>  
+        </div>
+            
+        <h5>
+            Known Conditions and Illnesses
+            <i class="fas fa-angle-down" id ="illness-fields-toggle"></i>
+        </h5>
+        <div>
+            <div>
+              <%= f.fields_for :illnesses do |illness| %>
+                <%= render "appointments/illness_fields", f: illness %>
+              <% end %>
+            </div>
+            <div>
+                <%= link_to_add_association '+ Illness', f, :illnesses, partial: "appointments/illness_fields" %>
+            </div>
+        </div>
+        
+        <h5>
+            Previous Immunizations
+            <i class="fas fa-angle-down" id ="illness-fields-toggle"></i>
+        </h5>
+        <div>
+            <div>
+                <%= f.fields_for :immunizations do |immunization| %>
+                    <%= render "appointments/immunization_fields", f: immunization %>
+                <% end%>
+            </div>
+            <div>
+                <%= link_to_add_association '+ Immunization', f, :immunizations, partial: "appointments/immunization_fields" %>
+            </div>
+        </div>
+        
+        <h5>
+            Ongoing Prescriptions
+            <i class="fas fa-angle-down" id ="illness-fields-toggle"></i>
+        </h5>
+        <div>
+            <div>
+              <%= f.fields_for :prescriptions do |prescription| %>
+               <%= render "appointments/prescription_fields", f: prescription %>
+              <% end %>
+            </div>
+            <div>
+              <%= link_to_add_association '+ Prescription', f, :prescriptions, partial: "appointments/prescription_fields" %>
+            </div>
+        </div>
+    </div>
