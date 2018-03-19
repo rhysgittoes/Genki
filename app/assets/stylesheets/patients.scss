@@ -168,7 +168,17 @@ padding-top: 5px;
 
 }
 
-#patient_health_profile_link{
+#patient_health_profile_link_container{
 padding-top: 0.5rem;
 
+
 }
+#patient_health_profile_link{
+padding-top: 0.5rem;
+color: #888b8e;
+text-decoration:none;
+}
+#patient_health_profile_link:hover{
+color: #c1c3c4;
+}
+
