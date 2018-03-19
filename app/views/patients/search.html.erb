@@ -29,9 +29,10 @@
                   <div class=search_result_containter>     
                      <%if user.type == "Doctor"%>
                        <div class=display-3 style="font-size: 2rem;"> 
-                       <%= link_to user.first_name + " " + user.last_name , doctor_path(user) %>
+                       <%= link_to user.first_name + " " + user.last_name + ", M.D.", doctor_path(user) %>
                        <%#= link_to user.last_name, doctor_path(user) %> </div> 
                        <br>
+                       <div><%= user.specialty %></div>
                        <div>Admission id: <%= link_to user.admission_id, doctor_path(user) %> </div> 
                        <div>Email: <%= user.email %> </div> 
                        <br>
