@@ -6,7 +6,7 @@ class Allergy < ApplicationRecord
 	validates :severity, presence: true
 	
 	enum status: [:dormant, :active]
-	enum severity: [:mild, :moderate, :severe]
+	# enum severity: [:mild, :moderate, :severe]
 	
 	before_save :set_default
 	
