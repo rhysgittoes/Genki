@@ -125,6 +125,7 @@
             <%= @patient.last_name %>
           </div>
 
+         <div class="HL"></div>
           <div class="display-3" id="basic_info_item" class="display-3 basic_info_item">
             <%=image_tag("/assets/gender.png", class: "icon")%>
             <%= @patient.gender %>
@@ -160,43 +161,71 @@
           </div>
         </div>
         
+        <div class="basic_health_prof_container">
+          <div class=" display-3" id="immun_title">
+            Immunizations
+          </div>
+          <div class="HL"></div>
+          <% @immunizations.each do |i| %>
+          Type: <%= i.name %><br />
+          Expires: <%= i.expiration_date %><br />
+          <% end %><br />
+        </div>
 
-        Immunizations:<br />
-        <% @immunizations.each do |i| %>
-        Type: <%= i.name %><br />
-        Expires: <%= i.expiration_date %><br />
-        <% end %><br />
-        <br>
-        Allergies:<br />
-        <% @allergies.each do |a| %>
-        Type: <%= a.name %><br />
-        Severity: <%= a.severity %><br />
-        <% end %><br />
-        <br>
-        Past illnesses:<br />
-        <% @illnesses.each do |i| %>
-        Name: <%= i.name %><br />
-        <% end %><br />
-        <br>
+        <div class="basic_health_prof_container">
+          <div class=" display-3" id="immun_title">
+            Allergies
+          </div>
+          <div class="HL"></div>
+          <% @allergies.each do |a| %>
+          Type: <%= a.name %><br />
+          Severity: <%= a.severity %><br />
+          <% end %><br />
+        </div>
+        
+        <div class="basic_health_prof_container">
+          <div class=" display-3" id="immun_title">
+            Past illnesses
+          </div>
+          <div class="HL"></div>
+          <% @illnesses.each do |i| %>
+          Name: <%= i.name %><br />
+          <% end %><br />
+          <br>
+        </div>
       </div>
 
       <div class="col-8">
-        Prescriptions:<br />
-        <% @prescriptions.each do |p| %>
-        Name: <%= p.medicine %><br />
-        Dosage: <%= p.dosage %><br />
-        Refills: <%= p.refills %><br />
-        Expires: <%= p.expiration_date %><br />
-        <% end %><br />
-        <br>
+          Past appointments:<br />    
+          <% @appointments.each do |a| %>
+            <div class="row">
+              <div class="appointment_full_health_profile"
+                Date: <%= a.date %><br />
+                Diagnosis: <%= a.diagnosis %><br />
+                Referrals: <%= a.referrals %><br />
+                Notes: <%= a.notes %><br>
+                  <% a.prescriptions.each do |p| %>
+                    Name: <%= p.medicine %><br />
+                    Dosage: <%= p.dosage %><br />
+                    Refills: <%= p.refills %><br />
+                    Expires: <%= p.expiration_date %><br />
+                  <%end%>
+              </div>
+            </div>
+          <% end %>
+
+
+
+       <!--  Prescriptions:<br />
+        <%# @prescriptions.each do |p| %>
+        Name: <%#= p.medicine %><br />
+        Dosage: <%#= p.dosage %><br />
+        Refills: <%#= p.refills %><br />
+        Expires: <%#= p.expiration_date %><br />
+        <%# end %><br />
+        <br> -->
         
-        Past appointments:<br />    
-        <% @appointments.each do |a| %>
-        Date: <%= a.date %><br />
-        Diagnosis: <%= a.diagnosis %><br />
-        Referrals: <%= a.referrals %><br />
-        Notes: <%= a.notes %><br>
-        <% end %>
+       
       </div>
     </div>
   </div>

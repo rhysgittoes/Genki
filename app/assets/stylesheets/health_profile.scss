@@ -24,6 +24,7 @@
    padding-left: 1.8rem;
    padding-right: 1.8rem;
    padding-top:1rem;
+   margin-bottom: 2rem;
 
 }
 
@@ -46,6 +47,7 @@
 .icon{
    height: 30px;
    width: 30px;
+   margin-right: 0.2rem;
 }
 
 #basic_info_item{
@@ -61,5 +63,42 @@
 }
 #edit_profile_button{
    text-decoration:none;
-   border-style: solid;
+   border-style: none;
+   padding-top: 0.1rem;
+   padding-bottom: 0.1rem;
+   padding-left: 0.3rem;
+   padding-right: 0.3rem;
+   border-radius: 3px;
+}
+.HL{
+   margin-left: auto;
+   margin-right: auto;
+   margin-top: 1rem;
+   margin-bottom: 1rem;
+   width: 80%;
+   border-top-style: solid;
+   border-top-color: gray;
+   border-top-width: 1px;
+}
+
+
+
+#immun_title{
+   font-size: 2rem;
+   text-align: center;
+}
+
+.appointment_full_health_profile{
+   padding-top: 1.5rem;
+   padding-left: 1.5rem;
+   padding-right: 1.5rem;
+   padding-bottom: 1.5rem;
+   -webkit-box-shadow: 0 10px 6px -6px #777;
+   -moz-box-shadow: 0 10px 6px -6px #777;
+          box-shadow: 0 10px 6px -6px #777;
+   background:#f39c12;
+   margin-bottom:1rem;
+   color: white;
+
+
 }
