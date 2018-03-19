@@ -199,8 +199,14 @@
           Past appointments:<br />    
           <% @appointments.each do |a| %>
             <div class="row">
-              <div class="appointment_full_health_profile"
-                Date: <%= a.date %><br />
+              <div class="appointment_full_health_profile">
+                <!-- Date: <%#= a.date %><br /> -->
+                <div class="appointment_date_month">
+                  <%=a.date.strftime("%B")%>
+                </div>
+                <div class="appointment_date_number">
+                  <%=a.date.strftime("%d")%>
+                </div>
                 Diagnosis: <%= a.diagnosis %><br />
                 Referrals: <%= a.referrals %><br />
                 Notes: <%= a.notes %><br>
