@@ -75,7 +75,7 @@ class PatientsController < ApplicationController
   end
   
   def verify_user
-    if params[:id] != @patient.id
+    if User.find(params[:id]) != @patient
       redirect_to patients_path
     end
   end

@@ -10,8 +10,7 @@ def create
   @doctor = Doctor.find_by_id(params[:id])
   @relation.save
   doctor = Doctor.find(@relation.doctor_id)
-  flash[:notice] = "You has given #{doctor.first_name}" + " " + "#{doctor.last_name} permission to view your profile."
-  redirect_to patients_path
+  redirect_to patients_path, notice: "You has given #{doctor.first_name}" + " " + "#{doctor.last_name} permission to view your profile."
 end
 
 def destroy
