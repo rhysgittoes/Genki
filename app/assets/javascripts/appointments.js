@@ -25,7 +25,7 @@ document.addEventListener('turbolinks:load', function(){
        $(this).toggleClass("fa-angle-up fa-angle-down ")
    })
    
-    $('#symptoms-input').selectize({
+   $('#symptoms-input').selectize({
     plugins: ['restore_on_backspace', 'remove_button'],
     delimiter: ',',
     persist: false,
@@ -49,5 +49,6 @@ document.addEventListener('turbolinks:load', function(){
       }
     }
   })
+
    
 });

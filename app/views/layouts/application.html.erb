@@ -10,10 +10,8 @@
     <link href="https://cdn.rawgit.com/michalsnik/aos/2.1.1/dist/aos.css" rel="stylesheet">
     <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.0.8/css/solid.css" integrity="sha384-v2Tw72dyUXeU3y4aM2Y0tBJQkGfplr39mxZqlTBDUZAb9BGoC40+rdFCG0m10lXk" crossorigin="anonymous">
     <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.0.8/css/fontawesome.css" integrity="sha384-q3jl8XQu1OpdLgGFvNRnPdj5VIlCvgsDQTQB6owSOHWlAurxul7f+JpUOVdAiJ5P" crossorigin="anonymous">
-    <!--emika code-->
     <link href="https://cdnjs.cloudflare.com/ajax/libs/selectize.js/0.12.4/css/selectize.bootstrap2.css" type="text/css">
     <script src="https://code.jquery.com/jquery-3.1.1.min.js"></script>
-    <!--emika code-->
     
     <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload' %>
     <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
@@ -33,9 +31,21 @@
 
   <div class="collapse navbar-collapse" id="navbarSupportedContent">
     <ul class="navbar-nav mr-auto">
-      <li class="nav-item">
-        <a class="nav-link" href="#">Link<span class="sr-only">(current)</span></a>
-      </li>
+      <%if signed_in?%>
+        <%if current_user.type == "Patient"%>
+          <li class="nav-item">
+            <div id="patient_health_profile_link_container">
+              <%if @health_profile != nil %>
+              <%= link_to "Health Profile", patient_health_profile_path(@patient, @health_profile), id:"patient_health_profile_link" %> 
+              <% else %>
+              <%= link_to "Health profile", new_patient_health_profile_path(@patient) %> 
+              <%end%>
+              <span class="sr-only">(current)</span>
+            </div>
+          </li>
+        <%end%>
+      <%end%>
+
       <li class="nav-item">
         <a class="nav-link" href="#">Link</a>
       </li>       
@@ -51,9 +61,9 @@
       <% if signed_in? %>
       <form method="get" action=
       <% if current_user.type == "Doctor" %>
-      <%= "/doctors"%>
+        <%= "/doctors"%>
       <% else %>
-      <%= "/patients"%>
+        <%= patient_health_profiles_path(@patient, @health_profile)%>
       <% end %>
       
       >
@@ -196,13 +206,8 @@
 
     <%= yield %>
 
-    <!--emika code-->
-    <!--<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/selectize.js/0.12.4/js/selectize.js"></script>-->
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jqueryui/1.12.1/jquery-ui.js"></script>
     <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/selectize.js/0.12.4/js/selectize.js"></script>
-    <!--emika code-->
-
-    <!-- <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script> -->
     <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
     <script src="https://cdn.rawgit.com/michalsnik/aos/2.1.1/dist/aos.js"></script>
