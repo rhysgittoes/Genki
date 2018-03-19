@@ -37,16 +37,17 @@
                         <div>Email: <%= user.email %> </div> 
                         <br>
                      <% end %>
+                     <% @relation = Relation.find_by(patient_id: user.id, doctor_id: current_user.id) %>
                      <% if user.type == "Patient" %>
                         <div class=display-3 style="font-size: 2rem;"> 
-                           
-                           <% if user.health_profile %>
-                             <%= link_to user.first_name + " " + user.last_name, patient_health_profile_path(user.id, user.health_profile) %>  
-                           <% else %>
+                           <% if user.health_profile && @relation %>
+                             <%= link_to user.first_name + " " + user.last_name, patient_health_profile_path(user.id, user.health_profile) %>
+                           <% elsif !@relation %>
+                              <%= user.first_name + " " + user.last_name %>
+                           <% elsif !user.health_profile %>
                               <p><%= user.first_name + " " + user.last_name %></p>
                               <h6>This user will be accessible once they've set up their health profile.</h6>
                            <% end %>   
-                          
                         </div>
                          <br>
                         <div>Admission id: <%= user.admission_id %> </div> 
