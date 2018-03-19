@@ -1,3 +1,4 @@
+<%if @relation.present?%>
 <% @relation.each do |r|%>
 <% if r.patient_id == @patient.id && r.doctor_id == current_user.id %>
 <% if @health_profile.patient_id == @patient.id %>
@@ -11,4 +12,5 @@ Insurer: <%= @health_profile.insurer %><br />
 <% else %>
 <%= "You are not authorized to view this page!" %>
 <%end%>
-<% end %>
+<%end%>
+

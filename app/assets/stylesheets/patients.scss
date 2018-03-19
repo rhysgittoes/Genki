@@ -152,7 +152,7 @@ padding-top: 5px;
   padding-top: 1rem;
   padding-bottom: 1rem;
   font-size: 1.1rem;
-  vertical-align: text-bottom;
+
 
 }
 
@@ -163,3 +163,22 @@ padding-top: 5px;
      margin-left: -0.1rem;
      margin-right: -0.1rem;
 }
+
+#notification_list_container{
+
+}
+
+#patient_health_profile_link_container{
+padding-top: 0.5rem;
+
+
+}
+#patient_health_profile_link{
+padding-top: 0.5rem;
+color: #888b8e;
+text-decoration:none;
+}
+#patient_health_profile_link:hover{
+color: #c1c3c4;
+}
+
