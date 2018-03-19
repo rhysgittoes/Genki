@@ -6,25 +6,31 @@ class Notification < ApplicationRecord
   
   
   def self.create_appointment_notifications(appointment, health_profile)
-    notification = Notification.new
-    notification.text = "Your appointment on #{appointment.created_at.to_date} has been added to your visit logs."
-    notification.link = "patients/#{appointment.patient.id}/health_profiles/#{health_profile.id}"
-    notification.category = 0
-    
-    notification.create_patient_appointment_notification(appointment)
-    notification.create_doctor_appointment_notification(appointment)
+    p_notification = Notification.new
+    d_notification = Notification.new
+
+    p_notification.create_patient_appointment_notification(appointment)
+    d_notification.create_doctor_appointment_notification(appointment)
   end
   
   # Appointment Notifications
   
   def create_patient_appointment_notification(appointment)
+    self.text = "Your appointment on #{appointment.created_at.to_date} has been added to your visit logs."
+    self.link = "patients/#{appointment.patient.id}/health_profiles/#{appointment.patient.health_profile.id}"
+    self.category = 0
     self.user = appointment.patient
+    self.received = false
     self.user_type = 0
     self.save
   end
   
   def create_doctor_appointment_notification(appointment)
+    self.text = "Your appointment on #{appointment.created_at.to_date} has been added to your visit logs."
+    self.link = "patients/#{appointment.patient.id}/health_profiles/#{appointment.patient.health_profile.id}"
+    self.category = 0
     self.user = appointment.doctor
+    self.received = false
     self.user_type = 1
     self.save
   end
@@ -32,11 +38,13 @@ class Notification < ApplicationRecord
   # Prescription Notifications
   
   def self.create_new_prescription_notifications(prescription)
-    notification = Notification.new
-    notification.category = 1
-
-    notification.create_patient_new_prescription_notification(prescription)    
-    notification.create_doctor_new_prescription_notification(prescription)    
+    p_notification = Notification.new
+    p_notification.category = 1
+    p_notification.create_patient_new_prescription_notification(prescription)
+    
+    d_notification = Notification.new
+    d_notification.category = 1
+    d_notification.create_doctor_new_prescription_notification(prescription)    
   end
   
   def create_patient_new_prescription_notification(prescription)
@@ -56,6 +64,12 @@ class Notification < ApplicationRecord
     self.link = "/doctors"
     self.user_type = 1
     self.save
+  end
+  
+  # Illness notifications
+  
+  def self.new_illness_notification
+    
   end
   
 end

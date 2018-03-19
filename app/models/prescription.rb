@@ -11,10 +11,11 @@ class Prescription < ApplicationRecord
 	
 	def create_notifications
 		Notification.create_new_prescription_notifications(self)
-  end
+	end
 	
 	def set_default_values
 		self.refills = 0
+		self.expiration_date = Date.today + 1.year
 	end
 
 end

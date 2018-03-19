@@ -2,29 +2,35 @@
 
 <div>
 <%= image_tag(current_user.avatar_url.to_s) %><br>
-First Name:
-<%= @doctor.first_name %><br>
-Last Name:
-<%= @doctor.last_name %><br>
-Email:
-<%= @doctor.email %><br>
-Gender:
-<%= @doctor.gender %><br>
-Birthday:
-<%= @doctor.birthday %><br>
-Language:
-<%= @doctor.language %><br>
-City:
-<%= @doctor.city %><br>
-Country:
-<%= @doctor.country %><br>
-Admission ID:
-<%= @doctor.admission_id %><br>
-Certification:
-<%= @doctor.certification %><br>
-Years of Experience:
-<%= @doctor.experience %><br>
-<% if @doctor.id == current_user.id %>
-<%= link_to "Edit Profile", edit_doctor_path(@doctor)%>
-<%end%>
-</div>
+  <div>
+    <h4>Personal Details</h4>
+    <p><strong>Name:</strong> <%= @doctor.first_name + " " + @doctor.last_name%></p>
+    <p><strong>Admission ID:</strong> <%= @doctor.admission_id %></p>
+    <p><strong>Gender:</strong> <%= @doctor.gender %></p>
+    <p><strong>Birthday:</strong> <%= @doctor.birthday %></p>
+  </div>
+    
+  <div>
+    <h4>Contact Details</h4>
+      <p><strong>Email:</strong> <%= @doctor.email %></p>
+      <div>
+        <p><strong>Address:</strong></p>
+        <p><%= @doctor.address %>, <%= @doctor.secondary_address if @doctor.secondary_address %></p>
+        <p><%= @doctor.city%>, <%= @doctor.state%> <%= @doctor.zip_code%></p>
+        <p><%= @doctor.country%></p>
+      </div>
+  </div>
+  
+  <div>
+    <h4>Professional Details</h4>
+      <p><strong>Certification:</strong> <%= @doctor.certification %></p>
+      <p><strong>Years of Practice:</strong> <%= @doctor.experience %></p>
+      <p><strong>Language:</strong> <%= @doctor.language %></p>
+      <p><strong>Specialty:</strong> <%= @doctor.specialty %></p>
+  </div>
+  
+  <% if @doctor.id == current_user.id %>
+    <%= link_to "Edit Profile", edit_doctor_path(@doctor)%>
+  <%end%>
+
+<div>
