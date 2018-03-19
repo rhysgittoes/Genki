@@ -45,7 +45,9 @@ end
 
 def search
   @result = User.search(params[:search])
-  @health_profile = HealthProfile.where(patient_id: params[:patient_id])
+  #@result.each do |result|
+    #@health_profile = HealthProfile.find_by(patient_id: result.id)
+  #end
 end
 
 

@@ -32,8 +32,8 @@ class HealthProfilesController < ApplicationController
 		@relation = Relation.find_by(patient_id: @patient, doctor_id: current_user)
 		@appointment = Appointment.new
 		build_associations(@appointment)
-		@health_profile = HealthProfile.find_by(patient_id: params[:patient_id])
-		@health_profile = @patient.health_profile
+		@health_profile = HealthProfile.find_by(patient_id: @patient.id)
+		# @health_profile = @patient.health_profile
 		@immunizations = @patient.immunizations.select(:name, :date, :expiration_date)
 		@allergies = @patient.allergies.select(:name, :severity, :status)
 		@prescriptions = @patient.prescriptions.select(:medicine, :dosage, :refills, :expiration_date)
