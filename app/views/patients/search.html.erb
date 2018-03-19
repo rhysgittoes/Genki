@@ -41,7 +41,7 @@
                            <% @relation.each do |r| %>
                               <% if r.doctor_id == user %>
                            <%end%>
-                           <%= button_to "Destroy", relation_path(r), data: { confirm: 'Are you sure?' }, method: :delete, class: "btn btn-outline-success" %>
+                           <%= button_to "Unauthorize", relation_path(r), data: { confirm: 'Are you sure?' }, method: :delete, class: "btn btn-outline-success" %>
                            <%end%>
                      <%end%>
                        </div>
