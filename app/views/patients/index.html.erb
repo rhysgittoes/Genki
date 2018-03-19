@@ -123,16 +123,18 @@
          </div>
 
           <div id=active_permissions_container>
-          <h3 id = active_permissions_header class=display-1>Active Permissions</h3>
-            <% @relation.each do |r| %>
-               <div class=row>
-                  <div class=col-12>
-                    <div id=active_permissions data-aos-offset="0" data-aos-delay="100" data-aos="fade">
-                      <%= Doctor.find(r.doctor_id).first_name %>
+          <h3 id = active_permissions_header class=display-1>Health Profile Access</h3>
+             <div id=active_perm_descrip class="display-3">You've given these doctors editing access to your profile</div>
+              <% @relation.each do |r| %>
+                 <div class=row>
+                    <div class=col-12>
+                      <div class="display-3" id=active_permissions data-aos-offset="0" data-aos-delay="100" data-aos="fade">
+                        <%= Doctor.find(r.doctor_id).first_name %>
+                        <%= button_to "Destroy", relation_path(r), data: { confirm: 'Are you sure?' }, method: :delete, class: "btn btn-outline-success" %>
+                      </div>
                     </div>
                   </div>
-                </div>
-            <%end%>
+              <%end%>
         </div>
 
 
