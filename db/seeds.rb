@@ -1,99 +1,131 @@
-# This file should contain all the record creation needed to seed the database with its default values.
-# The data can then be loaded with the rails db:seed command (or created alongside the database with db:setup).
-#
-# Examples:
-#
-#   movies = Movie.create([{ name: 'Star Wars' }, { name: 'Lord of the Rings' }])
-#   Character.create(name: 'Luke', movie: movies.first)
-
-
-
-# user = {}
-# user['password'] = 'asdf'
-
-# ActiveRecord::Base.transaction do
-#   20.times do 
-#     user['name'] = Faker::Name.name  
-#     user['email'] = Faker::Internet.email
-#     user['gender'] = rand(1..2)
-#     user['phone'] = Faker::PhoneNumber.phone_number
-#     user['country'] = Faker::Address.country
-#     user['birthdate'] = Faker::Date.between(50.years.ago, Date.today)
-
-#     User.create(user)
-#   end
-# end 
-
-
-# create_table "users", force: :cascade do |t|
-#     t.datetime "created_at", null: false
-#     t.datetime "updated_at", null: false
-#     t.string "email", null: false
-#     t.string "encrypted_password", limit: 128, null: false
-#     t.string "confirmation_token", limit: 128
-#     t.string "remember_token", limit: 128, null: false
-#     t.string "type"
-#     t.string "first_name"
-#     t.string "last_name"
-#     t.string "gender"
-#     t.date "birthday"
-#     t.string "language"
-#     t.string "city"
-#     t.string "country"
-#     t.string "admission_id"
-#     t.string "certification"
-#     t.integer "experience"
-#     t.index ["email"], name: "index_users_on_email"
-#     t.index ["remember_token"], name: "index_users_on_remember_token"
-#   end
-
+doctor_specialties = ["Allergy and immunology",
+"Anesthesiology",
+"Cardiology",
+"Cardiovascular surgery",
+"Clinical laboratorysciences",
+"Dermatology",
+"Dietetics",
+"Emergency medicine",
+"Endocrinology",
+"Family medicine",
+"Forensic medicine",
+"Gastroenterology",
+"General surgery",
+"Geriatrics",
+"Gynecology",
+"Hepatology",
+"Hospital medicine",
+"Infectious disease",
+"Intensive care medicine",
+"Internal Medicine",
+"Medical research",
+"Nephrology",
+"Neurology",
+"Neurosurgery",
+"Obstetrics and gynecology",
+"Oncology",
+"Ophthalmology",
+"Oral and maxillofacial surgery",
+"Orthopedic surgery",
+"Otorhinolaryngology, or ENT",
+"Palliative care",
+"Pathology",
+"Pediatrics",
+"Pediatric surgery",
+"Physical medicine and rehabilitation Or Physiatry",
+"Plastic surgery",
+"Podiatry",
+"Proctology",
+"Psychiatry",
+"Pulmonology",
+"Public Health",
+"Radiology",
+"Rheumatology",
+"Surgical oncology",
+"Thoracic surgery",
+"Transplant surgery",
+"Urgent Care Medicine",
+"Urology",
+"Vascular surgery"]
 
 
 require 'faker'
 
-
-
-appointment = {}
+doctor = {}
 ActiveRecord::Base.transaction do
-  15.times do 
-    appointment['date'] = Faker::Date.between(400.days.ago, Date.today)
-    appointment['symptoms'] = Faker::Lorem.words(5)
-    appointment['diagnosis'] = Faker::Lorem.paragraph(2, true, 8)
-    appointment['referrals'] = Faker::Lorem.sentence(3, true, 4) 
-    appointment['notes'] = Faker::Lorem.paragraph(3, true, 10)
-    appointment['doctor_id'] = 1
-    appointment['patient_id'] = 2
-    Appointment.create(appointment)
+  15.times do
+    doctor = Doctor.new
+    doctor.email = Faker::Internet.email
+    doctor.phone_number = Faker::PhoneNumber.phone_number
+    doctor.first_name = Faker::Name.first_name
+    doctor.last_name = Faker::Name.last_name
+    doctor.gender = ['Female', 'Male'][rand(0..1)]
+    doctor.birthday = Faker::Date.birthday(18, 65)
+    doctor.language = "English"
+    doctor.address = Faker::Address.street_address
+    doctor.secondary_address = Faker::Address.secondary_address
+    doctor.city = Faker::Address.city
+    doctor.zip_code = Faker::Address.zip_code
+    doctor.state = Faker::Address.state
+    doctor.country = Faker::Address.country
+    doctor.admission_id = SecureRandom.hex(4).upcase
+    doctor.specialty = doctor_specialties[rand(0..doctor_specialties.length-1)]
+    doctor.practice = Faker::Company.name
+    doctor.password = 'password'
+    doctor.save
+  end
+end
+
+ActiveRecord::Base.transaction do
+  15.times do
+    patient = Patient.new
+    patient.email = Faker::Internet.email
+    patient.phone_number = Faker::PhoneNumber.phone_number
+    patient.first_name = Faker::Name.first_name
+    patient.last_name = Faker::Name.last_name
+    patient.gender = ['Female', 'Male'][rand(0..1)]
+    patient.birthday = Faker::Date.birthday(18, 65)
+    patient.language = "English"
+    patient.address = Faker::Address.street_address
+    patient.secondary_address = Faker::Address.secondary_address
+    patient.city = Faker::Address.city
+    patient.zip_code = Faker::Address.zip_code
+    patient.state = Faker::Address.state
+    patient.country = Faker::Address.country
+    patient.admission_id = SecureRandom.hex(4).upcase
+    patient.password = 'password'
+    patient.save
   end
 end
 
 
-prescriptions = {}
-ActiveRecord::Base.transaction do 
-  15.times do 
-    prescriptions['medicine'] = Faker::Lorem.word #=> "repellendus"
-    prescriptions['dosage'] = Faker::Lorem.sentence(3) 
-    prescriptions['refills'] = "none"
-    prescriptions['expiration_date'] = Faker::Date.forward(14)
-    prescriptions['patient_id'] = 2
-    prescriptions['appointment_id'] = Faker::Number.between(0, 16)
-    prescriptions['doctor_id'] = 1
 
-    Prescription.create(prescriptions)
-  end
-end
-
-# create_table "prescriptions", force: :cascade do |t|
-#     t.string "medicine"
-#     t.string "dosage"
-#     t.string "refills"
-#     t.date "expiration_date"
-#     t.datetime "created_at", null: false
-#     t.datetime "updated_at", null: false
-#     t.bigint "patient_id"
-#     t.bigint "appointment_id"
-#     t.bigint "doctor_id"
-#     t.index ["appointment_id"], name: "index_prescriptions_on_appointment_id"
+# appointment = {}
+# ActiveRecord::Base.transaction do
+#   15.times do 
+#     appointment['date' = Faker::Date.between(400.days.ago, Date.today)
+#     appointment['symptoms' = Faker::Lorem.words(5)
+#     appointment['diagnosis' = Faker::Lorem.paragraph(2, true, 8)
+#     appointment['referrals' = Faker::Lorem.sentence(3, true, 4) 
+#     appointment['notes'] = Faker::Lorem.paragraph(3, true, 10)
+#     appointment['doctor_id'] = Patient.find(rand(15)).id
+#     appointment['patient_id'] = Doctor.find(rand(15)).id
+#     Appointment.create(appointment)
+#   end
+# end
 
 
+# prescriptions = {}
+# ActiveRecord::Base.transaction do 
+#   15.times do 
+#     prescriptions['medicine'] = Faker::Lorem.word #=> "repellendus"
+#     prescriptions['dosage'] = Faker::Lorem.sentence(3) 
+#     prescriptions['refills'] = "none"
+#     prescriptions['expiration_date'] = Faker::Date.forward(14)
+#     prescriptions['patient_id'] = 2
+#     prescriptions['appointment_id'] = Faker::Number.between(0, 16)
+#     prescriptions['doctor_id'] = 1
 
+#     Prescription.create(prescriptions)
+#   end
+# end
