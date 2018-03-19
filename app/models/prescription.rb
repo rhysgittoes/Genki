@@ -15,6 +15,7 @@ class Prescription < ApplicationRecord
 	
 	def set_default_values
 		self.refills = 0
+		self.expiration_date = Date.today + 1.year
 	end
 
 end
