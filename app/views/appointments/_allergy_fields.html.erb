@@ -3,7 +3,9 @@
     <span><%= f.text_field :name %></span> 
 
     <span><%= f.label :severity %></span>
-    <span><%= f.text_field :severity %></span>
+    <span><%= f.select(:severity, [nil, "Mild", "Moderate", "Severe" ]) %></span>
+    <span><%= f.label :notes %></span>
+    <span><%= f.text_field :notes %></span>
     <span><%= link_to_remove_association "delete", f %></span>
 </p>
 

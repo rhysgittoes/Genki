@@ -5,7 +5,9 @@ class Appointment < ApplicationRecord
 	has_many :immunizations
 	has_many :prescriptions
 	has_many :allergies
-	accepts_nested_attributes_for :illnesses, :immunizations, :allergies, :prescriptions, reject_if: :all_blank, allow_destroy: true
+	accepts_nested_attributes_for :illnesses, reject_if: proc { |attributes| attributes['name'].blank? }, allow_destroy: true
+	accepts_nested_attributes_for :allergies, reject_if: proc { |attributes| attributes['name'].blank? }, allow_destroy: true
+	accepts_nested_attributes_for :immunizations, :prescriptions, reject_if: :all_blank, allow_destroy: true
 	
 	before_create :set_date_to_today, :set_key
 	
