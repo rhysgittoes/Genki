@@ -39,12 +39,17 @@
                      <% end %>
                      <% if user.type == "Patient" %>
                         <div class=display-3 style="font-size: 2rem;"> 
-
-                          <%= link_to user.first_name + " " + user.last_name, patient_health_profile_path(user.id, HealthProfile.find_by(patient_id: user.id)) %>  
-                          <%#= link_to user.last_name, patient_health_profile_path(user.id, @health_profile) %>
+                           
+                           <% if user.health_profile %>
+                             <%= link_to user.first_name + " " + user.last_name, patient_health_profile_path(user.id, user.health_profile) %>  
+                           <% else %>
+                              <p><%= user.first_name + " " + user.last_name %></p>
+                              <h6>This user will be accessible once they've set up their health profile.</h6>
+                           <% end %>   
+                          
                         </div>
                          <br>
-                        <div>Admission id: <%= link_to user.admission_id,patient_health_profile_path(user.id, HealthProfile.find_by(patient_id: user.id)) %> </div> 
+                        <div>Admission id: <%= user.admission_id %> </div> 
                         <div>Email: <%= user.email %> </div> 
                          <br>
                      <%end %>
