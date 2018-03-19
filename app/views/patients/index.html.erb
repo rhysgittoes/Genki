@@ -101,8 +101,8 @@
 </div> -->
 
 
-      <div class=col-4>
-         <div id = patient_notification_container>
+        <div class=col-4>
+          <div id = patient_notification_container>
             <h3 id = notifications_header class=display-1>Notifications</h3>
             <div id = notification_list>
                <% patient_notifications = @patient.notifications.where(received: false) %>
@@ -120,7 +120,37 @@
                    You have no new notifications.
                <% end %> 
             </div>          
-         </div>
+        </div>
+
+        <div id=active_permissions_container>
+        <h3 id = active_permissions_header class=display-1>Health Profile Access</h3>
+          <%if @relation.present?%>
+            <div id=active_perm_descrip class="display-3">You've given these doctors editing access to your profile</div>
+                <% @relation.each do |r| %>
+                   <div class=row>
+                      <div class=col-12>
+                        <div class="display-3" id=active_permissions data-aos-offset="0" data-aos-delay="100" data-aos="fade">
+                          <div class="row">
+                            <div class="col-9" style="font-size: 1.4rem;" class="display-3">
+                              <%= Doctor.find(r.doctor_id).first_name %>
+                              <%= Doctor.find(r.doctor_id).last_name %>
+                            </div>
+                            <div class="col-9" style="font-size: 0.9rem; margin-top: 0.5rem;">
+                               <%= Doctor.find(r.doctor_id).email %>
+                            </div>
+
+                            <div class="col-3" style="margin-top: -1.25rem; text-align: right;">
+                              <%= button_to "Revoke", relation_path(r), data: { confirm: 'Are you sure?' }, method: :delete, class: "btn btn-outline-success" %>
+                            </div>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                <%end%>
+            </div>
+          <%else%>
+          <div id=active_perm_descrip class="display-3">You've given no doctors editing access to your profile</div>
+          <%end%>
       </div>
    </div>
 
