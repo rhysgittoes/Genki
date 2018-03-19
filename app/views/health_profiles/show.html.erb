@@ -26,47 +26,90 @@
               </div>
 
               <div>
-              <h4>Immunizations:</h4>
-              <%if @immunizations.empty? %>
-                 <p> There is no record found for Immunizations!</p>
-                  <% else %>
-                <% @immunizations.each do |i| %>
-                <div>
-                  <p>Type: <%= i.name %></p>
-                  <p>Expires: <%= i.expiration_date %></p>
-                  <% end %>
-              <%end%>
-                </div>
-              </div>
-
-              <div>
-                <h4>Allergies:</h4>
-                <% if @allergies.empty? %>
-                <p>There is no record found for Allergies!</p>
-                <%else%>
-                <% @allergies.each do |a| %>
-                <div>
-                  <p>Type: <%= a.name %></p>
-                  <p>Severity: <%= a.severity %></p>
-                </div>
+                <h4>Immunizations:</h4>
+                <%if @immunizations.empty? %>
+                   <p> There is no record found for Immunizations!</p>
+                    <% else %>
+                      <% @immunizations[0..2].each do |i| %>
+                    <p>Type: <%= i.name %></p>
+                    <p>Expires: <%= i.expiration_date %></p>
+                    <% end %>
                 <%end%>
-                <% end %>
-              </div>
+                <% if @immunizations[4..50]!=nil %>
+                  <a href="#"> Show more </a>
+                  <div class="hidden" id="immunization">
+                  <% @immunizations[3..50].each do |i| %>
+                    <p>Type: <%= i.name %></p>
+                    <p>Expires: <%= i.expiration_date %></p>
+                    <% end %>
+                  <% end %>
+                    <script>
+                      $(document).on('click', function(){
+                        $("#allergy").show();
+                        return false;
+                      });
+                    </script>
+                  </div>
+                </div>
+
+
+                <div>
+                  <h4>Allergies:</h4>
+                  <% if @allergies.empty? %>
+                  <p>There is no record found for Allergies!</p>
+                    <%else%>
+                      <% @allergies[0..2].each do |a| %>
+                      <p>Type: <%= a.name %></p>
+                      <p>Severity: <%= a.severity %></p>
+                    <% end %>
+                  <% end %>
+                  <% if @allergies[4..50] != nil %>
+                    <%=link_to "Show more", id="allergy" %>
+                    <div class="hidden" id="allergy">
+                      <% @allergies[3..50].each do |a| %>
+                      <p>Type: <%= a.name %></p>
+                      <p>Severity: <%= a.severity %></p>
+                    <% end %>
+                  <% end %>
+                  </div>
+                    <script>
+                      $(document).on('click', function(){
+                        $("#allergy").show();
+                        return false;
+                      });
+                    </script>
+                  </div>
+              
 
               <div>
                 <h4>Prescriptions:</h4>
                  <% if @prescriptions.empty? %>
                 <p>There is no record found for Prescriptions!</p>
                 <%else%>
-                <% @prescriptions.each do |p| %>
-                  <div>
+                <% @prescriptions[0..2].each do |p| %>
                     <p>Name: <%= p.medicine %></p>
                     <p>Dosage: <%= p.dosage %></p>
                     <p>Refills: <%= p.refills %></p>
                     <p>Expires: <%= p.expiration_date %></p>
-                  </div>
-                <%end %>
+                  <% end %>
                 <% end %>
+                <% if @prescriptions[4..50] != nil %>
+                  <%= link_to "Show more", id="prescription" %>
+                  <div class="hidden" id="prescription">
+                    <% @prescriptions[3..50].each do |p| %>
+                    <p>Name: <%= p.medicine %></p>
+                    <p>Dosage: <%= p.dosage %></p>
+                    <p>Refills: <%= p.refills %></p>
+                    <p>Expires: <%= p.expiration_date %></p>
+                  <% end %>
+                <% end %>
+                </div>
+                    <script>
+                      $(document).on('click', function(){
+                        $("#prescription").show();
+                        return false;
+                      });
+                    </script>
               </div>
 
               <div>
@@ -74,10 +117,24 @@
                 <%if @illnesses.empty? %>
                 <p>There is no record found for Illnesses!</p>
                 <%else%>
-                <% @illnesses.each do |i| %>
+                <% @illnesses[0..2].each do |i| %>
                   <p>Name: <%= i.name %></p>
                 <%end%>
                 <% end %>
+                <% if @illnesses[4..50] != nil %>
+                  <% link_to "Show more", id="illness" %>
+                  <div class="hidden" id="illness">
+                  <% @illnesses[3..50].each do |i| %>
+                  <p>Name: <%= i.name %></p>
+                  <% end %>
+                <% end %>
+                </div>
+                    <script>
+                      $(document).on('click', function(){
+                        $("#prescription").show();
+                        return false;
+                      });
+                    </script>
               </div>
 
               <div>
@@ -85,7 +142,7 @@
                 <% if @appointments.empty? %>
                 <p>There is no record found for Appointments.</p>
                 <%else%>
-                <% @appointments.each_with_index do |a, index| %>
+                <% @appointments[0..2].each_with_index do |a, index| %>
                   <p>No.<%= index+ 1%></p>
                   <p>Date: <%= a.date %></p>
                   <p>Diagnosis: <%= a.diagnosis %></p>
@@ -93,6 +150,24 @@
                   <p>Notes: <%= a.notes %></p>
                   <%end%>
                 <% end %>
+                <% if @appointments[4..50] != nil %>
+                  <%=link_to "Show more", id="apppointment" %>
+                  <div class="hidden" id="apppointment">
+                  <% @appointments[3..50].each_with_index do |a, index| %>
+                  <p>No.<%= index+ 1%></p>
+                  <p>Date: <%= a.date %></p>
+                  <p>Diagnosis: <%= a.diagnosis %></p>
+                  <p>Referrals: <%= a.referrals %></p>
+                  <p>Notes: <%= a.notes %></p>
+                  <%end%>
+                <% end %>
+                </div>
+                    <script>
+                      $(document).on('click', function(){
+                        $("#apppointment").show();
+                        return false;
+                      });
+                    </script>
               </div>
             </div>
         <!--  Replaced previous block of code with full health profile information.  -->
@@ -123,36 +198,143 @@ BMI: <%= @health_profile.bmi %><br />
 Insurer: <%= @health_profile.insurer %><br />
 <%= link_to "Edit Health Profile", edit_patient_health_profile_path %><br />
 <br>
-Immunizations:<br />
-<% @immunizations.each do |i| %>
-Type: <%= i.name %><br />
-Expires: <%= i.expiration_date %><br />
-<% end %><br />
-<br>
-Allergies:<br />
-<% @allergies.each do |a| %>
-Type: <%= a.name %><br />
-Severity: <%= a.severity %><br />
-<% end %><br />
-<br>
-Prescriptions:<br />
-<% @prescriptions.each do |p| %>
-Name: <%= p.medicine %><br />
-Dosage: <%= p.dosage %><br />
-Refills: <%= p.refills %><br />
-Expires: <%= p.expiration_date %><br />
-<% end %><br />
-<br>
-Past illnesses:<br />
-<% @illnesses.each do |i| %>
-Name: <%= i.name %><br />
-<% end %><br />
-<br>
-Past appointments:<br />    
-<% @appointments.each do |a| %>
-Date: <%= a.date %><br />
-Diagnosis: <%= a.diagnosis %><br />
-Referrals: <%= a.referrals %><br />
-Notes: <%= a.notes %><br>
-<% end %>
+<div>
+<h4>Immunizations:</h4>
+<%if @immunizations.empty? %>
+   <p> There is no record found for Immunizations!</p>
+    <% else %>
+      <% @immunizations[0..2].each do |i| %>
+    <p>Type: <%= i.name %></p>
+    <p>Expires: <%= i.expiration_date %></p>
+    <% end %>
 <%end%>
+<% if @immunizations[4..50]!=nil %>
+  <a href="#"> Show more </a>
+  <div class="hidden" id="immunization">
+  <% @immunizations[3..50].each do |i| %>
+    <p>Type: <%= i.name %></p>
+    <p>Expires: <%= i.expiration_date %></p>
+    <% end %>
+  <% end %>
+    <script>
+      $(document).on('click', function(){
+        $("#allergy").show();
+        return false;
+      });
+    </script>
+  </div>
+
+<div>
+  <h4>Allergies:</h4>
+  <% if @allergies.empty? %>
+  <p>There is no record found for Allergies!</p>
+    <%else%>
+      <% @allergies[0..2].each do |a| %>
+      <p>Type: <%= a.name %></p>
+      <p>Severity: <%= a.severity %></p>
+    <% end %>
+  <% end %>
+  <% if @allergies[4..50] != nil %>
+    <%=link_to "Show more", id="allergy" %>
+    <div class="hidden" id="allergy">
+      <% @allergies[3..50].each do |a| %>
+      <p>Type: <%= a.name %></p>
+      <p>Severity: <%= a.severity %></p>
+    <% end %>
+  <% end %>
+  </div>
+    <script>
+      $(document).on('click', function(){
+        $("#allergy").show();
+        return false;
+      });
+    </script>
+  </div>
+<div>
+  <h4>Prescriptions:</h4>
+   <% if @prescriptions.empty? %>
+  <p>There is no record found for Prescriptions!</p>
+  <%else%>
+  <% @prescriptions[0..2].each do |p| %>
+      <p>Name: <%= p.medicine %></p>
+      <p>Dosage: <%= p.dosage %></p>
+      <p>Refills: <%= p.refills %></p>
+      <p>Expires: <%= p.expiration_date %></p>
+    <% end %>
+  <% end %>
+  <% if @prescriptions[4..50] != nil %>
+    <%= link_to "Show more", id="prescription" %>
+    <div class="hidden" id="prescription">
+      <% @prescriptions[3..50].each do |p| %>
+      <p>Name: <%= p.medicine %></p>
+      <p>Dosage: <%= p.dosage %></p>
+      <p>Refills: <%= p.refills %></p>
+      <p>Expires: <%= p.expiration_date %></p>
+    <% end %>
+  <% end %>
+  </div>
+      <script>
+        $(document).on('click', function(){
+          $("#prescription").show();
+          return false;
+        });
+      </script>
+  </div>
+
+<div>
+  <h4>Past illnesses:</h4>
+  <%if @illnesses.empty? %>
+  <p>There is no record found for Illnesses!</p>
+  <%else%>
+  <% @illnesses[0..2].each do |i| %>
+    <p>Name: <%= i.name %></p>
+  <%end%>
+  <% end %>
+  <% if @illnesses[4..50] != nil %>
+    <% link_to "Show more", id="illness" %>
+    <div class="hidden" id="illness">
+    <% @illnesses[3..50].each do |i| %>
+    <p>Name: <%= i.name %></p>
+    <% end %>
+  <% end %>
+  </div>
+      <script>
+        $(document).on('click', function(){
+          $("#prescription").show();
+          return false;
+        });
+      </script>
+</div>
+<div>
+    <h4>Past appointments:</h4>
+    <% if @appointments.empty? %>
+    <p>There is no record found for Appointments.</p>
+    <%else%>
+    <% @appointments[0..2].each_with_index do |a, index| %>
+      <p>No.<%= index+ 1%></p>
+      <p>Date: <%= a.date %></p>
+      <p>Diagnosis: <%= a.diagnosis %></p>
+      <p>Referrals: <%= a.referrals %></p>
+      <p>Notes: <%= a.notes %></p>
+      <%end%>
+    <% end %>
+    <% if @appointments[4..50] != nil %>
+      <%=link_to "Show more", id="apppointment" %>
+      <div class="hidden" id="apppointment">
+      <% @appointments[3..50].each_with_index do |a, index| %>
+      <p>No.<%= index+ 1%></p>
+      <p>Date: <%= a.date %></p>
+      <p>Diagnosis: <%= a.diagnosis %></p>
+      <p>Referrals: <%= a.referrals %></p>
+      <p>Notes: <%= a.notes %></p>
+      <%end%>
+    <% end %>
+    </div>
+        <script>
+          $(document).on('click', function(){
+            $("#apppointment").show();
+            return false;
+          });
+        </script>
+  </div>
+<% end %>
