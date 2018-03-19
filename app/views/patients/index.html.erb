@@ -105,12 +105,15 @@
          <div id = patient_notification_container>
             <h3 id = notifications_header class=display-1>Notifications</h3>
             <div id = notification_list>
-              <% if !@patient.notifications.empty? %>
+               <% patient_notifications = @patient.notifications.where(received: false) %>
+               <% if !patient_notifications.empty? %>
                 <div>
-                  <% @patient.notifications.each do |notification| %>
-                    <p>
-                      <%= render "layouts/notification", notification: notification %>
-                    </p>
+                  <% patient_notifications.each do |notification| %>
+                       <p>
+                         <%= render "layouts/notification", notification: notification %>
+                         <% notification.received = true %>
+                         <% notification.save %>
+                       </p>
                   <% end %>
                </div>
                <% else %>
