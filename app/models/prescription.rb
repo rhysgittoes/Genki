@@ -8,11 +8,11 @@ class Prescription < ApplicationRecord
 	validates :dosage, presence: true
 	
  	before_save :set_default_values
-	after_save :create_notifications
+	# after_save :create_notifications 
 	
-	def create_notifications
-		Notification.create_new_prescription_notifications(self)
-	end
+	# def create_notifications
+	# 	Notification.create_new_prescription_notifications(self) 
+	# end
 	
 	def set_default_values
 		self.refills = 0
