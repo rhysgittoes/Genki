@@ -1,14 +1,9 @@
 <h1> Edit Health Profile </h1>
 
-<%= form_for [@patient, @health_profile] do |form|%>
-<%= render partial: "health_profiles/form", object: form %>
+<%= render partial: "health_profiles/form" %>
 
-<div class="submit-field">
-  <%= form.submit "Update profile" %>
-  <% end %>
-  <br>
+ <br>
   <br>
   <%= form_tag(patient_health_profile_path, method: "get") do %>
   <%= submit_tag "Cancel", :name => nil %>
   <% end %>
-</div>

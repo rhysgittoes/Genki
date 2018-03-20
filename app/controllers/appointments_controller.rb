@@ -13,15 +13,17 @@ class AppointmentsController < ApplicationController
     
     if @appointment.save
       Notification.create_appointment_notifications(@appointment, @health_profile)
+      if !@appointment.prescriptions.empty? 
+        @appointment.prescriptions.each do |prescription|
+          Notification.create_new_prescription_notifications(prescription) 
+        end
+      end
       flash[:notice] = "Your appointment has been saved."
       redirect_to patient_health_profile_path(@patient, @health_profile)
-    else
-      flash[:notice] = "There was a problem saving your appointment, please try again."
-      redirect_to patient_health_profile_path(@patient, @health_profile)
+      else
+        flash[:notice] = "There was a problem saving your appointment, please try again."
+        redirect_to patient_health_profile_path(@patient, @health_profile)
     end 
-    
-
-    
   end
   
   private
@@ -41,6 +43,7 @@ class AppointmentsController < ApplicationController
   end
   
   def set_associations(appointment, patient)
+    
     appointment.illnesses.each do |illness|
       illness.patient = patient
     end
