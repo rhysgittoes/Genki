@@ -10,6 +10,8 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
+
+
 ActiveRecord::Schema.define(version: 20180320034342) do
 
   # These are extensions that must be enabled in order to support this database
@@ -80,7 +82,10 @@ ActiveRecord::Schema.define(version: 20180320034342) do
     t.string "name"
     t.string "notes"
     t.string "chronic", default: "false"
+<<<<<<< HEAD
+=======
     t.bigint "health_profile_id"
+>>>>>>> 849355547e1d1a538fd61e4ce645c42cdc26550d
     t.index ["appointment_id"], name: "index_illnesses_on_appointment_id"
   end
 
