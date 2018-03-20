@@ -2,14 +2,14 @@
 <div style="margin-left: 50px; margin-right: 50px; margin-top: 2em;">
   <div class="row">
     <div class="col-md-8">
-      <h2>Your Past Appointments</h2>
+      <h2>Welcome back, Dr. <%= @doctor.last_name %>.</h2>
       <br>
     </div>
   </div>
   
   <div class="row">
     <div class="col-8">
-
+      <% if !@appointments.empty? %>
       <% @appointments.order(date: :DESC).each do |a|%>
         <div class="row">
           <div class="appointment" data-aos-offset="0" data-aos-delay="200" data-aos="fade-up">
@@ -40,17 +40,39 @@
           </div> 
         </div>   
       <%end%>
+    <% else %>
+      <div class="appointment" data-aos-offset="0" data-aos-delay="200" data-aos="fade-up">
+        <p style="margin: auto; padding-top: 1em; text-align: center">You have no appointments.</p>
+      </div>
+    <% end %>
     </div>
 
     <div class="col-4">
-      <%= link_to "Edit", edit_doctor_path(current_user)%>
-          <div id="notification">
-            Notification:
+          <div id="doctor_notification_container">
+            <h3 class ="notifications_header" class="display-1">Notifications:</h3>
+            <div class = notification_list>
+              <% doctor_notifications = @doctor.notifications.where(received: false) %>
+              <% if !doctor_notifications.empty? %>
+                <div>
+                  <% doctor_notifications.each do |notification| %>
+                  <div class = "notification_list_container">
+                    <p>
+                      <%= render "layouts/notification", notification: notification %>
+                      <% notification.received = true %>
+                      <% notification. save%>
+                    </p>
+                  </div>
+                  <% end %>
+                </div>
+                <% else %>
+                  You have no new notifications.
+                <% end %>
             </div>
-          <div id="search-form">
+            </div>
+          <div id="search-container">
             <%= form_tag doctors_search_path, method: :get do %>
-              <%= label_tag "search" %>
-              <%= text_field_tag "search", nil, list: "list" %>
+              <%#= label_tag "search" %>
+              <%= text_field_tag "search", nil, list: "list", placeholder: "Search for patients", id: "big_search" %>
               <datalist id="list"></datalist>
               <%end%>
           </div> 

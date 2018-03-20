@@ -25,9 +25,34 @@
   padding: 0px;
 }
 
+#doctor-homepage-no-appointments{
+  padding: 10em;
+}
 
+#doctor_notification_container{
+  background-color: rgba(23, 71, 139,0.8);
+  padding-left:1rem;
+  padding-right:1rem;
+  padding-top: 1rem;
+   text-align: center;
+   -webkit-box-shadow: 0 10px 6px -6px #777;
+   -moz-box-shadow: 0 10px 6px -6px #777;
+          box-shadow: 0 10px 6px -6px #777;
+  margin-bottom: 2rem;
+}
 
 .doctor-form{
   margin: 0 auto;
   width: 60%
+}
+
+#search-container{
+     text-align: center;
+   background-color: #1abc9c;
+   padding-top:2rem;
+   padding-bottom:2rem;
+     -webkit-box-shadow: 0 10px 6px -6px #777;
+     -moz-box-shadow: 0 10px 6px -6px #777;
+          box-shadow: 0 10px 6px -6px #777;
+   margin-right:1rem;
 }
