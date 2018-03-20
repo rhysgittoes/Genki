@@ -59,22 +59,22 @@
 
           <div id="notification">
           <div id="doctor_notification_container">
-            <h3 class ="notifications_header" class="display-1">Notifications:</h3>
+            <h3 class ="notifications_header display-1">Notifications</h3>
             <div class = notification_list>
               <% doctor_notifications = @doctor.notifications.where(received: false) %>
               <% if !doctor_notifications.empty? %>
                 <div>
-                  <ul>
+                  
                     <% doctor_notifications.each do |notification| %>
-                      <div class = "notification_list_container">
-                        <li>
+                      <div id = "notification_list_container">
+ 
                           <%= render "layouts/notification", notification: notification %>
                           <% notification.received = true unless notification.category == "new_doctor" %>
                           <% notification. save%>
-                        </li>
+
                       </div>
                     <% end %>
-                  </ul>
+               
                 </div>
                 <% else %>
                   You have no new notifications.
@@ -82,7 +82,7 @@
             </div>
 
             </div>
-          <div id="search-container" style="margin-right: 0;">
+          <div id="search-container" style="margin-right: 0; margin-top: 1rem;">
             <%= form_tag doctors_search_path, method: :get do %>
               <%#= label_tag "search" %>
               <%= text_field_tag "search", nil, list: "list", placeholder: "Search for patients", id: "big_search" %>

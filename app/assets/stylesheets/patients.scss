@@ -45,7 +45,7 @@
    padding-top: 5px;
    padding-bottom: 5px;
    color: #ecf0f1;
-   font-size: 2rem;
+   font-size: 2.2rem;
 }
 
 .notification_list{
@@ -165,7 +165,15 @@ padding-top: 5px;
 }
 
 #notification_list_container{
-
+background-color: white;
+-webkit-box-shadow: 0 5px 3px -3px #777;
+   -moz-box-shadow: 0 5px 3px -3px #777;
+          box-shadow: 0 5px 3px -3px #777;
+color: black;
+border-radius: 3px;
+padding:0.3rem;
+padding-left: 0.5rem;
+padding-right: 0.5rem;
 }
 
 #patient_health_profile_link_container{
