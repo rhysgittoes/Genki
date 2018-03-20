@@ -1,9 +1,10 @@
-<div>
-    <%= form_for [@patient, @health_profile] do |f|%>
+<div class="health-profile-edit-and-create">
+    <%= form_for [@patient, @health_profile], :html => { :class => "health-profile-edit-and-create-form"  } do |f|%>
 
     <div id = "form-list">
     <%= f.label :blood_type%><br>
-    <%= f.text_field :blood_type%><br>
+    <%#= f.text_field :blood_type%>
+    <%= f.select(:blood_type, ["A+","A-","B+","B-","AB+","AB-","O+","O-","Unknown"])%><br>
     <%= f.label :weight %>(kg)<br>
     <%= f.text_field :weight%><br>
     <%= f.label :height%>(m)<br>
@@ -16,11 +17,20 @@
         <%= render "health_profiles/associationsform", f: f %>
     <% end %>
     
-    <div class="submit-field">
-      <%= f.submit "Update profile" %>
-     <% end %>
+    <br>
+    
+    <div class="submit-field" >
+        <span>
+         <%= f.submit "Update profile", :class => "btn btn-outline-dark" %>
+         <% end %>
+        </span>
      
+         <span>
+          <%#= form_tag(patient_health_profile_path, method: "get") do %>
+              <%#= submit_tag "Cancel", :name => nil, :html => {:class =>"health-profile-form-submit"} %>
+          <%# end %>
+         </span>
     </div>
-    </div>
+</div>
 
 
