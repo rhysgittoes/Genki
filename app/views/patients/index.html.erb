@@ -90,7 +90,8 @@
           <div id = patient_notification_container>
             <h3 class = notifications_header class=display-1>Notifications</h3>
             <div class = notification_list>
-               <% Notification.check_for_upcoming_immunizations(@patient) %>
+               <% Notification.check_for_expiring_immunizations(@patient) %>
+               <% Notification.check_for_expiring_prescriptions(@patient) %>
                <% patient_notifications = @patient.notifications.where(received: false) %>
                <% if !patient_notifications.empty? %>
                 <div>
