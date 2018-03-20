@@ -17,7 +17,9 @@ class PatientsController < ApplicationController
   def create
     @patient = Patient.new(patient_params)
     @patient.admission_id = SecureRandom.hex(4).upcase
+    
     if @patient.save
+      Notification.new_patient_notification(@patient)
       flash[:notice] = "Welcome, #{@patient.first_name}!"
       sign_in @patient
       redirect_to patients_path
