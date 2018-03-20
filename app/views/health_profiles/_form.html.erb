@@ -16,6 +16,7 @@
     <% if url_for(:only_path => true) == "/patients/#{@patient.id}/health_profiles/new" %>
         <hr>
         <h3 style = "text-align: center">Import Previous Records </h3>
+
         <%= render "health_profiles/associationsform", f: f %>
     <% end %>
     
