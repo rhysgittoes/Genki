@@ -119,9 +119,11 @@
     <%if current_user.type == "Patient"  || allowed_to_view_profile?(current_user, @relation, @patient) %>
       <% if has_health_profile?(@health_profile) %>
         <div style="margin-left: 50px; margin-right: 50px; margin-top: 2em;">
-        <div id="new_apoint_button">
-          <i class="fas fa-angle-double-left" id="doubelleft"></i>
-        </div>
+        <%if current_user.type =="Doctor"%>
+          <div id="new_apoint_button">
+            <i class="fas fa-angle-double-left" id="doubelleft"></i>
+          </div>
+        <%end%>
               <div class="row">
                 <div class="col-4">
                   <!-- Basic Health Details -->
@@ -220,14 +222,14 @@
                   </div>
                 </div>
                 <!-- Appointments -->
-                <div class="col-8" style="overflow: hidden;">
+              <div class="col-8" style="overflow: hidden;">
                 <%if current_user.type == "Doctor"%>
 
-                  <div> 
+                  <div id = appoitments_form_HP style="display: none;"> 
                     <%= render "appointments/form" %>
                   </div>
                 <%end%>
-                <div>
+                <div id = appoitments_list_HP>
                   <% @appointments.each do |a| %>
                     <div class="row">
                       <div class="appointment_full_health_profile" style="width: 100%;" data-aos-offset="0" data-aos-delay="100" data-aos="fade-left"> 
@@ -250,9 +252,8 @@
                     </div>
                   <% end %>
                 </div>
-                </div>        
-              </div>
-          </div>
+              </div>        
+            </div>
       <%else %>
         <p>No health profile is created yet</p>
       <%end%>
