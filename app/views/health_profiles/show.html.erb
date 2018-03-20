@@ -1,3 +1,4 @@
+
 <!-- What the Doctor sees -->
 <%#if is_doctor?(current_user) %>
       
@@ -118,10 +119,10 @@
   <%if current_user.type == "Patient"  || @relation != nil %>
     <%if current_user.type == "Patient"  || allowed_to_view_profile?(current_user, @relation, @patient) %>
       <% if has_health_profile?(@health_profile) %>
-        <div style="margin-left: 50px; margin-right: 50px; margin-top: 2em;">
+        <div style="margin-left: 50px; margin-right: 50px; margin-top: 2em">
         <%if current_user.type =="Doctor"%>
           <div id="new_apoint_button">
-            <i class="fas fa-angle-double-left" id="doubelleft"></i>
+            <i class="fas fa-edit" id="NewButotnGlyph"></i>
           </div>
         <%end%>
               <div class="row">
@@ -225,7 +226,7 @@
               <div class="col-8" style="overflow: hidden;">
                 <%if current_user.type == "Doctor"%>
 
-                  <div id = appoitments_form_HP style="display: none;"> 
+                  <div id = appoitments_form_HP style="display: none; position: fixed;"> 
                     <%= render "appointments/form" %>
                   </div>
                 <%end%>
