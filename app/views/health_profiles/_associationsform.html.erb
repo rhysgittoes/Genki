@@ -1,4 +1,5 @@
 <div>
+    <br>
         <h5>
             Known Allergies 
             <i class="fas fa-angle-down" id ="allergy-fields-toggle"></i>
@@ -13,6 +14,7 @@
               <%= link_to_add_association '+ Allergy', f, :allergies, partial: "appointments/allergy_fields" %>
             </div>  
         </div>
+        <br>
             
         <h5>
             Known Conditions and Illnesses
@@ -28,6 +30,7 @@
                 <%= link_to_add_association '+ Illness', f, :illnesses, partial: "appointments/illness_fields" %>
             </div>
         </div>
+        <br>
         
         <h5>
             Previous Immunizations
@@ -43,6 +46,7 @@
                 <%= link_to_add_association '+ Immunization', f, :immunizations, partial: "appointments/immunization_fields" %>
             </div>
         </div>
+        <br>
         
         <h5>
             Ongoing Prescriptions

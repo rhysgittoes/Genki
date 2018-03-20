@@ -77,7 +77,15 @@ ActiveRecord::Base.transaction do
 end
 
 ActiveRecord::Base.transaction do
+<<<<<<< HEAD
+<<<<<<< HEAD
   10.times do
+=======
+  500.times do
+>>>>>>> 57189d3d3206d6fd3c548c14eaf279cf5330a107
+=======
+  10.times do
+>>>>>>> 4cc94fd4a36d9136c500990004a4cb27768bfa81
     patient = Patient.new
     patient.email = Faker::Internet.email
     patient.phone_number = Faker::PhoneNumber.phone_number
