@@ -36,7 +36,6 @@
           <li class="nav-item">
             <div id="patient_health_profile_link_container">
               <%if current_user.health_profile != nil %>
-
                 <%= link_to "Health Profile", patient_health_profile_path(current_user, HealthProfile.find_by(patient_id: current_user.id)), id:"patient_health_profile_link" %> 
               <% else %>
                 <%= link_to "Health profile", new_patient_health_profile_path(current_user) %> 
@@ -60,18 +59,18 @@
           <button class="btn btn-outline-success my-2 my-sm-0 navbtn" type="submit">Search</button> 
       </form> -->
       <% if signed_in? %>
-      <form method="get" action=
-      <% if current_user.type == "Doctor" %>
-        <%= "/doctors/#{current_user.id}"%>
-      <% else %>
-        <%= "/patients/#{current_user.id}" %>
+        <form method="get" action=
+          <% if current_user.type == "Doctor" %>
+          <%= "/doctors/#{current_user.id}"%>
+        <% else %>
+          <%= "/patients/#{current_user.id}" %>
         <%#= patient_health_profiles_path(current_user, HealthProfile.find_by(patient_id: current_user.id))%>
       <% end %>
       >
       
      <%= image_tag(current_user.avatar_url(:thumb).to_s, class: "profile-picture")%>
      
-        <button class="nav_bar_name btn btn-outline-success navbtn" type="submit"> 
+        <button class="btn btn-outline-success navbtn" type="submit"> 
           <%if current_user.type == "Doctor" %>
             <%= "Dr." %>
           <%end %>
@@ -79,7 +78,7 @@
         </button>
       </form>
   
-        <%= button_to t(".sign_out"), sign_out_path, method: :delete, class: "btn btn-outline-success"  %>
+        <%= button_to t(".sign_out"), sign_out_path, method: :delete, class: "btn btn-outline-success navbtn"  %>
       <% else -%>
         <!--Don't need that sign in butotn  <%= link_to t(".sign_in"), sign_in_path, class: " navbtn btn btn-outline-success" %> -->
         <button type="button" class="btn btn-outline-success navbtn" id="sign_in_btn">Sign in</button>
