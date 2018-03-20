@@ -17,6 +17,7 @@ def create
   @doctor = Doctor.new(doctor_params)
   @doctor.admission_id = SecureRandom.hex(4).upcase
   if @doctor.save
+    Notification.new_doctor_notification(@doctor)
     flash[:notice] = "Welcome, DR.#{@doctor.first_name}!"
     sign_in @doctor
     redirect_to doctors_path
@@ -37,6 +38,9 @@ end
 def update
   @doctor = Doctor.find(params[:id])
   if @doctor.update(doctor_params)
+    notification = @doctor.notifications.find_by(category: "new_doctor")
+    notification.received = true
+    notification.save
   redirect_to doctors_path
   else 
   flash[:notice] = "Please input valid information"
