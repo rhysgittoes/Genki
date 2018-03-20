@@ -1,14 +1,15 @@
-<p>First name: <%= form.text_field :first_name %></p>
-<p>Last name: <%= form.text_field :last_name %></p>
-<p>Profile Picture: <%= form.file_field :avatar %></p> 
-<p>Email: <%= form.text_field :email %></p>
-<p>Password: <%= form.password_field :password %></p>
-<p>Password Confirmation: <%= form.password_field :password_confirmation %></p>
+<br>
+<p>First name: <br><%= form.text_field :first_name %></p>
+<p>Last name:<br> <%= form.text_field :last_name %></p>
+<p>Profile Picture:<br><br> <%= form.file_field :avatar, style:"margin-right:-5.5rem;"%></p> 
+<p>Email:<br> <%= form.text_field :email %></p>
+<p>Password:<br> <%= form.password_field :password %></p>
+<p>Password Confirmation:<br> <%= form.password_field :password_confirmation %></p>
 <p>Gender:<br>
-<%= form.radio_button :gender, "female"%>Female
-<%= form.radio_button :gender, "male"%>Male</p>
-<p>Language: <%= form.text_field :language%></p>
-<p>Birthday: <%=form.date_field :birthday %></p>
-<p>City: <%= form.text_field :city %></p>
-<p>Country: <%= form.text_field :country %></p>
+<%= form.radio_button :gender, "female"%>  Female
+<%= form.radio_button :gender, "male"%> Male  </p>
+<p>Language:<br> <%= form.text_field :language%></p>
+<p>Birthday:<br> <%=form.date_field :birthday %></p>
+<p>City:<br> <%= form.text_field :city %></p>
+<p>Country:<br> <%= form.text_field :country %></p>
 <p>Admission ID: <%#= form.text_field :admission_id %></p>
