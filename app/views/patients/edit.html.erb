@@ -1,11 +1,13 @@
-<div class="patient-form">
-<h1> Edit Patient Profile </h1>
-  <%= form_for @patient do |form| %>
-
-      <%= render partial: "patients/form", object: form %>
-
-<div class="submit-field">
-<%= form.submit "Submit", data: {confirm: "Edit Profile?"} %>
-</div>
-  <% end %>
+<div class="row">
+   <div class="col-12" style="text-align: center;">
+      <div class="col-8">
+      <h1> Edit Patient Profile </h1>
+      <%= form_for @patient do |form| %>
+         <%= render partial: "patients/form", object: form %>
+         <div class="submit-field">
+            <%= form.submit "Submit", data: {confirm: "Edit Profile?"} %>
+         </div>
+      <% end %>
+      </div>
+   </div>
 </div>
