@@ -4,6 +4,7 @@ class DoctorsController < ApplicationController
 
 def index
   @user = current_user
+  @doctor = current_user
   # @appointments = Appointment.where(doctor_id: current_user.id)
   @appointments = current_user.appointments
 end
