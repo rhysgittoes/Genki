@@ -19,7 +19,11 @@
                   <!-- Basic Health Details -->
                   <div class="basic_health_prof_container">
                     <div id="profile_img_container">
-                      <%=image_tag(current_user.avatar_url.to_s, id: "profile_img")%>
+                    <%if current_user.avatar.url == nil%>
+                      <%=image_tag("https://s3-ap-southeast-1.amazonaws.com/genkigroup/uploads/images/profile.jpg", id: "profile_img")%>
+                    <%else%>
+                    <%=image_tag(current_user.avatar_url.to_s, id: "profile_img")%>
+                    <%end%>
                     </div>
                     <div class=" display-3" id="health_prof_name">
                       <%= @patient.first_name %>
@@ -27,31 +31,31 @@
                     </div>
                    <div class="HL"></div>
                     <div class="display-3" id="basic_info_item" class="display-3 basic_info_item">
-                      <%=image_tag("/assets/gender.png", class: "icon")%>
+                      <%=image_tag("https://s3-ap-southeast-1.amazonaws.com/genkigroup/uploads/images/gender.png", class: "icon")%>
                       <%= @patient.gender %>
                     </div>
                     <div class="display-3" id="basic_info_item">
-                      <%=image_tag("/assets/birthday.png", class: "icon")%>
+                      <%=image_tag("https://s3-ap-southeast-1.amazonaws.com/genkigroup/uploads/images/birthday.png", class: "icon")%>
                       <%= @patient.birthday %><br/>
                     </div>
                     <div class="display-3" id="basic_info_item">
-                      <%=image_tag("/assets/blood.png", class: "icon")%>
+                      <%=image_tag("https://s3-ap-southeast-1.amazonaws.com/genkigroup/uploads/images/blood.png", class: "icon")%>
                       Blood Type: <%= @health_profile.blood_type %><br/>
                     </div>
                     <div class="display-3" id="basic_info_item">
-                      <%=image_tag("/assets/weight.png", class: "icon")%>
+                      <%=image_tag("https://s3-ap-southeast-1.amazonaws.com/genkigroup/uploads/images/weight.png", class: "icon")%>
                       Weight(kg): <%= @health_profile.weight %><br />
                     </div>
                     <div class="display-3" id="basic_info_item">
-                      <%=image_tag("/assets/height.png", class: "icon")%>
+                      <%=image_tag("https://s3-ap-southeast-1.amazonaws.com/genkigroup/uploads/images/height.png", class: "icon")%>
                       Height(m): <%= @health_profile.height %><br />
                     </div>
                     <div class="display-3" id="basic_info_item">
-                      <%=image_tag("/assets/bmi.png", class: "icon")%>
+                      <%=image_tag("https://s3-ap-southeast-1.amazonaws.com/genkigroup/uploads/images/bmi.png", class: "icon")%>
                       BMI: <%= @health_profile.bmi %><br />
                     </div>
                     <div class="display-3" id="basic_info_item">
-                      <%=image_tag("/assets/insurance.png", class: "icon")%>
+                      <%=image_tag("https://s3-ap-southeast-1.amazonaws.com/genkigroup/uploads/images/insurance.png", class: "icon")%>
                       Insurer: <%= @health_profile.insurer %><br />
                     </div>
                      <div class="display-3" id="edit_profile_button_container">
