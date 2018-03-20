@@ -42,7 +42,7 @@
       <%end%>
     <% else %>
       <div class="appointment" data-aos-offset="0" data-aos-delay="200" data-aos="fade-up">
-        <p style="margin: auto; padding-top: 1em; text-align: center">You have no appointments.</p>
+        <p style="margin: auto; padding-top: 3em; padding-left: 2em; justify: left; height: 20%;">You have no appointments.</p>
       </div>
     <% end %>
     </div>
@@ -54,15 +54,17 @@
               <% doctor_notifications = @doctor.notifications.where(received: false) %>
               <% if !doctor_notifications.empty? %>
                 <div>
-                  <% doctor_notifications.each do |notification| %>
-                  <div class = "notification_list_container">
-                    <p>
-                      <%= render "layouts/notification", notification: notification %>
-                      <% notification.received = true %>
-                      <% notification. save%>
-                    </p>
-                  </div>
-                  <% end %>
+                  <ul>
+                    <% doctor_notifications.each do |notification| %>
+                      <div class = "notification_list_container">
+                        <li>
+                          <%= render "layouts/notification", notification: notification %>
+                          <% notification.received = true %>
+                          <% notification. save%>
+                        </li>
+                      </div>
+                    <% end %>
+                  </ul>
                 </div>
                 <% else %>
                   You have no new notifications.
