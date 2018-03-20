@@ -103,6 +103,29 @@ border-color:white;
   color:white;
 }
 
+.appointment_details{
+  margin-top: 1%;
+  display: inline-block;
+  height: 100%;
+  width:62.5%;
+  vertical-align: top;
+}
+.appointment_date_month{
+  position: absolute;
+  margin-top:1%;
+  text-align: center;
+  width: 15%;
+}
+.appointment_date_number{
+  display: inline-block;
+  width: 15%;
+  height: 100%;
+  text-align: center;
+  font-size: 5em;
+  padding-top: 12px;
+
+}
+
 .profile-picture{
   border-radius: 60%;
   border: 1px solid black;

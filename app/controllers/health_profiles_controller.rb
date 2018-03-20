@@ -38,7 +38,7 @@ class HealthProfilesController < ApplicationController
 		@allergies = @patient.allergies.select(:name, :severity, :status)
 		@prescriptions = @patient.prescriptions.select(:medicine, :dosage, :refills, :expiration_date)
 		@illnesses = @patient.illnesses.where(chronic: true).select(:name, :status)
-		@appointments = @patient.appointments.select(:date,:diagnosis, :referrals, :notes)
+		@appointments = @patient.appointments.select(:id, :date,:diagnosis, :referrals, :notes)		
 	end
 		
 
