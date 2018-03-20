@@ -53,11 +53,11 @@ require 'faker'
 
 doctor = {}
 ActiveRecord::Base.transaction do
-  500.times do
+  20.times do
     doctor = Doctor.new
     doctor.email = Faker::Internet.email
     doctor.phone_number = Faker::PhoneNumber.phone_number
-    doctor.first_name = Faker::Name.first_name
+    doctor.first_name = "Harrison"
     doctor.last_name = Faker::Name.last_name
     doctor.gender = ['Female', 'Male'][rand(0..1)]
     doctor.birthday = Faker::Date.birthday(18, 65)
@@ -74,14 +74,13 @@ ActiveRecord::Base.transaction do
     doctor.password = 'password'
     doctor.save
   end
-end
 
-ActiveRecord::Base.transaction do
-  10.times do
+  20.times do
     patient = Patient.new
     patient.email = Faker::Internet.email
     patient.phone_number = Faker::PhoneNumber.phone_number
-    patient.first_name = "Julie"
+    patient.avatar = Faker::Avatar.image("profile-picture","60x60")
+    patient.first_name = "Christina"
     patient.last_name = Faker::Name.last_name
     patient.gender = ['Female', 'Male'][rand(0..1)]
     patient.birthday = Faker::Date.birthday(18, 65)
@@ -103,6 +102,28 @@ ActiveRecord::Base.transaction do
     health_profile.weight = rand(16..24.9)*2*health_profile.height
     health_profile.patient_id = patient.id
     health_profile.save
+    
+    15.times do 
+      appointment = Appointment.new
+      appointment.date = Faker::Date.between(400.days.ago, Date.today)
+      appointment.symptoms = Faker::Lorem.words(5)
+      appointment.diagnosis = Faker::Lorem.paragraph(2, true, 8)
+      appointment.referrals = Faker::Lorem.sentence(3, true, 4) 
+      appointment.notes = Faker::Lorem.paragraph(3, true, 10)
+      appointment.doctor_id= doctor.id
+      appointment.patient_id = patient.id
+      appointment.save
+      
+      # prescription = Prescription.new
+      # prescription.medicine = Faker::Lorem.word
+      # prescription.dosage = Faker::Lorem.sentence(3) 
+      # prescription.refills = "none"
+      # prescription.expiration_date = Faker::Date.forward(14)
+      # prescription.patient_id = patient.id
+      # prescription.appointment_id = Faker::Number.between(0, 16)
+      # prescription.doctor_id = doctor.id      
+      # prescription.save
+      end
   end
 end
 

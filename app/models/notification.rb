@@ -2,7 +2,7 @@ class Notification < ApplicationRecord
   
   belongs_to :user
   enum user_type: [:patient, :doctor]
-  enum category: [:appointment, :prescription, :new_patient, :new_doctor]
+  enum category: [:appointment, :prescription, :new_patient, :new_doctor, :expired_immunization, :expired_prescription]
   
   
   def self.create_appointment_notifications(appointment, health_profile)
@@ -52,7 +52,7 @@ class Notification < ApplicationRecord
     self.user = prescription.patient
     self.text = "You received a new prescription from Dr. #{@doctor.first_name + " " + @doctor.last_name}."
     self.link = "/patients"
-    self.user_type = 1
+    self.user_type = 0
     self.save
     
   end
@@ -64,6 +64,24 @@ class Notification < ApplicationRecord
     self.link = "/doctors"
     self.user_type = 1
     self.save
+  end
+  
+  def self.check_for_expiring_prescriptions(patient)
+    patient.prescriptions.each do |prescription|
+      if prescription.expiration_date != nil && prescription.expiration_date < Date.today + 1.month
+        self.create_new_expiring_prescription_notice(prescription)
+      end
+    end
+  end
+  
+  def self.create_new_expiring_prescription_notice(prescription)
+    notification = Notification.new
+    notification.user = prescription.patient
+    notification.text = "Your prescription for #{prescription.medicine} will expire on #{prescription.expiration_date}. Contact #{prescription.doctor ? "Dr." + prescription.doctor.last_name : "your doctor" } for a refill."
+    notification.link = "patients/#{prescription.patient.id}/health_profiles/#{prescription.patient.health_profile.id}"
+    notification.user_type = 0
+    notification.category = 5
+    notification.save
   end
   
   # Patient notifications
@@ -87,6 +105,26 @@ class Notification < ApplicationRecord
     notification.link = "doctors/#{doctor.id}/edit"
     notification.user_type = 0
     notification.category = 3
+    notification.save
+  end
+  
+  # Immunization upcoming
+  
+  def self.check_for_expiring_immunizations(patient)
+    patient.immunizations.each do |immunization|
+      if immunization.expiration_date != nil && immunization.expiration_date < Date.today + 1.month 
+        self.create_new_immunization_notice(immunization)
+      end
+    end
+  end
+  
+  def self.create_new_immunization_notice(immunization)
+    notification = Notification.new
+    notification.user = immunization.patient
+    notification.text = "You're due for another round of the #{immunization.name} vaccine. This immunization will no longer be effective as of #{immunization.expiration_date}."
+    notification.link = "patients/#{immunization.patient.id}/health_profiles/#{immunization.patient.health_profile.id}"
+    notification.user_type = 0
+    notification.category = 4
     notification.save
   end
 
