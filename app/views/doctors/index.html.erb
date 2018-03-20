@@ -50,7 +50,6 @@
     <div class="col-4">
 
           <div id="notification">
-            Notification:
           <div id="doctor_notification_container">
             <h3 class ="notifications_header" class="display-1">Notifications:</h3>
             <div class = notification_list>
@@ -62,7 +61,7 @@
                       <div class = "notification_list_container">
                         <li>
                           <%= render "layouts/notification", notification: notification %>
-                          <% notification.received = true %>
+                          <% notification.received = true unless notification.category == "new_doctor" %>
                           <% notification. save%>
                         </li>
                       </div>
