@@ -23,18 +23,26 @@
           
             <div class="appointment_details">
               <p>
+                <i class="fas fa-plus" style="font-size: 1rem;"></i>
                 <%=a.patient.first_name + " " +a.patient.last_name%>
                 <br>
-                <%=a.symptoms.join(', ')%>
+                <i class="far fa-sticky-note"></i>
+                <%= a.symptoms.join(', ')%>
                 <br>
-                
+                <i class="fas fa-pills"></i>
                 Active Prescriptions:  
+               
+               
                 <% a.prescriptions.each do |b|%>
-                <%= b.medicine%>
-                <%end%>
-
-                <br>
-                Finished Prescriptions:
+                  <%if Date.today < b.expiration_date %>
+                    <%=  b.medicine%>
+                  <%else%>
+                    <br>
+                    <i class="fas fa-check"></i>
+                    Finished Prescriptions:
+                    <%=  b.medicine%>
+                    <%end%>
+                  <%end%>
               </p>
             </div>
           </div> 
@@ -51,33 +59,35 @@
 
           <div id="notification">
           <div id="doctor_notification_container">
-            <h3 class ="notifications_header" class="display-1">Notifications:</h3>
+            <h3 class ="notifications_header display-1">Notifications</h3>
             <div class = notification_list>
               <% doctor_notifications = @doctor.notifications.where(received: false) %>
               <% if !doctor_notifications.empty? %>
                 <div>
-                  <ul>
+                  
                     <% doctor_notifications.each do |notification| %>
-                      <div class = "notification_list_container">
-                        <li>
+                      <div id = "notification_list_container">
+ 
                           <%= render "layouts/notification", notification: notification %>
                           <% notification.received = true unless notification.category == "new_doctor" %>
                           <% notification. save%>
-                        </li>
+
                       </div>
                     <% end %>
-                  </ul>
+               
                 </div>
                 <% else %>
-                  You have no new notifications.
+                  <div style="text-align: center">
+                    You have no new notifications.
+                  </div>
                 <% end %>
             </div>
 
             </div>
-          <div id="search-container">
+          <div id="search-container" style="margin-right: 0; margin-top: 1rem; padding-top: 2.7rem; padding-bottom: 2.7rem;">
             <%= form_tag doctors_search_path, method: :get do %>
               <%#= label_tag "search" %>
-              <%= text_field_tag "search", nil, list: "list", placeholder: "Search for patients", id: "big_search" %>
+              <%= text_field_tag "search", nil, list: "list", placeholder: "Search for patients", id: "big_search" , style: "width:90%;"%>
               <datalist id="list"></datalist>
               <%end%>
           </div> 
