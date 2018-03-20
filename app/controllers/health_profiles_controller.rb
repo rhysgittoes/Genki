@@ -37,12 +37,13 @@ class HealthProfilesController < ApplicationController
 		@appointment = Appointment.new
 		build_associations(@appointment)
 		@health_profile = HealthProfile.find_by(patient_id: @patient.id)
-
 		@immunizations = @patient.immunizations.select(:name, :date, :expiration_date)
 		@allergies = @patient.allergies.select(:name, :severity, :status)
 		@prescriptions = @patient.prescriptions.select(:medicine, :dosage, :refills, :expiration_date)
 		@illnesses = @patient.illnesses.where(chronic: true).select(:name, :status)
-		@appointments = @patient.appointments.select(:date,:diagnosis, :referrals, :notes)
+    # MAy need to remove :id from selected attributes
+		@appointments = @patient.appointments.select(:id, :date,:diagnosis, :referrals, :notes)		
+
 	end
 		
 
