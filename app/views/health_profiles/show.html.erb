@@ -1,114 +1,4 @@
-<!-- What the Doctor sees -->
-<%#if is_doctor?(current_user) %>
-      
-      <%if @relation != nil %>
-        <%#if @relation.doctor_id == current_user.id%>
-          <% if allowed_to_view_profile?(current_user, @relation, @patient) %>
 
-                      <% if has_health_profile?(@health_profile) %>
-                       
-                      <!-- Old double code. -->
-                      <!--  Replaced previous block of code with full health profile information.  -->
-                      <!-- <div> -->
-                          <!--   <div>
-                              <p>First Name: <%#= @patient.first_name %></p>
-                              <p>Last Name: <%#= @patient.last_name %></p>
-                              <p>Gender: <%#= @patient.gender %></p>
-                              <p>Birthday: <%#= @patient.birthday %></p>
-                            </div> -->
-
-                            <!-- <div>
-                              <p>Blood Type: <%#= @health_profile.blood_type %></p>
-                              <p>Weight(kg): <%#= @health_profile.weight %></p>
-                              <p>Height(m): <%#= @health_profile.height %></p>
-                              <p>BMI: <%#= @health_profile.bmi %></p>
-                              <p>Insurer: <%#= @health_profile.insurer %></p>
-                              <p>
-                              <%#= link_to "Edit Health Profile", edit_patient_health_profile_path %></p>
-                            </div> -->
-
-                            <!-- <div>
-                            <h4>Immunizations:</h4>
-                            <%#if @immunizations.empty? %>
-                               <p> There is no record found for Immunizations!</p>
-                                <%# else %>
-                              <% #@immunizations.each do |i| %>
-                              <div>
-                                <p>Type: <%#= i.name %></p>
-                                <p>Expires: <%#= i.expiration_date %></p>
-                                <%# end %>
-                            <%#end%>
-                              </div>
-                            </div> -->
-
-                           <!--  <div>
-                              <h4>Allergies:</h4>
-                              <%# if @allergies.empty? %>
-                              <p>There is no record found for Allergies!</p>
-                              <%#else%>
-                              <%# @allergies.each do |a| %>
-                              <div>
-                                <p>Type: <%#= a.name %></p>
-                                <p>Severity: <%#= a.severity %></p>
-                              </div>
-                              <%#end%>
-                              <% #end %>
-                            </div> -->
-
-                            <!-- <div>
-                              <h4>Prescriptions:</h4>
-                               <% #if @prescriptions.empty? %>
-                              <p>There is no record found for Prescriptions!</p>
-                              <%#else%>
-                              <%# @prescriptions.each do |p| %>
-                                <div>
-                                  <p>Name: <%#= p.medicine %></p>
-                                  <p>Dosage: <%#= p.dosage %></p>
-                                  <p>Refills: <%#= p.refills %></p>
-                                  <p>Expires: <%#= p.expiration_date %></p>
-                                </div>
-                              <%#end %>
-                              <%# end %>
-                            </div> -->
-
-                           <!--  <div>
-                              <h4>Past illnesses:</h4>
-                              <%#if @illnesses.empty? %>
-                              <p>There is no record found for Illnesses!</p>
-                              <%#else%>
-                              <%# @illnesses.each do |i| %>
-                                <p>Name: <%#= i.name %></p>
-                              <%#end%>
-                              <%# end %>
-                            </div> -->
-
-                            <!-- <div>
-                              <h4>Past appointments:</h4>
-                              <%# if @appointments.empty? %>
-                              <p>There is no record found for Appointments.</p>
-                              <% #else%>
-                              <%# @appointments.each_with_index do |a, index| %>
-                                <p>No.<%#= index+ 1%></p>
-                                <p>Date: <%#= a.date %></p>
-                                <p>Diagnosis: <%#= a.diagnosis %></p>
-                                <p>Referrals: <%#= a.referrals %></p>
-                                <p>Notes: <%#= a.notes %></p>
-                                <%#end%>
-                              <% #end %>
-                            </div> -->
-                          <!-- </div> -->
-                      <!--  Replaced previous block of code with full health profile information.  -->
-                      <% else %>
-                        <p>No health profile is created yet</p>
-                      <%end %>
-          <%else%>
-            <p>You are not authorized to view this page!</p>
-            <%= link_to "Homepage", root_path %>
-          <% end %>
-      <%end%>
-        <%#end%>
-      
-<%#end%>
 
 
 <!-- What the Patient sees -->
@@ -245,7 +135,7 @@
                           <div class="appointment_details_patients">
                             <div class="display-3" id="appointment_small_title">Diagnosis:</div> <%= a.diagnosis %><br />
                             <div class="display-3" id="appointment_small_title">Referrals:</div> <%= a.referrals %><br />
-                            <div class="display-3" id="appointment_small_title">Notes:</div> <%#= a.notes %><br>
+                            <div class="display-3" id="appointment_small_title">Notes:</div> <%= a.notes %><br>
                           <!-- </div> -->
                           </div>
                         </div>
