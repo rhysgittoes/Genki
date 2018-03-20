@@ -1,4 +1,3 @@
-
 <!-- What the Doctor sees -->
 <%#if is_doctor?(current_user) %>
       
@@ -130,7 +129,7 @@
                   <!-- Basic Health Details -->
                   <div class="basic_health_prof_container">
                     <div id="profile_img_container">
-                      <%=image_tag("/assets/profile.jpg", id: "profile_img")%>
+                      <%=image_tag(current_user.avatar_url.to_s, id: "profile_img")%>
                     </div>
                     <div class=" display-3" id="health_prof_name">
                       <%= @patient.first_name %>
@@ -265,5 +264,3 @@
     <%end%>
   <%end%>
 <%end%>
-
-

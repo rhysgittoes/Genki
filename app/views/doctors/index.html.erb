@@ -48,6 +48,9 @@
     </div>
 
     <div class="col-4">
+
+          <div id="notification">
+            Notification:
           <div id="doctor_notification_container">
             <h3 class ="notifications_header" class="display-1">Notifications:</h3>
             <div class = notification_list>
@@ -70,6 +73,7 @@
                   You have no new notifications.
                 <% end %>
             </div>
+
             </div>
           <div id="search-container">
             <%= form_tag doctors_search_path, method: :get do %>

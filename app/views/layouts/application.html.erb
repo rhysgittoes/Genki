@@ -36,7 +36,6 @@
           <li class="nav-item">
             <div id="patient_health_profile_link_container">
               <%if current_user.health_profile != nil %>
-
                 <%= link_to "Health Profile", patient_health_profile_path(current_user, HealthProfile.find_by(patient_id: current_user.id)), id:"patient_health_profile_link" %> 
               <% else %>
                 <%= link_to "Health profile", new_patient_health_profile_path(current_user) %> 
@@ -48,10 +47,10 @@
       <%end%>
 
       <li class="nav-item">
-        <a class="nav-link" href="#">Link</a>
+        <a class="nav-link" href="#"></a>
       </li>       
       <li class="nav-item">
-        <a class="nav-link"  href="#">Link</a>
+        <a class="nav-link"  href="#"></a>
       </li>
     </ul>
   
@@ -62,14 +61,15 @@
       <% if signed_in? %>
       <form method="get" action=
       <% if current_user.type == "Doctor" %>
-        <%= "/doctors"%>
+        <%= "/doctors/#{current_user.id}"%>
       <% else %>
-        <%= "/patients/#{current_user.id}/health_profiles/#{HealthProfile.find_by(patient_id: current_user.id)}" %>
+        <%= "/patients/#{current_user.id}" %>
         <%#= patient_health_profiles_path(current_user, HealthProfile.find_by(patient_id: current_user.id))%>
       <% end %>
       >
-
-      <%= image_tag(current_user.avatar_url(:thumb).to_s, class: "profile-picture") %>
+      
+     <%= image_tag(current_user.avatar_url(:thumb).to_s, class: "profile-picture")%>
+     
         <button class="nav_bar_name btn btn-outline-success navbtn" type="submit"> 
           <%if current_user.type == "Doctor" %>
             <%= "Dr." %>

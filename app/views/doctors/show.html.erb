@@ -1,9 +1,9 @@
 
-
-<div>
+<br>
+<div class="doctor-form">
 <%= image_tag(current_user.avatar_url.to_s) %><br>
   <div>
-    <h4>Personal Details</h4>
+    <h4><u>Personal Details</u></h4>
     <p><strong>Name:</strong> <%= @doctor.first_name + " " + @doctor.last_name%></p>
     <p><strong>Admission ID:</strong> <%= @doctor.admission_id %></p>
     <p><strong>Gender:</strong> <%= @doctor.gender %></p>
@@ -13,6 +13,7 @@
   <div>
     <h4>Contact Details</h4>
       <p><strong>Email:</strong> <%= @doctor.email %></p>
+      <p><strong>Phone No:</strong> <%= @doctor.phone_number%></p>
       <div>
         <p><strong>Address:</strong></p>
         <p><%= @doctor.address %>, <%= @doctor.secondary_address if @doctor.secondary_address %></p>
@@ -27,10 +28,11 @@
       <p><strong>Years of Practice:</strong> <%= @doctor.experience %></p>
       <p><strong>Language:</strong> <%= @doctor.language %></p>
       <p><strong>Specialty:</strong> <%= @doctor.specialty %></p>
+      <p><strong>Practice:</strong> <%= @doctor.practice %></p>
   </div>
   
   <% if @doctor.id == current_user.id %>
-    <%= link_to "Edit Profile", edit_doctor_path(@doctor)%>
+    <%= link_to "Edit Profile", edit_doctor_path(current_user)%>
   <%end%>
 
 <div>
