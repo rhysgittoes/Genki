@@ -117,130 +117,132 @@
 
 
 <%if patient_to_view_profile?(current_user, @health_profile) || is_doctor?(current_user)%>
-  <div style="margin-left: 50px; margin-right: 50px; margin-top: 2em;">
-    <div class="row">
-      <div class="col-4">
-        <!-- Basic Health Details -->
-        <div class="basic_health_prof_container">
-          <div id="profile_img_container">
-            <%=image_tag("/assets/profile.jpg", id: "profile_img")%>
-          </div>
-          <div class=" display-3" id="health_prof_name">
-            <%= @patient.first_name %>
-            <%= @patient.last_name %>
-          </div>
-         <div class="HL"></div>
-          <div class="display-3" id="basic_info_item" class="display-3 basic_info_item">
-            <%=image_tag("/assets/gender.png", class: "icon")%>
-            <%= @patient.gender %>
-          </div>
-          <div class="display-3" id="basic_info_item">
-            <%=image_tag("/assets/birthday.png", class: "icon")%>
-            <%= @patient.birthday %><br/>
-          </div>
-          <div class="display-3" id="basic_info_item">
-            <%=image_tag("/assets/blood.png", class: "icon")%>
-            Blood Type: <%= @health_profile.blood_type %><br/>
-          </div>
-          <div class="display-3" id="basic_info_item">
-            <%=image_tag("/assets/weight.png", class: "icon")%>
-            Weight(kg): <%= @health_profile.weight %><br />
-          </div>
-          <div class="display-3" id="basic_info_item">
-            <%=image_tag("/assets/height.png", class: "icon")%>
-            Height(m): <%= @health_profile.height %><br />
-          </div>
-          <div class="display-3" id="basic_info_item">
-            <%=image_tag("/assets/bmi.png", class: "icon")%>
-            BMI: <%= @health_profile.bmi %><br />
-          </div>
-          <div class="display-3" id="basic_info_item">
-            <%=image_tag("/assets/insurance.png", class: "icon")%>
-            Insurer: <%= @health_profile.insurer %><br />
-          </div>
-           <div class="display-3" id="edit_profile_button_container">
-            <%= link_to "Edit Health Profile", edit_patient_health_profile_path, id:"edit_profile_button" %><br>
-          </div>
-        </div>
-        <!-- Immu -->
-        <div class="basic_health_prof_container">
-          <div class=" display-3" id="immun_title">
-          Immunizations
-          </div>
-          <div class="HL"></div>
-          <% @immunizations.each do |i| %>
-          Type: <%= i.name %><br />
-          Expires: <%= i.expiration_date %><br />
-          <% end %><br />
-        </div>
-        <!-- Allergies -->
-        <div class="basic_health_prof_container">
-          <div class=" display-3" id="immun_title">
-            Allergies
-          </div>
-          <div class="HL"></div>
-          <% @allergies.each do |a| %>
-          Type: <%= a.name %><br />
-          Severity: <%= a.severity %><br />
-          <% end %><br />
-        </div>
-        <!-- Illness -->
-        <div class="basic_health_prof_container">
-          <div class=" display-3" id="immun_title">
-            Past illnesses
-          </div>
-          <div class="HL"></div>
-          <% @illnesses.each do |i| %>
-          Name: <%= i.name %><br />
-          <% end %><br />
-          <br>
-        </div>
-        <!-- Prescriptions -->
-        <div class="basic_health_prof_container">
-          <div class=" display-3" id="immun_title">
-            Prescriptions
-          </div>
-          <div class="HL"></div>
-          <%@prescriptions.each do |p| %>
-          <div class=prescriptions_item  data-aos-offset="0" data-aos-delay="100" data-aos="fade">
-            <%=image_tag("/assets/medicine.png", class: "icon_prescrip")%>
-            Name:<%= p.medicine %><br />
-            <%=image_tag("/assets/doctor.png", class: "icon_prescrip")%>
-            Refills: <%= p.refills %><br />
-            <%=image_tag("/assets/timer.png", class: "icon_prescrip")%> 
-            Expires: <%= p.expiration_date %><br />
-            <%=image_tag("/assets/dosage.png", class: "icon_prescrip")%>  
-            Dosage: <%= p.dosage %><br />
-          </div>
-        <%end%><br />
-        </div>
-      </div>
-      <!-- Appointments -->
-      <div class="col-8" style="overflow: hidden;">
-        <% @appointments.each do |a| %>
+ <% if  current_user.type == "Patient" || allowed_to_view_profile?(current_user, @relation, @patient) %>
+    <div style="margin-left: 50px; margin-right: 50px; margin-top: 2em;">
           <div class="row">
-            <div class="appointment_full_health_profile" style="width: 100%;" data-aos-offset="0" data-aos-delay="100" data-aos="fade-left"> 
-              <div class="row">
-                <!-- Date: <%#= a.date %><br /> -->
-                <div class="appointment_healthprof_date_month">
-                  <%=a.date.strftime("%B")%>
+            <div class="col-4">
+              <!-- Basic Health Details -->
+              <div class="basic_health_prof_container">
+                <div id="profile_img_container">
+                  <%=image_tag("/assets/profile.jpg", id: "profile_img")%>
                 </div>
-                <div class="appointment_healthprof_date_number">
-                  <%=a.date.strftime("%d")%>
+                <div class=" display-3" id="health_prof_name">
+                  <%= @patient.first_name %>
+                  <%= @patient.last_name %>
                 </div>
-                <div class="appointment_details_patients">
-                  <div class="display-3" id="appointment_small_title">Diagnosis:</div> <%= a.diagnosis %><br />
-                  <div class="display-3" id="appointment_small_title">Referrals:</div> <%= a.referrals %><br />
-                  <div class="display-3" id="appointment_small_title">Notes:</div> <%#= a.notes %><br>
-                <!-- </div> -->
+               <div class="HL"></div>
+                <div class="display-3" id="basic_info_item" class="display-3 basic_info_item">
+                  <%=image_tag("/assets/gender.png", class: "icon")%>
+                  <%= @patient.gender %>
+                </div>
+                <div class="display-3" id="basic_info_item">
+                  <%=image_tag("/assets/birthday.png", class: "icon")%>
+                  <%= @patient.birthday %><br/>
+                </div>
+                <div class="display-3" id="basic_info_item">
+                  <%=image_tag("/assets/blood.png", class: "icon")%>
+                  Blood Type: <%= @health_profile.blood_type %><br/>
+                </div>
+                <div class="display-3" id="basic_info_item">
+                  <%=image_tag("/assets/weight.png", class: "icon")%>
+                  Weight(kg): <%= @health_profile.weight %><br />
+                </div>
+                <div class="display-3" id="basic_info_item">
+                  <%=image_tag("/assets/height.png", class: "icon")%>
+                  Height(m): <%= @health_profile.height %><br />
+                </div>
+                <div class="display-3" id="basic_info_item">
+                  <%=image_tag("/assets/bmi.png", class: "icon")%>
+                  BMI: <%= @health_profile.bmi %><br />
+                </div>
+                <div class="display-3" id="basic_info_item">
+                  <%=image_tag("/assets/insurance.png", class: "icon")%>
+                  Insurer: <%= @health_profile.insurer %><br />
+                </div>
+                 <div class="display-3" id="edit_profile_button_container">
+                  <%= link_to "Edit Health Profile", edit_patient_health_profile_path, id:"edit_profile_button" %><br>
                 </div>
               </div>
+              <!-- Immu -->
+              <div class="basic_health_prof_container">
+                <div class=" display-3" id="immun_title">
+                Immunizations
+                </div>
+                <div class="HL"></div>
+                <% @immunizations.each do |i| %>
+                Type: <%= i.name %><br />
+                Expires: <%= i.expiration_date %><br />
+                <% end %><br />
+              </div>
+              <!-- Allergies -->
+              <div class="basic_health_prof_container">
+                <div class=" display-3" id="immun_title">
+                  Allergies
+                </div>
+                <div class="HL"></div>
+                <% @allergies.each do |a| %>
+                Type: <%= a.name %><br />
+                Severity: <%= a.severity %><br />
+                <% end %><br />
+              </div>
+              <!-- Illness -->
+              <div class="basic_health_prof_container">
+                <div class=" display-3" id="immun_title">
+                  Past illnesses
+                </div>
+                <div class="HL"></div>
+                <% @illnesses.each do |i| %>
+                Name: <%= i.name %><br />
+                <% end %><br />
+                <br>
+              </div>
+              <!-- Prescriptions -->
+              <div class="basic_health_prof_container">
+                <div class=" display-3" id="immun_title">
+                  Prescriptions
+                </div>
+                <div class="HL"></div>
+                <%@prescriptions.each do |p| %>
+                <div class=prescriptions_item  data-aos-offset="0" data-aos-delay="100" data-aos="fade">
+                  <%=image_tag("/assets/medicine.png", class: "icon_prescrip")%>
+                  Name:<%= p.medicine %><br />
+                  <%=image_tag("/assets/doctor.png", class: "icon_prescrip")%>
+                  Refills: <%= p.refills %><br />
+                  <%=image_tag("/assets/timer.png", class: "icon_prescrip")%> 
+                  Expires: <%= p.expiration_date %><br />
+                  <%=image_tag("/assets/dosage.png", class: "icon_prescrip")%>  
+                  Dosage: <%= p.dosage %><br />
+                </div>
+              <%end%><br />
+              </div>
             </div>
+            <!-- Appointments -->
+            <div class="col-8" style="overflow: hidden;">
+            <% @appointments.each do |a| %>
+              <div class="row">
+                <div class="appointment_full_health_profile" style="width: 100%;" data-aos-offset="0" data-aos-delay="100" data-aos="fade-left"> 
+                  <div class="row">
+                    <!-- Date: <%#= a.date %><br /> -->
+                    <div class="appointment_healthprof_date_month">
+                      <%=a.date.strftime("%B")%>
+                    </div>
+                    <div class="appointment_healthprof_date_number">
+                      <%=a.date.strftime("%d")%>
+                    </div>
+                    <div class="appointment_details_patients">
+                      <div class="display-3" id="appointment_small_title">Diagnosis:</div> <%= a.diagnosis %><br />
+                      <div class="display-3" id="appointment_small_title">Referrals:</div> <%= a.referrals %><br />
+                      <div class="display-3" id="appointment_small_title">Notes:</div> <%#= a.notes %><br>
+                    <!-- </div> -->
+                    </div>
+                  </div>
+                </div>
+              </div>
+            <% end %>
+            </div>        
           </div>
-        <% end %>
-      </div>        
     </div>
-  </div>
+  <%end%>
 <%end%>
 
 
