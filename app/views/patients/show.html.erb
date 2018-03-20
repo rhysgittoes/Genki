@@ -1,6 +1,9 @@
-<div>
+
+<br>
+<div class="patient-form">
+    <%= image_tag(current_user.avatar_url.to_s) %>
   <div>
-    Personal details: 
+    <h4><u>Personal details</u></h4>
     <p>
       <span>First name: </span>
       <span><%= @patient.first_name %></span>
@@ -31,7 +34,9 @@
     </p>
   </div>
   <div>
-    <!--<span><%#= link_to "View Health Profile", health_profile_path(@patient) %></span> <!--Add link in when health profiles are incorporated-->
+    <%if @patient.id == current_user.id %>
+    <span><%= link_to "Edit Profile", edit_patient_path(current_user) %></span>
+    <%end%>
   </div>
 </div>
 
