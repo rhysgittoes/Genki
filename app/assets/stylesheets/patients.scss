@@ -25,7 +25,7 @@
      -webkit-box-shadow: 0 10px 6px -6px #777;
      -moz-box-shadow: 0 10px 6px -6px #777;
           box-shadow: 0 10px 6px -6px #777;
-   margin-right:1rem;
+   margin-right:0rem;
 }
 
 #patient_notification_container{
@@ -38,12 +38,13 @@
    -moz-box-shadow: 0 10px 6px -6px #777;
           box-shadow: 0 10px 6px -6px #777;
   margin-bottom: 2rem;
+  margin-left: -1rem;
 
 }
 
 .notifications_header{
-   padding-top: 5px;
-   padding-bottom: 5px;
+   padding-top: 0px;
+   padding-bottom: 0px;
    color: #ecf0f1;
    font-size: 2.2rem;
 }
@@ -63,7 +64,7 @@ text-align: center;
      -webkit-box-shadow: 0 10px 6px -6px #777;
      -moz-box-shadow: 0 10px 6px -6px #777;
           box-shadow: 0 10px 6px -6px #777;
-   margin-right:1rem;
+   margin-right:0rem;
 
 }
 
@@ -132,6 +133,8 @@ font-size: 1.1rem;
           box-shadow: 0 10px 6px -6px #777;
           // color:#ecf0f1;
   padding-bottom: 1rem;
+  margin-left: -1rem;
+
 
 }
 
