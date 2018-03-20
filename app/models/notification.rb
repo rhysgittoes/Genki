@@ -2,7 +2,7 @@ class Notification < ApplicationRecord
   
   belongs_to :user
   enum user_type: [:patient, :doctor]
-  enum category: [:appointment, :prescription, :new_patient, :new_doctor]
+  enum category: [:appointment, :prescription, :new_patient, :new_doctor, :expired_immunization]
   
   
   def self.create_appointment_notifications(appointment, health_profile)
@@ -74,7 +74,7 @@ class Notification < ApplicationRecord
     notification.text = "Welcome to Genki, #{patient.first_name}! To get started on the platform and become accessible to your doctors, please create your health profile."
     notification.link = "patients/#{patient.id}/health_profiles/new"
     notification.user_type = 0
-    notification.category = 2
+    notification.category = 0
     notification.save
   end
   
@@ -87,6 +87,26 @@ class Notification < ApplicationRecord
     notification.link = "doctors/#{doctor.id}/edit"
     notification.user_type = 0
     notification.category = 3
+    notification.save
+  end
+  
+  # Immunization upcoming
+  
+  def self.check_for_upcoming_immunizations(patient)
+    patient.immunizations.each do |immunization|
+      if immunization.expiration_date != nil && immunization.expiration_date < Date.today + 1.month 
+        self.create_new_immunization_notice(immunization)
+      end
+    end
+  end
+  
+  def self.create_new_immunization_notice(immunization)
+    notification = Notification.new
+    notification.user = immunization.patient
+    notification.text = "You're due for another round of the #{immunization.name} vaccine. This immunization will no longer be effective as of #{immunization.expiration_date}."
+    notification.link = "patients/#{immunization.patient.id}/health_profiles/#{immunization.patient.health_profile.id}"
+    notification.user_type = 0
+    notification.category = 4
     notification.save
   end
 
