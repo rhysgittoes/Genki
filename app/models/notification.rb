@@ -2,7 +2,7 @@ class Notification < ApplicationRecord
   
   belongs_to :user
   enum user_type: [:patient, :doctor]
-  enum category: [:appointment, :prescription, :new_patient]
+  enum category: [:appointment, :prescription, :new_patient, :new_doctor]
   
   
   def self.create_appointment_notifications(appointment, health_profile)
@@ -78,4 +78,16 @@ class Notification < ApplicationRecord
     notification.save
   end
   
+  # Doctor notifications
+  
+  def self.new_doctor_notification(doctor)
+    notification = Notification.new
+    notification.user = doctor
+    notification.text = "Welcome to Genki, #{doctor.first_name}! To get started on the platform, please update your personal and professional details."
+    notification.link = "doctors/#{doctor.id}/edit"
+    notification.user_type = 0
+    notification.category = 3
+    notification.save
+  end
+
 end
