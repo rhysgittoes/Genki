@@ -6,10 +6,12 @@
 <p>Password:<br> <%= form.password_field :password %></p>
 <p>Password Confirmation:<br> <%= form.password_field :password_confirmation %></p>
 <p>Gender:<br>
+<<<<<<< HEAD
 <%= form.radio_button :gender, "female"%>  Female
 <%= form.radio_button :gender, "male"%> Male  </p>
 <p>Language:<br> <%= form.text_field :language%></p>
 <p>Birthday:<br> <%=form.date_field :birthday %></p>
 <p>City:<br> <%= form.text_field :city %></p>
 <p>Country:<br> <%= form.text_field :country %></p>
-<p>Admission ID: <%#= form.text_field :admission_id %></p>
+<p>Admission ID: <%= current_user.admission_id  %></p>
+

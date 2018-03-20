@@ -90,8 +90,8 @@ ActiveRecord::Schema.define(version: 20180320034342) do
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.bigint "patient_id"
-    t.date "expiration_date"
     t.string "name"
+    t.date "expiration_date"
     t.string "notes"
     t.bigint "health_profile_id"
     t.index ["appointment_id"], name: "index_immunizations_on_appointment_id"
@@ -162,6 +162,7 @@ ActiveRecord::Schema.define(version: 20180320034342) do
     t.string "admission_id"
     t.string "certification"
     t.integer "experience"
+    t.string "avatar"
     t.string "phone_number"
     t.string "address"
     t.string "secondary_address"
@@ -169,7 +170,6 @@ ActiveRecord::Schema.define(version: 20180320034342) do
     t.string "state"
     t.string "specialty"
     t.string "practice"
-    t.string "avatar"
     t.index ["email"], name: "index_users_on_email"
     t.index ["remember_token"], name: "index_users_on_remember_token"
   end

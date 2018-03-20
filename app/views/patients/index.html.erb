@@ -8,7 +8,6 @@
 
 
 
-   <%= link_to "Edit", edit_patient_path(@patient)%>
    <div class=row>
       <div class=col-8>
          <div id= search_doctors_container>
@@ -87,24 +86,6 @@
          </div>
          </div>
    
-
-
-<!-- <div>
-  <h4>Your Notifications</h4>
-  <%# if !@patient.notifications.empty? %>
-    <div>
-      <%# @patient.notifications.each do |notification| %>
-        <p>
-          <%#= render "layouts/notification", notification: notification %>
-        </p>
-      <%# end %>
-    </div>
-  <%# else %>
-    You have no new notifications.
-  <%# end %>
-</div> -->
-
-
         <div class=col-4>
           <div id = patient_notification_container>
             <h3 class = notifications_header class=display-1>Notifications</h3>
@@ -112,15 +93,19 @@
                <% patient_notifications = @patient.notifications.where(received: false) %>
                <% if !patient_notifications.empty? %>
                 <div>
-                  <% patient_notifications.each do |notification| %>
-                    <div class=notification_list_container>
-                       <p>
-                         <%= render "layouts/notification", notification: notification %>
-                         <% notification.received = true %>
-                         <% notification.save %>
-                       </p>
-                    </div>
-                  <% end %>
+                    <ul>
+                      <% patient_notifications.each do |notification| %>
+                        <div id=notification_list_container>
+                           <li>
+                             <%= render "layouts/notification", notification: notification %>
+                             <% if notification.category != "new_patient" %>
+                                 <% notification.received = true %>
+                                 <% notification.save %>
+                             <% end %>
+                           </li>
+                        </div>
+                      <% end %>
+                  </ul>
                </div>
                <% else %>
                    You have no new notifications.
@@ -145,8 +130,8 @@
                                <%= Doctor.find(r.doctor_id).email %>
                             </div>
 
-                            <div class="col-3" style="margin-top: -1.25rem; text-align: right;">
-                              <%= button_to "Revoke", relation_path(r), data: { confirm: 'Are you sure?' }, method: :delete, class: "btn btn-outline-success" %>
+                            <div class="col-3" style="margin-top: -1.25rem; text-align: right; margin-left: -15px;">
+                             <%= button_to "Revoke", relation_path(r), data: { confirm: 'Are you sure?' }, method: :delete, class: "btn btn-outline-success" %>
                             </div>
                           </div>
                         </div>
@@ -159,15 +144,5 @@
           <%end%>
       </div>
    </div>
-
-
-
-   <br>
-   <%if @health_profile != nil %>
-   <%= link_to "Health profile", patient_health_profile_path(@patient, @health_profile) %> 
-   <% end %>
-   <br>
-   <%= link_to "Create a new health profile", new_patient_health_profile_path(@patient) %> 
-   <br>
 </div>
 
