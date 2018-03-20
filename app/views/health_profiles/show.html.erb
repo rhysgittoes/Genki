@@ -103,13 +103,13 @@
                     <div class="HL"></div>
                     <%@prescriptions.each do |p| %>
                     <div class=prescriptions_item  data-aos-offset="0" data-aos-delay="100" data-aos="fade">
-                      <%=image_tag("/assets/medicine.png", class: "icon_prescrip")%>
+                      <%=image_tag("https://s3-ap-southeast-1.amazonaws.com/genkigroup/uploads/images/medicine.png", class: "icon_prescrip")%>
                       Name:<%= p.medicine %><br />
-                      <%=image_tag("/assets/doctor.png", class: "icon_prescrip")%>
+                      <%=image_tag("https://s3-ap-southeast-1.amazonaws.com/genkigroup/uploads/images/doctor.png", class: "icon_prescrip")%>
                       Refills: <%= p.refills %><br />
-                      <%=image_tag("/assets/timer.png", class: "icon_prescrip")%> 
+                      <%=image_tag("https://s3-ap-southeast-1.amazonaws.com/genkigroup/uploads/images/timer.png", class: "icon_prescrip")%> 
                       Expires: <%= p.expiration_date %><br />
-                      <%=image_tag("/assets/dosage.png", class: "icon_prescrip")%>  
+                      <%=image_tag("https://s3-ap-southeast-1.amazonaws.com/genkigroup/uploads/images/dosage.png", class: "icon_prescrip")%>  
                       Dosage: <%= p.dosage %><br />
                     </div>
                   <%end%><br />
