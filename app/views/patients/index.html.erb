@@ -88,7 +88,7 @@
    
         <div class=col-4>
           <div id = patient_notification_container>
-            <h3 class = notifications_header class=display-1>Notifications</h3>
+            <h3 class = "notifications_header display-1">Notifications</h3>
             <div class = notification_list>
                <% patient_notifications = @patient.notifications.where(received: false) %>
                <% if !patient_notifications.empty? %>
@@ -107,7 +107,9 @@
                   
                </div>
                <% else %>
+                  <div style="text-align: center">
                    You have no new notifications.
+                  </div>
                <% end %> 
             </div>          
         </div>
