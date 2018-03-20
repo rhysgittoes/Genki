@@ -52,7 +52,7 @@ class Notification < ApplicationRecord
     self.user = prescription.patient
     self.text = "You received a new prescription from Dr. #{@doctor.first_name + " " + @doctor.last_name}."
     self.link = "/patients"
-    self.user_type = 2
+    self.user_type = 1
     self.save
     
   end
