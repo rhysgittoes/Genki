@@ -125,3 +125,9 @@ border-color:white;
   padding-top: 12px;
 
 }
+
+.profile-picture{
+  border-radius: 60%;
+  border: 1px solid black;
+
+}

@@ -53,7 +53,7 @@ require 'faker'
 
 doctor = {}
 ActiveRecord::Base.transaction do
-  15.times do
+  500.times do
     doctor = Doctor.new
     doctor.email = Faker::Internet.email
     doctor.phone_number = Faker::PhoneNumber.phone_number
@@ -77,7 +77,7 @@ ActiveRecord::Base.transaction do
 end
 
 ActiveRecord::Base.transaction do
-  15.times do
+  500.times do
     patient = Patient.new
     patient.email = Faker::Internet.email
     patient.phone_number = Faker::PhoneNumber.phone_number

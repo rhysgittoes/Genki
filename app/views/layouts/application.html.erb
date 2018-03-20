@@ -4,16 +4,17 @@
    <title>Genki</title>
    
     <%= csrf_meta_tags %>
-    <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload' %>
-    <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
+
+
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
     <link href="https://cdn.rawgit.com/michalsnik/aos/2.1.1/dist/aos.css" rel="stylesheet">
-    <link href="https://cdnjs.cloudflare.com/ajax/libs/selectize.js/0.12.4/css/selectize.bootstrap2.css" type="text/css">
     <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.0.8/css/solid.css" integrity="sha384-v2Tw72dyUXeU3y4aM2Y0tBJQkGfplr39mxZqlTBDUZAb9BGoC40+rdFCG0m10lXk" crossorigin="anonymous">
     <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.0.8/css/fontawesome.css" integrity="sha384-q3jl8XQu1OpdLgGFvNRnPdj5VIlCvgsDQTQB6owSOHWlAurxul7f+JpUOVdAiJ5P" crossorigin="anonymous">
-    <!--emika code-->
     <link href="https://cdnjs.cloudflare.com/ajax/libs/selectize.js/0.12.4/css/selectize.bootstrap2.css" type="text/css">
-    <!--emika code-->
+    <script src="https://code.jquery.com/jquery-3.1.1.min.js"></script>
+    
+    <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload' %>
+    <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
 
   <title>Genki</title>
 
@@ -22,7 +23,7 @@
 <body>
  
 <nav class="navbar navbar-expand-lg navbar-dark bg-dark" id="navbar">
-      <%= link_to image_tag("/assets/genki.jpg", class: "navbar-image") + " Genki", root_path, class: "navbar-brand"%>  
+      <%= link_to image_tag("https://s3-ap-southeast-1.amazonaws.com/genkigroup/uploads/images/genki.jpg", class: "navbar-image") + " Genki", root_path, class: "navbar-brand"%>  
      
   <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
     <span class="navbar-toggler-icon"></span>
@@ -35,9 +36,9 @@
           <li class="nav-item">
             <div id="patient_health_profile_link_container">
               <%if @health_profile != nil %>
-              <%= link_to "Health Profile", patient_health_profile_path(@patient, @health_profile), id:"patient_health_profile_link" %> 
+                <%= link_to "Health Profile", patient_health_profile_path(current_user, HealthProfile.find_by(patient_id: current_user.id)), id:"patient_health_profile_link" %> 
               <% else %>
-              <%= link_to "Health profile", new_patient_health_profile_path(@patient) %> 
+                <%= link_to "Health profile", new_patient_health_profile_path(current_user) %> 
               <%end%>
               <span class="sr-only">(current)</span>
             </div>
@@ -62,10 +63,12 @@
       <% if current_user.type == "Doctor" %>
         <%= "/doctors"%>
       <% else %>
-        <%= patient_health_profiles_path(@patient, @health_profile)%>
+        <%= "/patients/#{current_user.id}/health_profiles/#{HealthProfile.find_by(patient_id: current_user.id)}" %>
+        <%#= patient_health_profiles_path(current_user, HealthProfile.find_by(patient_id: current_user.id))%>
       <% end %>
-      
       >
+
+      <%= image_tag(current_user.avatar_url(:thumb).to_s, class: "profile-picture") %>
         <button class="nav_bar_name btn btn-outline-success navbtn" type="submit"> 
           <%if current_user.type == "Doctor" %>
             <%= "Dr." %>
@@ -205,12 +208,8 @@
 
     <%= yield %>
 
-    <script src="https://code.jquery.com/jquery-3.1.1.min.js"></script>
-    <!--emika code-->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jqueryui/1.12.1/jquery-ui.js"></script>
     <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/selectize.js/0.12.4/js/selectize.js"></script>
-    <!--emika code-->
-
-    <!-- <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script> -->
     <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
     <script src="https://cdn.rawgit.com/michalsnik/aos/2.1.1/dist/aos.js"></script>

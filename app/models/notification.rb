@@ -17,7 +17,7 @@ class Notification < ApplicationRecord
   
   def create_patient_appointment_notification(appointment)
     self.text = "Your appointment on #{appointment.created_at.to_date} has been added to your visit logs."
-    self.link = "patients/#{appointment.patient.id}/health_profiles/#{health_profile.id}"
+    self.link = "patients/#{appointment.patient.id}/health_profiles/#{appointment.patient.health_profile.id}"
     self.category = 0
     self.user = appointment.patient
     self.received = false
@@ -27,7 +27,7 @@ class Notification < ApplicationRecord
   
   def create_doctor_appointment_notification(appointment)
     self.text = "Your appointment on #{appointment.created_at.to_date} has been added to your visit logs."
-    self.link = "patients/#{appointment.patient.id}/health_profiles/#{health_profile.id}"
+    self.link = "patients/#{appointment.patient.id}/health_profiles/#{appointment.patient.health_profile.id}"
     self.category = 0
     self.user = appointment.doctor
     self.received = false
@@ -64,6 +64,12 @@ class Notification < ApplicationRecord
     self.link = "/doctors"
     self.user_type = 1
     self.save
+  end
+  
+  # Illness notifications
+  
+  def self.new_illness_notification
+    
   end
   
 end

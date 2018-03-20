@@ -54,7 +54,7 @@ end
 private
   
 def doctor_params
-  params.require(:doctor).permit(:first_name, :last_name, :email, :gender, :birthday, :language, :city, :country, :admission_id, :certification, :experience, :password)  
+  params.require(:doctor).permit(:first_name, :last_name, :email, :gender, :birthday, :language, :city, :country, :admission_id, :certification, :experience, :password, :avatar)  
 end
 
 end

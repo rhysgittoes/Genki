@@ -26,14 +26,19 @@ class PatientsController < ApplicationController
       render :new
     end
   end
+
+  def show
+    @patient = Patient.find_by_id(params[:id])
+  end
   
   def edit
+    @patient = Patient.find_by_id(params[:id])
   end
   
   def update
     @patient.assign_attributes(patient_params)
     if @patient.save
-        redirect_to patient_path
+        redirect_to patients_path
     else
         flash[:notice] = "Sorry, there was an error updating your information. Please try again."
         redirect_to edit_patient_path
@@ -53,13 +58,12 @@ class PatientsController < ApplicationController
 
   def search
     @result = Doctor.search(params[:search])
-    @relation = Relation.where(patient_id: current_user.id)
   end
   
   private
   
   def patient_params
-    params.require(:patient).permit(:first_name, :last_name, :email, :gender, :birthday, :language, :city, :country, :admission_id, :password)
+    params.require(:patient).permit(:first_name, :last_name, :email, :gender, :birthday, :language, :city, :country, :admission_id, :password, :avatar)
   end
   
   def set_patient
@@ -75,7 +79,7 @@ class PatientsController < ApplicationController
   end
   
   def verify_user
-    if User.find(params[:id]) != @patient
+    if params[:id].to_i != @patient.id
       redirect_to patients_path
     end
   end
