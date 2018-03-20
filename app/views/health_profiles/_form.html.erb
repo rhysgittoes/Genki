@@ -1,12 +1,26 @@
-<div id = "form-list">
-<%= form.label :blood_type%><br>
-<%= form.text_field :blood_type%><br>
-<%= form.label :weight %>(kg)<br>
-<%= form.text_field :weight%><br>
-<%= form.label :height%>(m)<br>
-<%= form.text_field :height%><br>
-<%= form.label :insurer%><br>
-<%= form.text_field :insurer%><br>
-<br>
-</div>
+<div>
+    <%= form_for [@patient, @health_profile] do |f|%>
+
+    <div id = "form-list">
+    <%= f.label :blood_type%><br>
+    <%= f.text_field :blood_type%><br>
+    <%= f.label :weight %>(kg)<br>
+    <%= f.text_field :weight%><br>
+    <%= f.label :height%>(m)<br>
+    <%= f.text_field :height%><br>
+    <%= f.label :insurer%><br>
+    <%= f.text_field :insurer%><br>
+    </div>
+    
+    <% if url_for(:only_path => true) == "/patients/#{@patient.id}/health_profiles/new" %>
+        <%= render "health_profiles/associationsform", f: f %>
+    <% end %>
+    
+    <div class="submit-field">
+      <%= f.submit "Update profile" %>
+     <% end %>
+     
+    </div>
+    </div>
+
 
