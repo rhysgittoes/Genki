@@ -4,16 +4,12 @@
     <span>Condition</span>
     <span><%= f.text_field :name %></span> 
 
-    <span><%= f.label :chronic %></span>
-    <span><%= f.check_box :chronic, {}, true, false %></span>
-  </p>
-  
-  <p>
     <span><%= f.label :notes %></span>
     <span><%= f.text_field :notes %></span>
-  </p>
-  
-  <p>
+    
+    <span><%= f.label :chronic %></span>
+    <span><%= f.check_box :chronic, {}, true, false %></span>
+
     <span><%= link_to_remove_association "remove", f %></span>
   </p>
 </div>
