@@ -24,6 +24,9 @@ class HealthProfilesController < ApplicationController
 		set_associations(@health_profile, @patient)
 		
 		if @health_profile.save
+			notification = @patient.notifications.find_by(category: "new_patient")
+			notification.received = true
+			notification.save
 			redirect_to patient_health_profile_path(@patient.id, @health_profile.id), notice: "Your profile has been created."
 		else
 			redirect_to new_patient_health_profile_path(@patient), notice: "Create profile unsuccessful. Please try again."
