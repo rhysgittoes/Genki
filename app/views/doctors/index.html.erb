@@ -26,12 +26,11 @@
                 <i class="fas fa-plus" style="font-size: 1rem;"></i>
                 <%=a.patient.first_name + " " +a.patient.last_name%>
                 <br>
-                <i class="far fa-sticky-note"></i>
-                <%= a.symptoms.join(', ')%>
+                <i class="fas fa-sticky-note"></i>
+                <%= "Symptoms: " + a.symptoms.join(', ')%>
                 <br>
                 <i class="fas fa-pills"></i>
                 Active Prescriptions:  
-               
                
                 <% a.prescriptions.each do |b|%>
                   <%if Date.today < b.expiration_date %>
