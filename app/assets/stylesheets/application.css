@@ -92,8 +92,16 @@ margin-bottom: 3%;
 .navbtn{
   margin-right: 5px;
   color:white;
-border-color:white;
+  border-color:white;
 }
+
+.navbtn:hover{
+  margin-right: 5px;
+  color:black;
+  background-color: white;
+  border-color:white;
+}
+
 #sign_up_btn{
   margin-right: 5px;
 }
@@ -102,6 +110,7 @@ border-color:white;
 .nav_bar_name{
   color:white;
 }
+
 
 .appointment_details{
   margin-top: 1%;
