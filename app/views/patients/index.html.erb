@@ -56,11 +56,15 @@
                                     <div class=col-6 >
                                        <div class=display-3 id=prescription_exp>
                                            <%=image_tag("https://s3-ap-southeast-1.amazonaws.com/genkigroup/uploads/images/doctor.png", id: "timer_img")%> 
-                                          <%= a.doctor.first_name%>
+                                            <% if a.doctor %>
+                                              <%= a.doctor.first_name%>
+                                            <% else %>
+                                              N/A
+                                            <% end %>
                                        </div>
                                     </div>
                                  </div>
-                                 
+
                                  <div class="row" style="margin-top: 0rem; margin-bottom:0rem; ">
                                     <div class=col-6 >
                                        <div class=display-3 id=prescription_exp>

@@ -35,7 +35,8 @@
         <%if current_user.type == "Patient"%>
           <li class="nav-item">
             <div id="patient_health_profile_link_container">
-              <%if @health_profile != nil %>
+              <%if current_user.health_profile != nil %>
+
                 <%= link_to "Health Profile", patient_health_profile_path(current_user, HealthProfile.find_by(patient_id: current_user.id)), id:"patient_health_profile_link" %> 
               <% else %>
                 <%= link_to "Health profile", new_patient_health_profile_path(current_user) %> 
