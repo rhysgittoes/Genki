@@ -10,7 +10,9 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20180319072458) do
+
+
+ActiveRecord::Schema.define(version: 20180320034342) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -25,6 +27,7 @@ ActiveRecord::Schema.define(version: 20180319072458) do
     t.bigint "patient_id"
     t.string "name"
     t.string "notes"
+    t.bigint "health_profile_id"
     t.index ["appointment_id"], name: "index_allergies_on_appointment_id"
   end
 
@@ -62,7 +65,7 @@ ActiveRecord::Schema.define(version: 20180319072458) do
   create_table "health_profiles", force: :cascade do |t|
     t.string "blood_type"
     t.integer "weight"
-    t.integer "height"
+    t.float "height"
     t.integer "bmi"
     t.string "insurer"
     t.datetime "created_at", null: false
@@ -79,6 +82,10 @@ ActiveRecord::Schema.define(version: 20180319072458) do
     t.string "name"
     t.string "notes"
     t.string "chronic", default: "false"
+<<<<<<< HEAD
+=======
+    t.bigint "health_profile_id"
+>>>>>>> 849355547e1d1a538fd61e4ce645c42cdc26550d
     t.index ["appointment_id"], name: "index_illnesses_on_appointment_id"
   end
 
@@ -91,6 +98,7 @@ ActiveRecord::Schema.define(version: 20180319072458) do
     t.date "expiration_date"
     t.string "name"
     t.string "notes"
+    t.bigint "health_profile_id"
     t.index ["appointment_id"], name: "index_immunizations_on_appointment_id"
   end
 
@@ -130,6 +138,7 @@ ActiveRecord::Schema.define(version: 20180319072458) do
     t.bigint "appointment_id"
     t.bigint "doctor_id"
     t.string "notes"
+    t.bigint "health_profile_id"
     t.index ["appointment_id"], name: "index_prescriptions_on_appointment_id"
   end
 

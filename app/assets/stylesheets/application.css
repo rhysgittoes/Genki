@@ -123,7 +123,6 @@ border-color:white;
   text-align: center;
   font-size: 5em;
   padding-top: 12px;
-
 }
 
 .profile-picture{
@@ -131,3 +130,23 @@ border-color:white;
   border: 1px solid black;
 
 }
+
+
+/*HEALHT PROFILE EDIT PAGE EMIKA CODE*/
+.health-profile-edit-and-create{
+    margin: 4em auto;
+    width: 80%;
+    position: relative;
+    box-sizing: border-box;
+    border: 1px solid black;
+    padding: 2em;
+}
+.health-profile-edit-and-create-form  {
+    text-align: center;
+    align-self: center;
+}
+.health-profile-edit-header{
+    text-align: center;
+    margin-top: 2em;
+}
+/*HEALHT PROFILE EDIT PAGE EMIKA CODE*/

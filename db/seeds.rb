@@ -77,24 +77,40 @@ ActiveRecord::Base.transaction do
 end
 
 ActiveRecord::Base.transaction do
+<<<<<<< HEAD
+<<<<<<< HEAD
+  10.times do
+=======
   500.times do
+>>>>>>> 57189d3d3206d6fd3c548c14eaf279cf5330a107
+=======
+  10.times do
+>>>>>>> 4cc94fd4a36d9136c500990004a4cb27768bfa81
     patient = Patient.new
     patient.email = Faker::Internet.email
     patient.phone_number = Faker::PhoneNumber.phone_number
-    patient.first_name = Faker::Name.first_name
+    patient.first_name = "Julie"
     patient.last_name = Faker::Name.last_name
     patient.gender = ['Female', 'Male'][rand(0..1)]
     patient.birthday = Faker::Date.birthday(18, 65)
     patient.language = "English"
     patient.address = Faker::Address.street_address
     patient.secondary_address = Faker::Address.secondary_address
-    patient.city = Faker::Address.city
+    patient.city = "Kuala Lumpur"
     patient.zip_code = Faker::Address.zip_code
-    patient.state = Faker::Address.state
-    patient.country = Faker::Address.country
+    patient.state = "Kuala Lumpur Federal Territory"
+    patient.country = "Malaysia"
     patient.admission_id = SecureRandom.hex(4).upcase
     patient.password = 'password'
     patient.save
+    
+    health_profile = HealthProfile.new
+    health_profile.blood_type = ["A+", "A-","B+","B-","AB+","AB-","O+","O-"][rand(0..7)]
+    health_profile.height = rand(1.3..1.9)
+    health_profile.insurer = ["BCBS","United Health Care","Amica","Affleck","BCBS Texas","OneChoice"][rand(0..5)]
+    health_profile.weight = rand(16..24.9)*2*health_profile.height
+    health_profile.patient_id = patient.id
+    health_profile.save
   end
 end
 
