@@ -125,7 +125,7 @@
                   </div>
                 <%end%>
                 <div id = appoitments_list_HP>
-                  <% @appointments.each do |a| %>
+                  <% @appointments.order("date desc").each do |a| %>
                     <div class="row">
                       <div class="appointment_full_health_profile" style="width: 100%;" data-aos-offset="0" data-aos-delay="100" data-aos="fade"> 
                         <div class="row">
